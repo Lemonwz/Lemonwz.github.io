@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Comethru">
 <meta property="og:description" content="Lab1 MapReduce####MapReduce(2004) ####Lab1 MapReduce ####Lab1 Video 1. 实验环境准备  1git clone git:&#x2F;&#x2F;g.csail.mit.edu&#x2F;6.824-golabs-2020 6.824lab lab1 提供了一个顺序（非分布式）的MapReduce实现在 src&#x2F;main&#x2F;mrsequential.go中，还提供">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/mapreduce.png">
+<meta property="og:image" content="http://example.com/2021/09/20/lab1/img/mapreduce.png">
 <meta property="og:image" content="http://example.com/2021/09/20/lab1/img/rpc.png">
 <meta property="og:image" content="http://example.com/2021/09/20/lab1/img/txt.png">
 <meta property="article:published_time" content="2021-09-20T12:51:55.159Z">
-<meta property="article:modified_time" content="2021-09-20T13:29:46.195Z">
+<meta property="article:modified_time" content="2021-09-20T13:32:50.541Z">
 <meta property="article:author" content="DaiWei Jia">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/mapreduce.png">
+<meta name="twitter:image" content="http://example.com/2021/09/20/lab1/img/mapreduce.png">
 
 
 <link rel="canonical" href="http://example.com/2021/09/20/lab1/">
@@ -191,7 +191,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-09-20 20:51:55 / Modified: 21:29:46" itemprop="dateCreated datePublished" datetime="2021-09-20T20:51:55+08:00">2021-09-20</time>
+      <time title="Created: 2021-09-20 20:51:55 / Modified: 21:32:50" itemprop="dateCreated datePublished" datetime="2021-09-20T20:51:55+08:00">2021-09-20</time>
     </span>
 
   
@@ -214,7 +214,7 @@
 <p>可以通过以下代码运行: </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/6.824</span><br><span class="line">$ cd src/main</span><br><span class="line">$ go build -race -buildmode=plugin ../mrapps/wc.go</span><br><span class="line">$ rm mr-out*</span><br><span class="line">$ go run -race mrsequential.go wc.so pg*.txt</span><br><span class="line">$ more mr-out-0</span><br><span class="line">A 509</span><br><span class="line">ABOUT 2</span><br><span class="line">ACT 8</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="/img/mapreduce.png" alt="MapReduce"></p>
+<p><img src="img/mapreduce.png" alt="MapReduce"></p>
 <p>这是<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce论文</a>中给出的MapReduce流程图</p>
 <ol>
 <li>用户程序将输入文件划分为M份 (这里的M可调控)，随后在一组机器上启动该程序的许多副本，其中一个为Master，剩下的为map worker和reduce worker，Master将M份任务中的一份分配给空闲的map worker</li>
