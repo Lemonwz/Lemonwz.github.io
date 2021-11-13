@@ -156,7 +156,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/socket/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/6-824-lab1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/13/socket/" class="post-title-link" itemprop="url">Socket</a>
+          <a href="/2021/11/13/6-824-lab1/" class="post-title-link" itemprop="url">6.824 lab1 MapReduce</a>
         </h2>
 
         <div class="post-meta-container">
@@ -181,7 +181,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-11-13 10:57:25 / Modified: 11:02:52" itemprop="dateCreated datePublished" datetime="2021-11-13T10:57:25+08:00">2021-11-13</time>
+      <time title="Created: 2021-11-13 12:58:09 / Modified: 13:01:38" itemprop="dateCreated datePublished" datetime="2021-11-13T12:58:09+08:00">2021-11-13</time>
     </span>
 
   
@@ -194,129 +194,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Java端和Python端实现Socket通信"><a href="#Java端和Python端实现Socket通信" class="headerlink" title="Java端和Python端实现Socket通信"></a>Java端和Python端实现Socket通信</h2><p><strong>需求</strong>：课程项目需要实现一个web端的图像识别功能，用户访问网站识别页面，本地上传需要识别的图像文件，点击提交按钮后Java后端将图片传输到Python图像识别算法模型，将预测结果传回Java并显示在网站上</p>
-<h3 id="1-JavaWeb前后端实现"><a href="#1-JavaWeb前后端实现" class="headerlink" title="1. JavaWeb前后端实现"></a>1. JavaWeb前后端实现</h3><p><strong>1.1 Vue前端实现</strong></p>
-<p>图像文件上传:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 域内容发生改变时调用getFile函数,这里$event是上传的文件</span><br><span class="line">&lt;input accept=&quot;image/*&quot; type=&quot;file&quot; name=&quot;image&quot; @change=&quot;getFile($event)&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;img/site/default-img.png&quot; id=&quot;input&quot; width=&quot;200px&quot; height=&quot;200px&quot;&gt;</span><br><span class="line"></span><br><span class="line">// Vue methods</span><br><span class="line">getFile: function (event)&#123;</span><br><span class="line">    this.file = event.target.files[0];</span><br><span class="line">    const src = this.getObjectUrl(this.file)</span><br><span class="line">    // 将得到的url注入到id为input的img对象中</span><br><span class="line">    document.getElementById(&#x27;input&#x27;).src = src;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">getObjectUrl: function (file)&#123;</span><br><span class="line">    let url = null;</span><br><span class="line">    url = window.URL.createObjectURL(file)</span><br><span class="line">    return url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>前后端交互:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 点击提交按钮将调用upload函数</span><br><span class="line">&lt;a href=&quot;#nowhere&quot; class=&quot;btn btn-success btn-lg&quot; @click=&quot;upload&quot;&gt;提 交&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">// Vue method</span><br><span class="line">upload: function ()&#123;</span><br><span class="line">    const url = this.uri + &quot;/&quot;;</span><br><span class="line">    // axios传输文件要用formData格式</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    formData.append(&quot;image&quot;, this.file);</span><br><span class="line">    // post请求&#x27;recognitions/&#x27;地址</span><br><span class="line">    axios.post(url, formData).then(function(response)&#123;</span><br><span class="line">        // response.data是返回数据</span><br><span class="line">        vue.id = response.data</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>1.2 Springboot后端实现</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class RecognitionController &#123;</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;/recognitions&quot;)</span><br><span class="line">    public int imageRecognition(@RequestParam(&quot;image&quot;) MultipartFile image) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>@RestController</code> = <code>@Controller</code> + <code>@ResponseBody</code></p>
-<p><code>@Controller</code>表示该类是控制器类<br><code>@ResponseBody</code>指该类中所有数据都会以JSON字符串形式返回</p>
-<p><code>@PostMapping(&quot;/recognitions&quot;)</code>捕获url为<code>/recognition</code>的post请求,并执行对应函数</p>
-<p><code>@RequestParam(&quot;image&quot;) MultipartFile image</code>将<code>FormData</code>中key为image的value值绑定到参数<code>MultipartFile image</code>上</p>
-<p><strong>1.2.1 向Python端发送图片数据</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = null;</span><br><span class="line">try &#123;</span><br><span class="line">    InetAddress addr = InetAddress.getLocalHost();</span><br><span class="line">    String host = addr.getHostName();</span><br><span class="line">    // 创建一个流套接字并将其连接到指定主机上的指定端口号</span><br><span class="line">    socket = new Socket(host, 12345);</span><br><span class="line"></span><br><span class="line">    // // 返回一个与该socket相关联的输出流(用于向服务端发送数据)</span><br><span class="line">    OutputStream os = socket.getOutputStream();</span><br><span class="line">    ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">    byte[] bytes = image.getBytes();</span><br><span class="line">    baos.write(bytes);</span><br><span class="line"></span><br><span class="line">    PrintWriter pw = new PrintWriter(os);</span><br><span class="line">    pw.write(Base64.getEncoder().encodeToString(baos.toByteArray()));</span><br><span class="line">    // 末尾发送一个over字符串作为结束标志</span><br><span class="line">    pw.print(&quot;over&quot;);</span><br><span class="line">    // flush()将缓冲区中的内容强制输出到目的地</span><br><span class="line">    pw.flush();</span><br><span class="line">    // 关闭socket的输出流(可以正常接收返回的信息)</span><br><span class="line">    socket.shutdownOutput();</span><br></pre></td></tr></table></figure>
-
-<p>首先与服务器(Python端)建立连接,随后创建一个输出流用于发送数据,将MultipartFile文件转换为<code>byte</code>数组,并写入<code>ByteArrayOutputStream</code>,最后通过<code>PrintWriter</code>调用<code>OutputStreamWriter</code>的<code>write()</code>方法发送数据(该方法会将<code>string</code>类型数据转为<code>bytes-like object</code>(?)输出到stream)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 最初的实现代码,在这个需求上显得有点多余,但可以作为通过socket发送本地文件的思路</span><br><span class="line">// 大致流程为先将MultipartFile文件存到本地(可以通过临时文件),然后通过文件输入流读取文件数据写入到baos中输出</span><br><span class="line"></span><br><span class="line">File file = new File(&quot;D:/IdeaProjects&quot;, &quot;temp&quot;+&quot;.jpg&quot;);</span><br><span class="line">if(!file.getParentFile().exists()) file.getParentFile().mkdirs();</span><br><span class="line">// transferTo()将接收文件传输到指定目录</span><br><span class="line">image.transferTo(file);</span><br><span class="line">BufferedImage img = ImageUtil.change2jpg(file);</span><br><span class="line">ImageIO.write(img, &quot;jpg&quot;, file);</span><br><span class="line"></span><br><span class="line">// 创建FileInputStream对象并与要读取的文件相关联</span><br><span class="line">FileInputStream fis = new FileInputStream(&quot;D:/IdeaProjects/temp.jpg&quot;);</span><br><span class="line"></span><br><span class="line">// 通过read方法对文件数据以字节形式进行读取</span><br><span class="line">// 随后通过write方法将读取到的len个字节写入到输出流中</span><br><span class="line">byte[] buf = new byte[1024*1024];</span><br><span class="line">    int len = 0;</span><br><span class="line">    while ((len=fis.read(buf)) != -1)&#123;</span><br><span class="line">        baos.write(buf, 0, len);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 后续内容大致相同</span><br></pre></td></tr></table></figure>
-
-<p><strong>1.2.2 接收Python传回的数据</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 返回一个与该socket相关联的输入流(接收服务器传回的数据)</span><br><span class="line">InputStream is = socket.getInputStream();</span><br><span class="line">// InputStreamReader将字节流转为字符流</span><br><span class="line">// BufferedReader从字符输入流中读取数据置入缓冲区(缓冲区大小可指定,默认8kb)</span><br><span class="line">BufferedReader br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));</span><br><span class="line">// 从缓冲区中读取一行数据</span><br><span class="line">String pred = br.readLine();</span><br><span class="line">int result = Integer.parseInt(pred);</span><br></pre></td></tr></table></figure>
-
-<p>由于Python端传回的数据是一个数字(0-9),因此这里不需要对是否读取完成进行判断,直接将读取得到的<code>string</code>转为<code>int</code>即可</p>
-<p>此外这里也可以使用<code>br.read()</code>函数,该函数读取一个字符,返回该字符对应的asc码值</p>
-<p>最后关闭socket连接和所有开启的输入输出流即可</p>
-<h3 id="2-服务器端-Python-实现"><a href="#2-服务器端-Python-实现" class="headerlink" title="2.服务器端(Python)实现"></a>2.服务器端(Python)实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 创建服务器套接字</span><br><span class="line">serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"># 获取本地主机名称</span><br><span class="line">host = socket.gethostname()</span><br><span class="line"># 设置一个端口</span><br><span class="line">port = 12345</span><br><span class="line"># 将套接字与本地主机和端口绑定</span><br><span class="line">serversocket.bind((host, port))</span><br><span class="line"># 设置监听最大连接数</span><br><span class="line">serversocket.listen(5)</span><br><span class="line"># 获取本地服务器的连接信息</span><br><span class="line">myaddr = serversocket.getsockname()</span><br><span class="line">print(&quot;服务器地址:%s&quot; % str(myaddr))</span><br></pre></td></tr></table></figure>
-
-<p>首先创建TCP Socket,设置端口号并与本地主机绑定,随后服务器端等待客户端发起连接,并为每个TCP连接开启一个处理线程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    # 接收TCP连接并返回(conn,address)</span><br><span class="line">    # 其中conn是用于接收和发送数据的套接字对象</span><br><span class="line">    # addr是连接客户端的地址</span><br><span class="line">    clientsocket, addr = serversocket.accept()</span><br><span class="line">    print(&quot;连接地址:%s&quot; % str(addr))</span><br><span class="line">    try:</span><br><span class="line">        # 为每一个请求开启一个处理线程</span><br><span class="line">        t = ServerThreading(clientsocket)</span><br><span class="line">        t.start()</span><br><span class="line">        pass</span><br><span class="line">    except Exception as identifier:</span><br><span class="line">        print(identifier)</span><br><span class="line">        pass</span><br><span class="line">    pass</span><br><span class="line">serversocket.close()</span><br></pre></td></tr></table></figure>
-
-<p>ServerThreading实现:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">print(&#x27;开启线程......&#x27;)</span><br><span class="line">try:</span><br><span class="line"># 接收客户端传来的数据</span><br><span class="line">msg = &#x27;&#x27;</span><br><span class="line">while True:</span><br><span class="line">    # 读取recvsize个字节</span><br><span class="line">    data = self._socket.recv(self._recvsize)</span><br><span class="line">    # 解码(bytes-&gt;string)</span><br><span class="line">    msg += data.decode(self._encoding)</span><br><span class="line">    # 读取到的数据以over结尾,表示接收完毕</span><br><span class="line">    if msg.strip().endswith(&#x27;over&#x27;):</span><br><span class="line">        msg = msg[:-4]</span><br><span class="line">        break</span><br><span class="line">    pass</span><br><span class="line"># 对经base64编码的对象进行解码</span><br><span class="line">msg = base64.b64decode(msg)</span><br><span class="line"># &#x27;wb&#x27;-二进制写模式,会先删除文件中现有内容</span><br><span class="line">file = open(&#x27;atsdd.jpg&#x27;, &#x27;wb&#x27;)</span><br><span class="line"># 将bytes数据写入file</span><br><span class="line">file.write(msg)</span><br><span class="line">file.close()</span><br><span class="line">img = Image.open(&#x27;atsdd.jpg&#x27;)</span><br><span class="line"># img = Image.fromarray(np_arr)</span><br><span class="line"># img.save(&#x27;atsdd.jpg&#x27;)</span><br><span class="line"></span><br><span class="line">model = torch.load(&#x27;D:/python workplace/ATSDD.pth&#x27;)</span><br><span class="line">transform = ImageTransform(size, mean, std)</span><br><span class="line">img = transform(img, phase=&#x27;val&#x27;).unsqueeze(0).to(device)</span><br><span class="line"></span><br><span class="line">model.eval()</span><br><span class="line">output = model(img)</span><br><span class="line">result = torch.max(output, 1)[1]</span><br><span class="line"></span><br><span class="line">returnmessage = str(result.cpu().numpy()[0])</span><br><span class="line">self._socket.send(returnmessage.encode(self._encoding))</span><br></pre></td></tr></table></figure>
-
-<p>建立连接后开始读取客户端传来的数据,<code>recv()</code>函数接受TCP套接字的数据,返回值是<code>bytes-like object</code>类似字节对象;</p>
-<p>随后通过decode函数以指定的编码格式(这里是utf-8)解码<code>bytes-like</code>对象,返回解码后的字符串,并检查字符串的最后四位,如果是’over’则表示完成数据接收;</p>
-<p>最后通过<code>b64decode()</code>方法解码字符串,这里的字符串是由经base64编码的<code>byte[]</code>转换而来;将解码得到的bytes数据写入file得到图片,并作为参数放入图像识别模型中,传回预测结果</p>
-<p>数据类型转换流程:</p>
-<p><strong>Java端:</strong> </p>
-<p><code>getBytes(): </code></p>
-<p>MultipartFile -&gt; byte[]</p>
-<p><code>Base64.getEncoder().encodeToString(baos.toByteArray()): </code></p>
-<p>byte[] -&gt; bytes-like object -&gt; string</p>
-<p><code>pw.write():</code></p>
-<p>string -&gt; char[] -&gt; bytes-like object</p>
-<p><strong>Python端:</strong></p>
-<p><code>socket.recv().decode():</code> </p>
-<p>bytes-like object -&gt; string</p>
-<p><code>base64.b64decode():</code> </p>
-<p>string -&gt; bytes</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/lab1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="DaiWei Jia">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Comethru">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/20/lab1/" class="post-title-link" itemprop="url">6.824 lab1 MapReduce</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-09-20 20:51:55 / Modified: 21:36:34" itemprop="dateCreated datePublished" datetime="2021-09-20T20:51:55+08:00">2021-09-20</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Lab1-MapReduce"><a href="#Lab1-MapReduce" class="headerlink" title="Lab1 MapReduce"></a>Lab1 MapReduce</h2><h4 id="MapReduce-2004"><a href="#MapReduce-2004" class="headerlink" title="MapReduce(2004)"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce(2004)</a></h4><h4 id="Lab1-MapReduce-1"><a href="#Lab1-MapReduce-1" class="headerlink" title="Lab1 MapReduce"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">Lab1 MapReduce</a></h4><h4 id="Lab1-Video"><a href="#Lab1-Video" class="headerlink" title="Lab1 Video"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R7411t71W">Lab1 Video</a></h4><h3 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1. 实验环境准备"></a>1. 实验环境准备</h3><font size=4>
+          <h2 id="Lab1-MapReduce"><a href="#Lab1-MapReduce" class="headerlink" title="Lab1 MapReduce"></a>Lab1 MapReduce</h2><h4 id="MapReduce-2004"><a href="#MapReduce-2004" class="headerlink" title="MapReduce(2004)"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce(2004)</a></h4><h4 id="Lab1-MapReduce-1"><a href="#Lab1-MapReduce-1" class="headerlink" title="Lab1 MapReduce"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">Lab1 MapReduce</a></h4><h4 id="Lab1-Video"><a href="#Lab1-Video" class="headerlink" title="Lab1 Video"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R7411t71W">Lab1 Video</a></h4><h3 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1. 实验环境准备"></a>1. 实验环境准备</h3><font size="4">
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://g.csail.mit.edu/6.824-golabs-2020 6.824lab</span><br></pre></td></tr></table></figure>
 <p>lab1 提供了一个顺序（非分布式）的MapReduce实现在 <code>src/main/mrsequential.go</code>中，还提供了两个MapReduce应用：词频统计 <code>mrapps/wc.go</code> 和文本索引 <code>mrapps/index.go</code></p>
 <p>可以通过以下代码运行: </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/6.824</span><br><span class="line">$ cd src/main</span><br><span class="line">$ go build -race -buildmode=plugin ../mrapps/wc.go</span><br><span class="line">$ rm mr-out*</span><br><span class="line">$ go run -race mrsequential.go wc.so pg*.txt</span><br><span class="line">$ more mr-out-0</span><br><span class="line">A 509</span><br><span class="line">ABOUT 2</span><br><span class="line">ACT 8</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="img/mapreduce.png" alt="MapReduce"></p>
+<p><img src="/.com//mapreduce.png" alt="MapReduce"></p>
 <p>这是<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce论文</a>中给出的MapReduce流程图</p>
 <ol>
 <li>用户程序将输入文件划分为M份 (这里的M可调控)，随后在一组机器上启动该程序的许多副本，其中一个为Master，剩下的为map worker和reduce worker，Master将M份任务中的一份分配给空闲的map worker</li>
@@ -339,7 +224,7 @@
 <h3 id="3-Lab实现"><a href="#3-Lab实现" class="headerlink" title="3. Lab实现"></a>3. Lab实现</h3><h4 id="1-Worker和Master通过RPC实现信息交换"><a href="#1-Worker和Master通过RPC实现信息交换" class="headerlink" title="1. Worker和Master通过RPC实现信息交换"></a>1. Worker和Master通过RPC实现信息交换</h4><p>worker向master请求分配task, master选择合适的task分配给worker; worker完成task后告知master, master将task标记为已完成</p>
 <p><strong>1.1 RPC-远程过程调用</strong></p>
 <p>RPC - Remote Procedure Call, 是一个计算机通信协议, 该协议允许本地程序调用另一个地址空间(通常为一个开放网络的一台计算机,Lab中为<code>worker.go</code>调用运行在<code>master.go</code>的方法)的子程序, 远端程序执行完毕后返回调用结果到本地程序</p>
-<p><img src="img/rpc.png" alt="RPC"></p>
+<p><img src="/.com//rpc.png" alt="RPC"></p>
 <p>Lab中主要通过<code>Call</code>函数实现RPC机制</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call(rpcname string, args interface&#123;&#125;, reply interface&#123;&#125;) bool</span><br></pre></td></tr></table></figure>
 
@@ -428,7 +313,7 @@
 
 <p><code>mrmaster.go</code>中调用了<code>master.go</code>中的<code>MakeMaster()</code>方法, 指定了输入文件 (命令行参数)和NReduce的值</p>
 <p>输入文件为当前目录下(src/main/)所有以pg开头, txt结尾的文件, 命令末端的’&amp;’字符表示此进程为后台进程</p>
-<p><img src="img/txt.png" alt="txt"></p>
+<p><img src="/.com//txt.png" alt="txt"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m := mr.MakeMaster(os.Args[1:], 10)</span><br></pre></td></tr></table></figure>
 
 <p>MakeMaster()方法创建并初始化了一个Master对象和一个map任务队列, 并开启了两个线程, 一个用于计时并处理超时任务, 一个用于侦听来自worker的请求</p>
@@ -452,6 +337,121 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">kva := mapf(taskinfo.FileName, string(content))</span><br><span class="line">intermediate = append(intermediate, kva...)</span><br><span class="line"></span><br><span class="line">// distribute keys among mr-fileindex-*</span><br><span class="line">for _, kv := range intermediate &#123;</span><br><span class="line"></span><br><span class="line">    // get key/value pair reduce task number</span><br><span class="line">    outindex := ihash(kv.Key) % nReduce</span><br><span class="line">    // file = outfiles[outindex]</span><br><span class="line">    enc := fileEncs[outindex]</span><br><span class="line"></span><br><span class="line">    // convert key/value pair to JSON</span><br><span class="line">    err := enc.Encode(&amp;kv)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        fmt.Printf(&quot;file %v key %v value %v Error %v\n&quot;, taskinfo.FileName, kv.Key, kv.Value, err)</span><br><span class="line">        panic(&quot;Json encode error&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.3 Reduce实现</strong></p>
+</font>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DaiWei Jia">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Comethru">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/13/socket/" class="post-title-link" itemprop="url">Socket</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-11-13 10:57:25 / Modified: 12:58:47" itemprop="dateCreated datePublished" datetime="2021-11-13T10:57:25+08:00">2021-11-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Java端和Python端实现Socket通信"><a href="#Java端和Python端实现Socket通信" class="headerlink" title="Java端和Python端实现Socket通信"></a>Java端和Python端实现Socket通信</h2><p><strong>需求</strong>：课程项目需要实现一个web端的图像识别功能，用户访问网站识别页面，本地上传需要识别的图像文件，点击提交按钮后Java后端将图片传输到Python图像识别算法模型，将预测结果传回Java并显示在网站上</p>
+<h3 id="1-JavaWeb前后端实现"><a href="#1-JavaWeb前后端实现" class="headerlink" title="1. JavaWeb前后端实现"></a>1. JavaWeb前后端实现</h3><p><strong>1.1 Vue前端实现</strong></p>
+<p>图像文件上传:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 域内容发生改变时调用getFile函数,这里$event是上传的文件</span><br><span class="line">&lt;input accept=&quot;image/*&quot; type=&quot;file&quot; name=&quot;image&quot; @change=&quot;getFile($event)&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;img/site/default-img.png&quot; id=&quot;input&quot; width=&quot;200px&quot; height=&quot;200px&quot;&gt;</span><br><span class="line"></span><br><span class="line">// Vue methods</span><br><span class="line">getFile: function (event)&#123;</span><br><span class="line">    this.file = event.target.files[0];</span><br><span class="line">    const src = this.getObjectUrl(this.file)</span><br><span class="line">    // 将得到的url注入到id为input的img对象中</span><br><span class="line">    document.getElementById(&#x27;input&#x27;).src = src;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">getObjectUrl: function (file)&#123;</span><br><span class="line">    let url = null;</span><br><span class="line">    url = window.URL.createObjectURL(file)</span><br><span class="line">    return url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前后端交互:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 点击提交按钮将调用upload函数</span><br><span class="line">&lt;a href=&quot;#nowhere&quot; class=&quot;btn btn-success btn-lg&quot; @click=&quot;upload&quot;&gt;提 交&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">// Vue method</span><br><span class="line">upload: function ()&#123;</span><br><span class="line">    const url = this.uri + &quot;/&quot;;</span><br><span class="line">    // axios传输文件要用formData格式</span><br><span class="line">    let formData = new FormData();</span><br><span class="line">    formData.append(&quot;image&quot;, this.file);</span><br><span class="line">    // post请求&#x27;recognitions/&#x27;地址</span><br><span class="line">    axios.post(url, formData).then(function(response)&#123;</span><br><span class="line">        // response.data是返回数据</span><br><span class="line">        vue.id = response.data</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.2 Springboot后端实现</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class RecognitionController &#123;</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;/recognitions&quot;)</span><br><span class="line">    public int imageRecognition(@RequestParam(&quot;image&quot;) MultipartFile image) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>@RestController</code> = <code>@Controller</code> + <code>@ResponseBody</code></p>
+<p><code>@Controller</code>表示该类是控制器类<br><code>@ResponseBody</code>指该类中所有数据都会以JSON字符串形式返回</p>
+<p><code>@PostMapping(&quot;/recognitions&quot;)</code>捕获url为<code>/recognition</code>的post请求,并执行对应函数</p>
+<p><code>@RequestParam(&quot;image&quot;) MultipartFile image</code>将<code>FormData</code>中key为image的value值绑定到参数<code>MultipartFile image</code>上</p>
+<p><strong>1.2.1 向Python端发送图片数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = null;</span><br><span class="line">try &#123;</span><br><span class="line">    InetAddress addr = InetAddress.getLocalHost();</span><br><span class="line">    String host = addr.getHostName();</span><br><span class="line">    // 创建一个流套接字并将其连接到指定主机上的指定端口号</span><br><span class="line">    socket = new Socket(host, 12345);</span><br><span class="line"></span><br><span class="line">    // // 返回一个与该socket相关联的输出流(用于向服务端发送数据)</span><br><span class="line">    OutputStream os = socket.getOutputStream();</span><br><span class="line">    ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">    byte[] bytes = image.getBytes();</span><br><span class="line">    baos.write(bytes);</span><br><span class="line"></span><br><span class="line">    PrintWriter pw = new PrintWriter(os);</span><br><span class="line">    pw.write(Base64.getEncoder().encodeToString(baos.toByteArray()));</span><br><span class="line">    // 末尾发送一个over字符串作为结束标志</span><br><span class="line">    pw.print(&quot;over&quot;);</span><br><span class="line">    // flush()将缓冲区中的内容强制输出到目的地</span><br><span class="line">    pw.flush();</span><br><span class="line">    // 关闭socket的输出流(可以正常接收返回的信息)</span><br><span class="line">    socket.shutdownOutput();</span><br></pre></td></tr></table></figure>
+
+<p>首先与服务器(Python端)建立连接,随后创建一个输出流用于发送数据,将MultipartFile文件转换为<code>byte</code>数组,并写入<code>ByteArrayOutputStream</code>,最后通过<code>PrintWriter</code>调用<code>OutputStreamWriter</code>的<code>write()</code>方法发送数据(该方法会将<code>string</code>类型数据转为<code>bytes-like object</code>(?)输出到stream)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 最初的实现代码,在这个需求上显得有点多余,但可以作为通过socket发送本地文件的思路</span><br><span class="line">// 大致流程为先将MultipartFile文件存到本地(可以通过临时文件),然后通过文件输入流读取文件数据写入到baos中输出</span><br><span class="line"></span><br><span class="line">File file = new File(&quot;D:/IdeaProjects&quot;, &quot;temp&quot;+&quot;.jpg&quot;);</span><br><span class="line">if(!file.getParentFile().exists()) file.getParentFile().mkdirs();</span><br><span class="line">// transferTo()将接收文件传输到指定目录</span><br><span class="line">image.transferTo(file);</span><br><span class="line">BufferedImage img = ImageUtil.change2jpg(file);</span><br><span class="line">ImageIO.write(img, &quot;jpg&quot;, file);</span><br><span class="line"></span><br><span class="line">// 创建FileInputStream对象并与要读取的文件相关联</span><br><span class="line">FileInputStream fis = new FileInputStream(&quot;D:/IdeaProjects/temp.jpg&quot;);</span><br><span class="line"></span><br><span class="line">// 通过read方法对文件数据以字节形式进行读取</span><br><span class="line">// 随后通过write方法将读取到的len个字节写入到输出流中</span><br><span class="line">byte[] buf = new byte[1024*1024];</span><br><span class="line">    int len = 0;</span><br><span class="line">    while ((len=fis.read(buf)) != -1)&#123;</span><br><span class="line">        baos.write(buf, 0, len);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 后续内容大致相同</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.2.2 接收Python传回的数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 返回一个与该socket相关联的输入流(接收服务器传回的数据)</span><br><span class="line">InputStream is = socket.getInputStream();</span><br><span class="line">// InputStreamReader将字节流转为字符流</span><br><span class="line">// BufferedReader从字符输入流中读取数据置入缓冲区(缓冲区大小可指定,默认8kb)</span><br><span class="line">BufferedReader br = new BufferedReader(new InputStreamReader(is, &quot;UTF-8&quot;));</span><br><span class="line">// 从缓冲区中读取一行数据</span><br><span class="line">String pred = br.readLine();</span><br><span class="line">int result = Integer.parseInt(pred);</span><br></pre></td></tr></table></figure>
+
+<p>由于Python端传回的数据是一个数字(0-9),因此这里不需要对是否读取完成进行判断,直接将读取得到的<code>string</code>转为<code>int</code>即可</p>
+<p>此外这里也可以使用<code>br.read()</code>函数,该函数读取一个字符,返回该字符对应的asc码值</p>
+<p>最后关闭socket连接和所有开启的输入输出流即可</p>
+<h3 id="2-服务器端-Python-实现"><a href="#2-服务器端-Python-实现" class="headerlink" title="2.服务器端(Python)实现"></a>2.服务器端(Python)实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 创建服务器套接字</span><br><span class="line">serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"># 获取本地主机名称</span><br><span class="line">host = socket.gethostname()</span><br><span class="line"># 设置一个端口</span><br><span class="line">port = 12345</span><br><span class="line"># 将套接字与本地主机和端口绑定</span><br><span class="line">serversocket.bind((host, port))</span><br><span class="line"># 设置监听最大连接数</span><br><span class="line">serversocket.listen(5)</span><br><span class="line"># 获取本地服务器的连接信息</span><br><span class="line">myaddr = serversocket.getsockname()</span><br><span class="line">print(&quot;服务器地址:%s&quot; % str(myaddr))</span><br></pre></td></tr></table></figure>
+
+<p>首先创建TCP Socket,设置端口号并与本地主机绑定,随后服务器端等待客户端发起连接,并为每个TCP连接开启一个处理线程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    # 接收TCP连接并返回(conn,address)</span><br><span class="line">    # 其中conn是用于接收和发送数据的套接字对象</span><br><span class="line">    # addr是连接客户端的地址</span><br><span class="line">    clientsocket, addr = serversocket.accept()</span><br><span class="line">    print(&quot;连接地址:%s&quot; % str(addr))</span><br><span class="line">    try:</span><br><span class="line">        # 为每一个请求开启一个处理线程</span><br><span class="line">        t = ServerThreading(clientsocket)</span><br><span class="line">        t.start()</span><br><span class="line">        pass</span><br><span class="line">    except Exception as identifier:</span><br><span class="line">        print(identifier)</span><br><span class="line">        pass</span><br><span class="line">    pass</span><br><span class="line">serversocket.close()</span><br></pre></td></tr></table></figure>
+
+<p>ServerThreading实现:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">print(&#x27;开启线程......&#x27;)</span><br><span class="line">try:</span><br><span class="line"># 接收客户端传来的数据</span><br><span class="line">msg = &#x27;&#x27;</span><br><span class="line">while True:</span><br><span class="line">    # 读取recvsize个字节</span><br><span class="line">    data = self._socket.recv(self._recvsize)</span><br><span class="line">    # 解码(bytes-&gt;string)</span><br><span class="line">    msg += data.decode(self._encoding)</span><br><span class="line">    # 读取到的数据以over结尾,表示接收完毕</span><br><span class="line">    if msg.strip().endswith(&#x27;over&#x27;):</span><br><span class="line">        msg = msg[:-4]</span><br><span class="line">        break</span><br><span class="line">    pass</span><br><span class="line"># 对经base64编码的对象进行解码</span><br><span class="line">msg = base64.b64decode(msg)</span><br><span class="line"># &#x27;wb&#x27;-二进制写模式,会先删除文件中现有内容</span><br><span class="line">file = open(&#x27;atsdd.jpg&#x27;, &#x27;wb&#x27;)</span><br><span class="line"># 将bytes数据写入file</span><br><span class="line">file.write(msg)</span><br><span class="line">file.close()</span><br><span class="line">img = Image.open(&#x27;atsdd.jpg&#x27;)</span><br><span class="line"># img = Image.fromarray(np_arr)</span><br><span class="line"># img.save(&#x27;atsdd.jpg&#x27;)</span><br><span class="line"></span><br><span class="line">model = torch.load(&#x27;D:/python workplace/ATSDD.pth&#x27;)</span><br><span class="line">transform = ImageTransform(size, mean, std)</span><br><span class="line">img = transform(img, phase=&#x27;val&#x27;).unsqueeze(0).to(device)</span><br><span class="line"></span><br><span class="line">model.eval()</span><br><span class="line">output = model(img)</span><br><span class="line">result = torch.max(output, 1)[1]</span><br><span class="line"></span><br><span class="line">returnmessage = str(result.cpu().numpy()[0])</span><br><span class="line">self._socket.send(returnmessage.encode(self._encoding))</span><br></pre></td></tr></table></figure>
+
+<p>建立连接后开始读取客户端传来的数据,<code>recv()</code>函数接受TCP套接字的数据,返回值是<code>bytes-like object</code>类似字节对象;</p>
+<p>随后通过decode函数以指定的编码格式(这里是utf-8)解码<code>bytes-like</code>对象,返回解码后的字符串,并检查字符串的最后四位,如果是’over’则表示完成数据接收;</p>
+<p>最后通过<code>b64decode()</code>方法解码字符串,这里的字符串是由经base64编码的<code>byte[]</code>转换而来;将解码得到的bytes数据写入file得到图片,并作为参数放入图像识别模型中,传回预测结果</p>
+<p>数据类型转换流程:</p>
+<p><strong>Java端:</strong> </p>
+<p><code>getBytes(): </code></p>
+<p>MultipartFile -&gt; byte[]</p>
+<p><code>Base64.getEncoder().encodeToString(baos.toByteArray()): </code></p>
+<p>byte[] -&gt; bytes-like object -&gt; string</p>
+<p><code>pw.write():</code></p>
+<p>string -&gt; char[] -&gt; bytes-like object</p>
+<p><strong>Python端:</strong></p>
+<p><code>socket.recv().decode():</code> </p>
+<p>bytes-like object -&gt; string</p>
+<p><code>base64.b64decode():</code> </p>
+<p>string -&gt; bytes</p>
 
       
     </div>

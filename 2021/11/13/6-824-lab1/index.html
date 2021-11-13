@@ -23,25 +23,25 @@
 <meta name="description" content="Lab1 MapReduceMapReduce(2004)Lab1 MapReduceLab1 Video1. 实验环境准备  1git clone git:&#x2F;&#x2F;g.csail.mit.edu&#x2F;6.824-golabs-2020 6.824lab lab1 提供了一个顺序（非分布式）的MapReduce实现在 src&#x2F;main&#x2F;mrsequential.go中，还提供了两个MapReduce应用：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6.824 lab1 MapReduce">
-<meta property="og:url" content="http://example.com/2021/09/20/lab1/index.html">
+<meta property="og:url" content="http://example.com/2021/11/13/6-824-lab1/index.html">
 <meta property="og:site_name" content="Comethru">
 <meta property="og:description" content="Lab1 MapReduceMapReduce(2004)Lab1 MapReduceLab1 Video1. 实验环境准备  1git clone git:&#x2F;&#x2F;g.csail.mit.edu&#x2F;6.824-golabs-2020 6.824lab lab1 提供了一个顺序（非分布式）的MapReduce实现在 src&#x2F;main&#x2F;mrsequential.go中，还提供了两个MapReduce应用：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/09/20/lab1/img/mapreduce.png">
-<meta property="og:image" content="http://example.com/2021/09/20/lab1/img/rpc.png">
-<meta property="og:image" content="http://example.com/2021/09/20/lab1/img/txt.png">
-<meta property="article:published_time" content="2021-09-20T12:51:55.159Z">
-<meta property="article:modified_time" content="2021-09-20T13:36:34.161Z">
+<meta property="og:image" content="http://example.com/.com//mapreduce.png">
+<meta property="og:image" content="http://example.com/.com//rpc.png">
+<meta property="og:image" content="http://example.com/.com//txt.png">
+<meta property="article:published_time" content="2021-11-13T04:58:09.027Z">
+<meta property="article:modified_time" content="2021-11-13T05:01:38.953Z">
 <meta property="article:author" content="DaiWei Jia">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/09/20/lab1/img/mapreduce.png">
+<meta name="twitter:image" content="http://example.com/.com//mapreduce.png">
 
 
-<link rel="canonical" href="http://example.com/2021/09/20/lab1/">
+<link rel="canonical" href="http://example.com/2021/11/13/6-824-lab1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/09/20/lab1/","path":"2021/09/20/lab1/","title":"6.824 lab1 MapReduce"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/11/13/6-824-lab1/","path":"2021/11/13/6-824-lab1/","title":"6.824 lab1 MapReduce"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>6.824 lab1 MapReduce | Comethru</title>
@@ -166,7 +166,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/lab1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/6-824-lab1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-09-20 20:51:55 / Modified: 21:36:34" itemprop="dateCreated datePublished" datetime="2021-09-20T20:51:55+08:00">2021-09-20</time>
+      <time title="Created: 2021-11-13 12:58:09 / Modified: 13:01:38" itemprop="dateCreated datePublished" datetime="2021-11-13T12:58:09+08:00">2021-11-13</time>
     </span>
 
   
@@ -204,14 +204,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Lab1-MapReduce"><a href="#Lab1-MapReduce" class="headerlink" title="Lab1 MapReduce"></a>Lab1 MapReduce</h2><h4 id="MapReduce-2004"><a href="#MapReduce-2004" class="headerlink" title="MapReduce(2004)"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce(2004)</a></h4><h4 id="Lab1-MapReduce-1"><a href="#Lab1-MapReduce-1" class="headerlink" title="Lab1 MapReduce"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">Lab1 MapReduce</a></h4><h4 id="Lab1-Video"><a href="#Lab1-Video" class="headerlink" title="Lab1 Video"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R7411t71W">Lab1 Video</a></h4><h3 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1. 实验环境准备"></a>1. 实验环境准备</h3><font size=4>
+        <h2 id="Lab1-MapReduce"><a href="#Lab1-MapReduce" class="headerlink" title="Lab1 MapReduce"></a>Lab1 MapReduce</h2><h4 id="MapReduce-2004"><a href="#MapReduce-2004" class="headerlink" title="MapReduce(2004)"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce(2004)</a></h4><h4 id="Lab1-MapReduce-1"><a href="#Lab1-MapReduce-1" class="headerlink" title="Lab1 MapReduce"></a><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">Lab1 MapReduce</a></h4><h4 id="Lab1-Video"><a href="#Lab1-Video" class="headerlink" title="Lab1 Video"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R7411t71W">Lab1 Video</a></h4><h3 id="1-实验环境准备"><a href="#1-实验环境准备" class="headerlink" title="1. 实验环境准备"></a>1. 实验环境准备</h3><font size="4">
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://g.csail.mit.edu/6.824-golabs-2020 6.824lab</span><br></pre></td></tr></table></figure>
 <p>lab1 提供了一个顺序（非分布式）的MapReduce实现在 <code>src/main/mrsequential.go</code>中，还提供了两个MapReduce应用：词频统计 <code>mrapps/wc.go</code> 和文本索引 <code>mrapps/index.go</code></p>
 <p>可以通过以下代码运行: </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/6.824</span><br><span class="line">$ cd src/main</span><br><span class="line">$ go build -race -buildmode=plugin ../mrapps/wc.go</span><br><span class="line">$ rm mr-out*</span><br><span class="line">$ go run -race mrsequential.go wc.so pg*.txt</span><br><span class="line">$ more mr-out-0</span><br><span class="line">A 509</span><br><span class="line">ABOUT 2</span><br><span class="line">ACT 8</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="img/mapreduce.png" alt="MapReduce"></p>
+<p><img src="/.com//mapreduce.png" alt="MapReduce"></p>
 <p>这是<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce论文</a>中给出的MapReduce流程图</p>
 <ol>
 <li>用户程序将输入文件划分为M份 (这里的M可调控)，随后在一组机器上启动该程序的许多副本，其中一个为Master，剩下的为map worker和reduce worker，Master将M份任务中的一份分配给空闲的map worker</li>
@@ -234,7 +234,7 @@
 <h3 id="3-Lab实现"><a href="#3-Lab实现" class="headerlink" title="3. Lab实现"></a>3. Lab实现</h3><h4 id="1-Worker和Master通过RPC实现信息交换"><a href="#1-Worker和Master通过RPC实现信息交换" class="headerlink" title="1. Worker和Master通过RPC实现信息交换"></a>1. Worker和Master通过RPC实现信息交换</h4><p>worker向master请求分配task, master选择合适的task分配给worker; worker完成task后告知master, master将task标记为已完成</p>
 <p><strong>1.1 RPC-远程过程调用</strong></p>
 <p>RPC - Remote Procedure Call, 是一个计算机通信协议, 该协议允许本地程序调用另一个地址空间(通常为一个开放网络的一台计算机,Lab中为<code>worker.go</code>调用运行在<code>master.go</code>的方法)的子程序, 远端程序执行完毕后返回调用结果到本地程序</p>
-<p><img src="img/rpc.png" alt="RPC"></p>
+<p><img src="/.com//rpc.png" alt="RPC"></p>
 <p>Lab中主要通过<code>Call</code>函数实现RPC机制</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call(rpcname string, args interface&#123;&#125;, reply interface&#123;&#125;) bool</span><br></pre></td></tr></table></figure>
 
@@ -323,7 +323,7 @@
 
 <p><code>mrmaster.go</code>中调用了<code>master.go</code>中的<code>MakeMaster()</code>方法, 指定了输入文件 (命令行参数)和NReduce的值</p>
 <p>输入文件为当前目录下(src/main/)所有以pg开头, txt结尾的文件, 命令末端的’&amp;’字符表示此进程为后台进程</p>
-<p><img src="img/txt.png" alt="txt"></p>
+<p><img src="/.com//txt.png" alt="txt"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m := mr.MakeMaster(os.Args[1:], 10)</span><br></pre></td></tr></table></figure>
 
 <p>MakeMaster()方法创建并初始化了一个Master对象和一个map任务队列, 并开启了两个线程, 一个用于计时并处理超时任务, 一个用于侦听来自worker的请求</p>
@@ -347,7 +347,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">kva := mapf(taskinfo.FileName, string(content))</span><br><span class="line">intermediate = append(intermediate, kva...)</span><br><span class="line"></span><br><span class="line">// distribute keys among mr-fileindex-*</span><br><span class="line">for _, kv := range intermediate &#123;</span><br><span class="line"></span><br><span class="line">    // get key/value pair reduce task number</span><br><span class="line">    outindex := ihash(kv.Key) % nReduce</span><br><span class="line">    // file = outfiles[outindex]</span><br><span class="line">    enc := fileEncs[outindex]</span><br><span class="line"></span><br><span class="line">    // convert key/value pair to JSON</span><br><span class="line">    err := enc.Encode(&amp;kv)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        fmt.Printf(&quot;file %v key %v value %v Error %v\n&quot;, taskinfo.FileName, kv.Key, kv.Value, err)</span><br><span class="line">        panic(&quot;Json encode error&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.3 Reduce实现</strong></p>
-
+</font>
     </div>
 
     
@@ -360,14 +360,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/08/20/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/11/13/socket/" rel="prev" title="Socket">
+                  <i class="fa fa-chevron-left"></i> Socket
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/11/13/socket/" rel="next" title="Socket">
-                  Socket <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
