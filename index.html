@@ -201,7 +201,7 @@
 <p>可以通过以下代码运行: </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/6.824</span><br><span class="line">$ cd src/main</span><br><span class="line">$ go build -race -buildmode=plugin ../mrapps/wc.go</span><br><span class="line">$ rm mr-out*</span><br><span class="line">$ go run -race mrsequential.go wc.so pg*.txt</span><br><span class="line">$ more mr-out-0</span><br><span class="line">A 509</span><br><span class="line">ABOUT 2</span><br><span class="line">ACT 8</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//mapreduce.png" alt="MapReduce"></p>
+<p><img src="/2021/11/13/6-824-lab1/mapreduce.png" alt="MapReduce"></p>
 <p>这是<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf">MapReduce论文</a>中给出的MapReduce流程图</p>
 <ol>
 <li>用户程序将输入文件划分为M份 (这里的M可调控)，随后在一组机器上启动该程序的许多副本，其中一个为Master，剩下的为map worker和reduce worker，Master将M份任务中的一份分配给空闲的map worker</li>
@@ -224,7 +224,7 @@
 <h3 id="3-Lab实现"><a href="#3-Lab实现" class="headerlink" title="3. Lab实现"></a>3. Lab实现</h3><h4 id="1-Worker和Master通过RPC实现信息交换"><a href="#1-Worker和Master通过RPC实现信息交换" class="headerlink" title="1. Worker和Master通过RPC实现信息交换"></a>1. Worker和Master通过RPC实现信息交换</h4><p>worker向master请求分配task, master选择合适的task分配给worker; worker完成task后告知master, master将task标记为已完成</p>
 <p><strong>1.1 RPC-远程过程调用</strong></p>
 <p>RPC - Remote Procedure Call, 是一个计算机通信协议, 该协议允许本地程序调用另一个地址空间(通常为一个开放网络的一台计算机,Lab中为<code>worker.go</code>调用运行在<code>master.go</code>的方法)的子程序, 远端程序执行完毕后返回调用结果到本地程序</p>
-<p><img src="/.com//rpc.png" alt="RPC"></p>
+<p><img src="/2021/11/13/6-824-lab1/rpc.png" alt="RPC"></p>
 <p>Lab中主要通过<code>Call</code>函数实现RPC机制</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call(rpcname string, args interface&#123;&#125;, reply interface&#123;&#125;) bool</span><br></pre></td></tr></table></figure>
 
@@ -313,7 +313,7 @@
 
 <p><code>mrmaster.go</code>中调用了<code>master.go</code>中的<code>MakeMaster()</code>方法, 指定了输入文件 (命令行参数)和NReduce的值</p>
 <p>输入文件为当前目录下(src/main/)所有以pg开头, txt结尾的文件, 命令末端的’&amp;’字符表示此进程为后台进程</p>
-<p><img src="/.com//txt.png" alt="txt"></p>
+<p><img src="/2021/11/13/6-824-lab1/txt.png" alt="txt"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m := mr.MakeMaster(os.Args[1:], 10)</span><br></pre></td></tr></table></figure>
 
 <p>MakeMaster()方法创建并初始化了一个Master对象和一个map任务队列, 并开启了两个线程, 一个用于计时并处理超时任务, 一个用于侦听来自worker的请求</p>
