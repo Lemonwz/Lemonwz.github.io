@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>cmu15445 project#1 - Buffer Pool | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.345Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>cmu15445 project#1 - Buffer Pool</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="Project-1-Buffer-Pool"><a href="#Project-1-Buffer-Pool" class="headerlink" title="Project #1: Buffer Pool"></a>Project #1: Buffer Pool</h2><p>这部分实验要求在存储管理器中实现一个buffer pool，用于在内存和磁盘间换入换出页面，从而允许DBMS提供给数据库远大于实际容量的内存空间。这里将磁盘中的块称作页面page，将内存中的块称作帧frame，buffer pool的换入换出操作对DBMS是透明的，DBMS向buffer pool请求指定page_id的页面，但并不知道页面是已缓存在内存中还是需要从磁盘读入</p>
+<p>实验地址：<a target="_blank" rel="noopener" href="https://15445.courses.cs.cmu.edu/fall2021/project1/">https://15445.courses.cs.cmu.edu/fall2021/project1/</a></p>
+<h3 id="Task-1-LRU-Replacement-Policy"><a href="#Task-1-LRU-Replacement-Policy" class="headerlink" title="Task #1: LRU Replacement Policy"></a>Task #1: LRU Replacement Policy</h3><p>接收来自DBMS的页面请求时，buffer pool manager（以下简称BPM）会先检查请求页面是否已缓存在buffer pool中，如果没有的话则需要从磁盘读入，若此时buffer pool已满，则需要驱除buffer pool中最近最少使用的页面以腾出空间给新读入的页面。实验中使用LRU Replacer跟踪buffer pool中页面的相关信息</p>
+<p>LRU Replacer包含以下4个字段：</p>
+<ul>
+<li><code>capacity_</code>表示buffer pool的最大容量</li>
+<li><code>latch_</code>互斥锁用于保护共享数据</li>
+<li><code>replace_list_</code>用于存放buffer pool中可替换页面的frame id（可替换指页面的pin-count为0）</li>
+<li><code>replace_map_</code>将frame id映射到其在<code>replace_list_</code>中对应位置的迭代器，能够以O(1)的时间复杂度找到可替换页面</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Number of pages in replace_list_ and replace_map_. */</span></span><br><span class="line"><span class="keyword">size_t</span> capacity_;</span><br><span class="line"><span class="comment">/** Protect shared data structures replace_list_ and replace_map_. */</span></span><br><span class="line">std::mutex latch_;</span><br><span class="line"><span class="comment">/** List of replaceable page frame (id), insert new frame from header, get replaceable frame from footer */</span></span><br><span class="line">std::list&lt;<span class="keyword">frame_id_t</span>&gt; replace_list_;</span><br><span class="line"><span class="comment">/** Map frame id to the iterator of replace_list_ */</span></span><br><span class="line">std::unordered_map&lt;<span class="keyword">frame_id_t</span>, std::list&lt;<span class="keyword">frame_id_t</span>&gt;::iterator&gt; replace_map_;</span><br></pre></td></tr></table></figure>
+
+<p>LRU Replacer主要包含以下3个成员函数：</p>
+<p>Victim函数查找是否有可替换的page，如果有则将其frame id附在参数中返回true，如果没有则返回false；<code>replace_list_</code>表尾存放的是最近最少使用页面的frame id，调用<code>back</code>函数取出后删除表尾元素即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">LRUReplacer::Victim</span><span class="params">(<span class="keyword">frame_id_t</span> *frame_id)</span> </span>&#123;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Size</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[Replacer] Victim(): free list is empty, return false&quot;);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  *frame_id = replace_list_.<span class="built_in">back</span>();</span><br><span class="line">  replace_map_.<span class="built_in">erase</span>(*frame_id);</span><br><span class="line">  replace_list_.<span class="built_in">pop_back</span>();</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[Replacer] Victim(): victim frame %d, return true&quot;, *frame_id);</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Pin</code>函数表示当前有线程正在访问参数frame_id指定的页面，因此需要将对应的frame从<code>replace_list_</code>中移除（正在使用的页面不能被驱逐），如果指定页面不在<code>replace_list_</code>中则直接返回即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LRUReplacer::Pin</span><span class="params">(<span class="keyword">frame_id_t</span> frame_id)</span> </span>&#123;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">auto</span> it = replace_map_.<span class="built_in">find</span>(frame_id);</span><br><span class="line">  <span class="keyword">if</span> (it == replace_map_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[Replacer] Pin(): can not find frame %d in free list, return&quot;, frame_id);</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  replace_list_.<span class="built_in">erase</span>(it-&gt;second);</span><br><span class="line">  replace_map_.<span class="built_in">erase</span>(frame_id);</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[Replacer] Pin(): remove frame %d from free list&quot;, frame_id);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Unpin函数表示当前没有线程在访问参数frame_id指定的页面（页面的pin-count为0），如果<code>replace_list_</code>已满或对应的frame已在<code>replace_list_</code>中直接返回即可，否则将对应frame id以头插法加入到<code>replace_list_</code>中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LRUReplacer::Unpin</span><span class="params">(<span class="keyword">frame_id_t</span> frame_id)</span> </span>&#123;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Size</span>() == capacity_) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[Replacer] Unpin(): free list has no place for new frame, return&quot;);</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = replace_map_.<span class="built_in">find</span>(frame_id);</span><br><span class="line">  <span class="keyword">if</span> (it != replace_map_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[Replacer] Unpin(): frame %d is already in free list, return&quot;, frame_id);</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  replace_list_.<span class="built_in">emplace_front</span>(frame_id);</span><br><span class="line">  replace_map_.<span class="built_in">emplace</span>(frame_id, replace_list_.<span class="built_in">begin</span>());</span><br><span class="line">  <span class="comment">// replace_map_[frame_id] = replace_list_.begin();</span></span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[Replacer] Unpin(): insert frame %d into the free list&quot;, frame_id);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后注意访问共享数据结构时的并发问题即可，这里可以使用c++11的std::lock_guard: <a target="_blank" rel="noopener" href="https://www.cplusplus.com/reference/mutex/lock_guard/">lock_guard</a>，类似于智能指针和go语言中的defer，大大减少了死锁的风险</p>
+<p>lock_guard有如下两种构造方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">explicit</span> <span class="title">lock_guard</span> <span class="params">(mutex_type&amp; m)</span></span>;	</span><br><span class="line"><span class="built_in">lock_guard</span> (mutex_type&amp; m, <span class="keyword">adopt_lock_t</span> tag);</span><br></pre></td></tr></table></figure>
+
+<p>第一种在构造函数中将互斥对象绑定到调用线程并自动上锁，在析构函数中解锁</p>
+<p>第二种表示lock_guard继承互斥对象的所有权，这里默认互斥对象m被当前线程持有即已上锁（否则会报错undefined behavior）</p>
+<p>在lru_replacer和上面的lock_guard的构造函数中都出现了explicit关键字，explicit关键字适用于只有一个实参或实参个数大于1但其它参数都有默认值的构造函数（c++规定多个实参的默认函数不能进行隐式类型转换），指定构造函数只能被显式调用（即禁止非预期的隐式类型转换）</p>
+<p>如下所示，显然PrintNumber函数需要的是Number类型的参数，而程序传入的是int类型，能够成功运行的原因便是进行了隐式类型转换，而在构造函数前加上explicit后，编译时就会报错“不存在从int转换到Number的适当构造函数”，即禁用了隐式类型转换</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Number</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="built_in">Number</span>(<span class="keyword">int</span> val) : <span class="built_in">val</span>(val) &#123;&#125;;</span><br><span class="line">    <span class="comment">// explicit Number(int val) : val(val) &#123;&#125;;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintNumber</span><span class="params">(<span class="keyword">const</span> Number&amp; n)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;val: &quot;</span> &lt;&lt; n.val &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">PrintNumber</span>(<span class="number">1</span>);</span><br><span class="line">    Number n = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">PrintNumber</span>(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Task-2-Buffer-Pool-Manager-Instance"><a href="#Task-2-Buffer-Pool-Manager-Instance" class="headerlink" title="Task #2: Buffer Pool Manager Instance"></a>Task #2: Buffer Pool Manager Instance</h3><p>实现缓存管理器BPM，负责从DiskManager中获取数据库页面的拷贝并存入buffer pool中，将脏页面写回磁盘，以及在buffer pool已满时调用LRU算法驱逐最近最少使用页面，为新页面腾出空间</p>
+<p>BPMI继承自BPM，包含以下字段：</p>
+<ul>
+<li><code>pool_size_</code>表示buffer pool中的frame数量（能够存放多少page）</li>
+<li><code>num_instances_</code>表示当前有多少个buffer pool（task3会涉及多个buffer pool并发）</li>
+<li><code>instance_index_</code>表示当前是哪一个buffer pool</li>
+<li><code>next_page_id_</code>表示当前buffer pool中下一个page的id</li>
+<li><code>pages_</code>buffer pool中缓存的<code>Page</code>对象数组</li>
+<li><code>disk_manager_</code>和<code>log_manager_</code>分别表示指向disk manager和log manager的指针，<code>__attribute__((__unused__))</code>是在基本程序代码中加入的辅助信息，编译器借助这些信息来生成代码，这里的<code>unused</code>告知编译器该函数/变量可能不会使用，不产生警告信息（在c++17中使用<code>[[maybe_unused]]</code>表示）</li>
+<li><code>page_table_</code>映射page id到frame id</li>
+<li><code>free_list_</code>记录buffer pool中的空闲帧</li>
+<li><code>latch_</code>保护BPM共享数据结构的互斥锁</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Number of pages in the buffer pool. */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">size_t</span> pool_size_;</span><br><span class="line"><span class="comment">/** How many instances are in the parallel BPM (if present, otherwise just 1 BPI) */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">uint32_t</span> num_instances_ = <span class="number">1</span>;</span><br><span class="line"><span class="comment">/** Index of this BPI in the parallel BPM (if present, otherwise just 0) */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">uint32_t</span> instance_index_ = <span class="number">0</span>;</span><br><span class="line"><span class="comment">/** Each BPI maintains its own counter for page_ids to hand out, must ensure they mod back to its instance_index_ */</span></span><br><span class="line">std::atomic&lt;<span class="keyword">page_id_t</span>&gt; next_page_id_ = instance_index_;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Array of buffer pool pages. */</span></span><br><span class="line">Page *pages_;</span><br><span class="line"><span class="comment">/** Pointer to the disk manager. */</span></span><br><span class="line">DiskManager *disk_manager_ __attribute__((__unused__));</span><br><span class="line"><span class="comment">/** Pointer to the log manager. */</span></span><br><span class="line">LogManager *log_manager_ __attribute__((__unused__));</span><br><span class="line"><span class="comment">/** Page table for keeping track of buffer pool pages. */</span></span><br><span class="line">std::unordered_map&lt;<span class="keyword">page_id_t</span>, <span class="keyword">frame_id_t</span>&gt; page_table_;</span><br><span class="line"><span class="comment">/** Replacer to find unpinned pages for replacement. */</span></span><br><span class="line">Replacer *replacer_;</span><br><span class="line"><span class="comment">/** List of free pages. */</span></span><br><span class="line">std::list&lt;<span class="keyword">frame_id_t</span>&gt; free_list_;</span><br><span class="line"><span class="comment">/** This latch protects shared data structures. We recommend updating this comment to describe what it protects. */</span></span><br><span class="line">std::mutex latch_;</span><br></pre></td></tr></table></figure>
+
+<p><code>FindVictimPg</code>函数先从<code>free_list_</code>中查找可替换页面，如果<code>free_list_</code>为空再调用<code>replacer_</code>的<code>Victim</code>函数通过LRU算法选出替换页面，找到了则将frame id附在参数中并返回true，否则返回false</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BufferPoolManagerInstance::FindVictimPg</span><span class="params">(<span class="keyword">frame_id_t</span> *frame_id)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!free_list_.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    *frame_id = free_list_.<span class="built_in">front</span>();</span><br><span class="line">    free_list_.<span class="built_in">pop_front</span>();</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FindVictimPg(): select frame %d as victim from free list&quot;, instance_index_, *frame_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> replacer_-&gt;<span class="built_in">Victim</span>(frame_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ResetPage</code>用于重置指定页面的元数据（<code>page_id_</code>、<code>is_dirty_</code>、<code>data_</code>和<code>pin_count_</code>），并取消其在<code>page_table_</code>中的映射</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BufferPoolManagerInstance::ResetPage</span><span class="params">(Page *page)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (page-&gt;<span class="built_in">IsDirty</span>()) &#123;</span><br><span class="line">    disk_manager_-&gt;<span class="built_in">WritePage</span>(page-&gt;<span class="built_in">GetPageId</span>(), page-&gt;<span class="built_in">GetData</span>());</span><br><span class="line">    page-&gt;is_dirty_ = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  page-&gt;<span class="built_in">ResetMemory</span>();</span><br><span class="line"></span><br><span class="line">  page_table_.<span class="built_in">erase</span>(page-&gt;<span class="built_in">GetPageId</span>());</span><br><span class="line">  page-&gt;page_id_ = INVALID_PAGE_ID;</span><br><span class="line">  <span class="comment">// DE<span class="doctag">BUG:</span> pin_count_ of page should be 0</span></span><br><span class="line">  <span class="built_in">assert</span>(page-&gt;pin_count_ == <span class="number">0</span>);</span><br><span class="line">  page-&gt;pin_count_ = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>FlushPgImp</code>函数用于将指定页面写回磁盘，而不管其<code>is_dirty_</code>是否为true，大致流程如下：</p>
+<ol>
+<li>检查参数<code>page_id</code>是否合法，不合法直接返回false</li>
+<li>在<code>page_table_</code>中查找<code>page_id</code>对应的<code>frame_id</code>，没找到直接返回false</li>
+<li>通过<code>frame_id</code>从<code>pages_</code>数组中取出对应的<code>flush_page</code></li>
+<li>调用<code>WritePage</code>函数将<code>flush_page</code>写回磁盘对应位置，返回true</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BufferPoolManagerInstance::FlushPgImp</span><span class="params">(<span class="keyword">page_id_t</span> page_id)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Make sure you call DiskManager::WritePage!</span></span><br><span class="line">  <span class="built_in">ValidatePageId</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FlushPgImp(): invalid page id %d, return false&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = page_table_.<span class="built_in">find</span>(page_id);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// target page could not be found in the page table, return false</span></span><br><span class="line">  <span class="keyword">if</span> (it == page_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FlushPgImp(): page %d could not be found in the page table, return false&quot;,</span></span><br><span class="line">    <span class="comment">//   instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  Page *flush_page = &amp;pages_[<span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(it-&gt;second)];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// write the contents of flush_page back to disk whether it is dirty or not</span></span><br><span class="line">  disk_manager_-&gt;<span class="built_in">WritePage</span>(page_id, flush_page-&gt;<span class="built_in">GetData</span>());</span><br><span class="line">  flush_page-&gt;is_dirty_ = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] FlushPgImp(): Flush page %d to disk&quot;, instance_index_, page_id);</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>FlushAllPgsImp</code>函数将buffer pool中所有页面都写回磁盘，注意这里不能直接调用<code>FlushPgImp</code>函数，否则会出现死锁（环路等待：持有锁的情况下调用另外一个需要锁的函数）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BufferPoolManagerInstance::FlushAllPgsImp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// You can do it!</span></span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; pool_size_; ++i) &#123;</span><br><span class="line">    Page *flush_page = &amp;pages_[i];</span><br><span class="line">    <span class="keyword">if</span> (flush_page-&gt;<span class="built_in">GetPageId</span>() != INVALID_PAGE_ID) &#123;</span><br><span class="line">      disk_manager_-&gt;<span class="built_in">WritePage</span>(flush_page-&gt;<span class="built_in">GetPageId</span>(), flush_page-&gt;<span class="built_in">GetData</span>());</span><br><span class="line">      flush_page-&gt;is_dirty_ = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] FlushAllPgsImp(): Flush all pages in buffer pool to disk&quot;, instance_index_);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>NewPgImp</code>函数缓存一个新页面（由<code>AllocatePage</code>函数指定），页面id附在参数<code>page_id</code>上并返回Page对象，大致流程如下：</p>
+<ol>
+<li>调用<code>FindVictimPg</code>函数查找一个可替换页面，如果没有则直接返回空指针</li>
+<li>从<code>pages_</code>数组中取出待替换的页面<code>victim_page</code>，重置页面元数据</li>
+<li>调用<code>Pin</code>函数标记页面正在被使用，调用<code>AllocatePage</code>函数获取<code>page_id</code></li>
+<li>更新页面元数据，在<code>page_table_</code>中建立页面映射，返回页面</li>
+</ol>
+<p>注：个人理解这里应该调用<code>ReadPage</code>函数从磁盘读入页面数据，但在测试中是手动调用<code>memcpy</code>给页面赋值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page *<span class="title">BufferPoolManagerInstance::NewPgImp</span><span class="params">(<span class="keyword">page_id_t</span> *page_id)</span> </span>&#123;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">frame_id_t</span> frame_id = <span class="number">-1</span>;</span><br><span class="line">  <span class="comment">// page_id_t victim_page_id = INVALID_PAGE_ID;  // debug</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">FindVictimPg</span>(&amp;frame_id)) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] NewPgImp(): can not find victim page&quot;, instance_index_);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  Page *victim_page = &amp;pages_[frame_id];</span><br><span class="line">  <span class="comment">// victim_page_id = victim_page-&gt;GetPageId();</span></span><br><span class="line">  <span class="built_in">ResetPage</span>(victim_page);</span><br><span class="line"></span><br><span class="line">  replacer_-&gt;<span class="built_in">Pin</span>(frame_id);</span><br><span class="line">  victim_page-&gt;page_id_ = <span class="built_in">AllocatePage</span>();</span><br><span class="line">  victim_page-&gt;pin_count_ = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  page_table_.<span class="built_in">emplace</span>(victim_page-&gt;<span class="built_in">GetPageId</span>(), frame_id);</span><br><span class="line">  *page_id = victim_page-&gt;<span class="built_in">GetPageId</span>();</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] NewPgImp(): replace victim page %d with new page %d&quot;,</span></span><br><span class="line">  <span class="comment">//   instance_index_, victim_page_id, victim_page-&gt;GetPageId());</span></span><br><span class="line">  <span class="keyword">return</span> victim_page;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>FetchPgImp</code>函数从buffer pool中获取指定page，如果不存在则从磁盘读入，大致流程如下：</p>
+<ol>
+<li>检查参数<code>page_id</code>是否合法，不合法直接返回空指针</li>
+<li>在<code>page_table_</code>中查找指定page</li>
+<li>如果找到了，调用<code>Pin</code>函数标记页面被访问，<code>pin_count</code>加1（这里如果同一个线程多次请求page也一直加1吗），返回页面</li>
+<li>如果没找到，调用<code>FindVictimPg</code>函数得到待替换页面<code>fetch_page</code>并重置元数据，如果不存在则返回空指针</li>
+<li>重新设置<code>fetch_page</code>元数据，调用<code>ReadPage</code>函数读入页面数据，在<code>page_table_</code>中建立页面映射，返回页面指针</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page *<span class="title">BufferPoolManagerInstance::FetchPgImp</span><span class="params">(<span class="keyword">page_id_t</span> page_id)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">ValidatePageId</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FetchPgImp(): invalid page id %d, return false&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">frame_id_t</span> frame_id = <span class="number">-1</span>;</span><br><span class="line">  <span class="comment">// page_id_t victim_page_id = INVALID_PAGE_ID;  // debug</span></span><br><span class="line">  Page *fetch_page = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = page_table_.<span class="built_in">find</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (it != page_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    frame_id = it-&gt;second;</span><br><span class="line">    fetch_page = &amp;pages_[frame_id];</span><br><span class="line">    replacer_-&gt;<span class="built_in">Pin</span>(frame_id);</span><br><span class="line">    fetch_page-&gt;pin_count_++;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FetchPgImp(): find target page %d and update pin-count %d -&gt; %d&quot;,</span></span><br><span class="line">    <span class="comment">//   instance_index_, page_id, fetch_page-&gt;GetPinCount() - 1, fetch_page-&gt;GetPinCount());</span></span><br><span class="line">    <span class="keyword">return</span> fetch_page;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">FindVictimPg</span>(&amp;frame_id)) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] FetchPgImp(): target page %d not exists, can not find victim page&quot;, instance_index_,</span></span><br><span class="line">    <span class="comment">// page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  fetch_page = &amp;pages_[frame_id];</span><br><span class="line">  <span class="comment">// victim_page_id = fetch_page-&gt;GetPageId();</span></span><br><span class="line">  <span class="built_in">ResetPage</span>(fetch_page);</span><br><span class="line"></span><br><span class="line">  replacer_-&gt;<span class="built_in">Pin</span>(frame_id);</span><br><span class="line">  fetch_page-&gt;page_id_ = page_id;</span><br><span class="line">  fetch_page-&gt;pin_count_ = <span class="number">1</span>;</span><br><span class="line">  disk_manager_-&gt;<span class="built_in">ReadPage</span>(fetch_page-&gt;<span class="built_in">GetPageId</span>(), fetch_page-&gt;<span class="built_in">GetData</span>());</span><br><span class="line"></span><br><span class="line">  page_table_.<span class="built_in">emplace</span>(fetch_page-&gt;<span class="built_in">GetPageId</span>(), frame_id);</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] FetchPgImp(): target page %d not exists, replace victim page %d with target page %d&quot;,</span></span><br><span class="line">  <span class="comment">//   instance_index_, page_id, victim_page_id, fetch_page-&gt;GetPageId());</span></span><br><span class="line">  <span class="keyword">return</span> fetch_page;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>DeletePgImp</code>函数从buffer pool中驱逐指定页面，大致流程如下：</p>
+<ol>
+<li>检查参数<code>page_id</code>是否合法，不合法返回true（说明指定页面并不在buffer pool中）</li>
+<li>在<code>page_table_</code>中查找指定页面<code>delete_page</code>，如果没找到则直接返回true</li>
+<li>如果<code>delete_page</code>的<code>pin-count</code>不为0，直接返回false（无法驱逐正被访问的页面）</li>
+<li>否则重置<code>delete_page</code>的元数据，添加到<code>free_list_</code>中，返回true</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BufferPoolManagerInstance::DeletePgImp</span><span class="params">(<span class="keyword">page_id_t</span> page_id)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">ValidatePageId</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] DeletePgImp(): invalid page id %d, return true&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = page_table_.<span class="built_in">find</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (it == page_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] DeletePgImp(): target page %d not exists, return true&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">frame_id_t</span> frame_id = it-&gt;second;</span><br><span class="line">  Page *delete_page = &amp;pages_[frame_id];</span><br><span class="line">  <span class="keyword">if</span> (delete_page-&gt;<span class="built_in">GetPinCount</span>() != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] DeletePgImp(): target page %d pin-count is %d, return false&quot;,</span></span><br><span class="line">    <span class="comment">//   instance_index_, page_id, delete_page-&gt;GetPinCount());</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">ResetPage</span>(delete_page);</span><br><span class="line">  free_list_.<span class="built_in">emplace_back</span>(frame_id);</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] DeletePgImp(): delete target page %d, insert frame %d into free list&quot;,</span></span><br><span class="line">  <span class="comment">//   instance_index_, page_id, frame_id);</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当一个线程结束对某个页面的访问后，调用<code>UnpinPgImp</code>函数以告知BPM，如果访问期间修改了页面，则将参数<code>is_dirty</code>置为true：</p>
+<ol>
+<li>检查参数<code>page_id</code>是否合法，不合法直接返回false</li>
+<li>在<code>page_table_</code>中查找指定页面<code>unpin_page</code>，如果没找到则直接返回false</li>
+<li>如果<code>unpin_page</code>的<code>pin-count</code>值在调用<code>UnpinPgImp</code>之前就为0了，直接返回false</li>
+<li><code>pin-count</code>值减1，如果减1后为0，则调用<code>replacer</code>的<code>Unpin</code>函数标记对应页面是可替换的</li>
+<li>如果参数<code>is_dirty</code>为true，设置<code>unpin_page</code>的<code>is_dirty_</code>为true（不能直接<code>unpin_page-&gt;is_dirty_ = is_dirty</code>，因为页面可能本来就是脏的），返回true</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BufferPoolManagerInstance::UnpinPgImp</span><span class="params">(<span class="keyword">page_id_t</span> page_id, <span class="keyword">bool</span> is_dirty)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">ValidatePageId</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] UnpinPgImp(): invalid page id %d, return false&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = page_table_.<span class="built_in">find</span>(page_id);</span><br><span class="line">  <span class="keyword">if</span> (it == page_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] UnpinPgImp(): can not find target page %d, return false&quot;, instance_index_, page_id);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">frame_id_t</span> frame_id = it-&gt;second;</span><br><span class="line">  Page *unpin_page = &amp;pages_[frame_id];</span><br><span class="line">  <span class="keyword">if</span> (unpin_page-&gt;<span class="built_in">GetPinCount</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] UnpinPgImp(): target page %d pin-count is %d before unpin, return false&quot;,</span></span><br><span class="line">    <span class="comment">//   instance_index_, page_id, unpin_page-&gt;GetPinCount());</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  unpin_page-&gt;pin_count_--;</span><br><span class="line">  <span class="comment">// LOG_INFO(&quot;[BPMI %d] UnpinPgImp(): unpin target page %d, current pin-count is %d&quot;,</span></span><br><span class="line">  <span class="comment">//   instance_index_, page_id, unpin_page-&gt;GetPinCount());</span></span><br><span class="line">  <span class="keyword">if</span> (unpin_page-&gt;<span class="built_in">GetPinCount</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">    replacer_-&gt;<span class="built_in">Unpin</span>(frame_id);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (is_dirty) &#123;</span><br><span class="line">    unpin_page-&gt;is_dirty_ = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// LOG_INFO(&quot;[BPMI %d] UnpinPgImp(): mark target page %d as dirty&quot;, instance_index_, page_id);</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Task-3-Parallel-Buffer-Pool-Manager"><a href="#Task-3-Parallel-Buffer-Pool-Manager" class="headerlink" title="Task #3: Parallel Buffer Pool Manager"></a>Task #3: Parallel Buffer Pool Manager</h3><p>task2中使用的是单个buffer pool，在并发环境下只要有一个线程在访问buffer pool，其它线程就只能阻塞等待，可以通过在系统中构建多个buffer pool来解决锁争用的问题，每个buffer pool都有自己的互斥锁，这样一个线程访问buffer pool不会影响其它buffer pool的使用</p>
+<p>PBPM可以视为一个二级buffer pool，用于管理多个一级buffer pool，其包含以下字段：</p>
+<ul>
+<li><code>pool_size_</code>表示每个buffer pool的容量</li>
+<li><code>num_instances_</code>表示PBPM中有多少个buffer pool</li>
+<li><code>next_instance_index_</code>用于遍历BPM</li>
+<li><code>bpm_table_</code>将BPM索引映射到BPM实例</li>
+<li><code>latch_</code>保护PBPM的共享数据结构</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Number of pages in the buffer pool, same for each buffer pool */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">size_t</span> pool_size_;</span><br><span class="line"><span class="comment">/** How many instances are in the parallel BPM */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">uint32_t</span> num_instances_;</span><br><span class="line"><span class="comment">/** Index of BPI next new page should placed in, start at 0 */</span></span><br><span class="line"><span class="keyword">uint32_t</span> next_instance_index_;</span><br><span class="line"><span class="comment">/** Hash table for keeping track of buffer pool manager instance. */</span></span><br><span class="line">std::unordered_map&lt;<span class="keyword">uint32_t</span>, BufferPoolManager *&gt; bpm_table_;</span><br><span class="line"><span class="comment">/** Protect shared data structures. */</span></span><br><span class="line">std::mutex latch_;</span><br></pre></td></tr></table></figure>
+
+<p>PBPM类同样继承自BPM类，因此也要实现相应的成员函数，区别在于主要是通过调用对应BPM实例的相关函数实现</p>
+<p>构造函数初始化<code>num_instances</code>个BPM实例，并在<code>bpm_table_</code>中建立映射</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ParallelBufferPoolManager::<span class="built_in">ParallelBufferPoolManager</span>(<span class="keyword">size_t</span> num_instances, <span class="keyword">size_t</span> pool_size, DiskManager *disk_manager,LogManager *log_manager)</span><br><span class="line">    : <span class="built_in">pool_size_</span>(pool_size), <span class="built_in">num_instances_</span>(num_instances), <span class="built_in">next_instance_index_</span>(<span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// Allocate and create individual BufferPoolManagerInstances</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">uint32_t</span> instance_index = <span class="number">0</span>; instance_index &lt; num_instances_; ++instance_index) &#123;</span><br><span class="line">    <span class="keyword">auto</span> *bpm = <span class="keyword">new</span> <span class="built_in">BufferPoolManagerInstance</span>(pool_size_, num_instances_, instance_index, disk_manager, log_manager);</span><br><span class="line">    bpm_table_.<span class="built_in">emplace</span>(instance_index, bpm);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>GetBufferPoolManager</code>函数给定<code>page_id</code>，查找缓存该页面的BPM实例，通过对<code>page_id</code>做哈希运算（取模）得到对应的BPM实例索引，随后在<code>bpm_table_</code>中查找并返回</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BufferPoolManager *<span class="title">ParallelBufferPoolManager::GetBufferPoolManager</span><span class="params">(<span class="keyword">page_id_t</span> page_id)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Get BufferPoolManager responsible for handling given page id. You can use this method in your other methods.</span></span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">uint32_t</span> instance_index = <span class="built_in">HASH</span>(page_id, num_instances_);</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> it = bpm_table_.<span class="built_in">find</span>(instance_index);</span><br><span class="line">  <span class="keyword">if</span> (it == bpm_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> it-&gt;second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用<code>GetBufferPoolManager</code>函数获取<code>page_id</code>对应的BPM实例，需要通过<code>dynamic_cast</code>实现向下转型（BufferPoolManager类-&gt;ParallelBufferPoolManager类），调用其<code>FetchPage</code>方法即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page *<span class="title">ParallelBufferPoolManager::FetchPgImp</span><span class="params">(<span class="keyword">page_id_t</span> page_id)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Fetch page for page_id from responsible BufferPoolManagerInstance</span></span><br><span class="line">  <span class="keyword">if</span> (page_id == INVALID_PAGE_ID) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">auto</span> *bpm = <span class="keyword">dynamic_cast</span>&lt;BufferPoolManagerInstance *&gt;(<span class="built_in">GetBufferPoolManager</span>(page_id));</span><br><span class="line">  <span class="keyword">if</span> (bpm == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> bpm-&gt;<span class="built_in">FetchPage</span>(page_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>UnpinPgImp</code>、<code>FlushPgImp</code>和<code>DeletePgImp</code>函数也是类似的实现</p>
+<p><code>NewPgImp</code>函数遍历所有BPM，依次调用<code>NewPage</code>函数创建一个新的页面缓存，如果成功则返回<code>Page</code>对象，否则返回空指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page *<span class="title">ParallelBufferPoolManager::NewPgImp</span><span class="params">(<span class="keyword">page_id_t</span> *page_id)</span> </span>&#123;</span><br><span class="line">  Page *page = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(latch_)</span></span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">uint32_t</span> start_index = next_instance_index_;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> it = bpm_table_.<span class="built_in">find</span>(next_instance_index_);</span><br><span class="line">    next_instance_index_ = (next_instance_index_ + <span class="number">1</span>) % num_instances_;</span><br><span class="line">    <span class="keyword">if</span> (it != bpm_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">      <span class="keyword">auto</span> *bpm = it-&gt;second;</span><br><span class="line">      page = bpm-&gt;<span class="built_in">NewPage</span>(page_id);</span><br><span class="line">      <span class="keyword">if</span> (page != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> page;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">while</span> (next_instance_index_ != start_index);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历每一个BPM实例，调用其<code>FlushAllPages</code>方法即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ParallelBufferPoolManager::FlushAllPgsImp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// flush all pages from all BufferPoolManagerInstances</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">uint32_t</span> instance_index = <span class="number">0</span>; instance_index &lt; num_instances_; ++instance_index) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> it = bpm_table_.<span class="built_in">find</span>(instance_index);</span><br><span class="line">    <span class="keyword">if</span> (it != bpm_table_.<span class="built_in">cend</span>()) &#123;</span><br><span class="line">      <span class="keyword">auto</span> *bpm = <span class="keyword">dynamic_cast</span>&lt;BufferPoolManagerInstance *&gt;(it-&gt;second);</span><br><span class="line">      bpm-&gt;<span class="built_in">FlushAllPages</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本地测试：</p>
+<img src="/2022/09/09/cmu15445-lab1/result1.png" alt="result1" style="zoom:80%;">    
+
+<img src="/2022/09/09/cmu15445-lab1/result2.png" alt="result2" style="zoom:80%;">    
+
+<img src="/2022/09/09/cmu15445-lab1/result3.png" alt="result3" style="zoom:80%;">    
+
+<p>gradescope : 10.72s</p>
+<p><img src="/2022/09/09/cmu15445-lab1/result4.png" alt="result4">    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/cmu15445-lab4/" style="float: left;">
+        ← cmu15445 project#4 - Concurrency Control
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/cmu15445-lab2/">
+        cmu15445 project#2 - Extendable Hash Index →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

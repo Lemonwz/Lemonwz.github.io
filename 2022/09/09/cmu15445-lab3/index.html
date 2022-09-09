@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>cmu15445 project#3 - Query Execution | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.350Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>cmu15445 project#3 - Query Execution</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="Project-3-Query-Execution"><a href="#Project-3-Query-Execution" class="headerlink" title="Project #3: Query Execution"></a>Project #3: Query Execution</h2><p>这部分实验要求为DBMS添加对查询执行的支持，根据给定的查询计划执行对应的查询操作</p>
+<p>实验地址：<a target="_blank" rel="noopener" href="https://15445.courses.cs.cmu.edu/fall2021/project3/">https://15445.courses.cs.cmu.edu/fall2021/project3/</a></p>
+<h3 id="Task-1-Executors"><a href="#Task-1-Executors" class="headerlink" title="Task #1: Executors"></a>Task #1: Executors</h3><p>实验使用的处理模型是Iterator Model（也称Pipeline Model），查询计划中的每个操作符都提供了一个Next函数接口供上层操作符调用，Next函数返回单个元组或返回表示没有更多可用元组的标识符。操作符节点调用其子操作符的Next函数获取输入元组，处理后生成输出元组作为自身Next函数的返回值向上传递；叶子节点操作符从磁盘读入元组向上传递</p>
+<p>实验要求实现9个操作符：顺序扫描、插入、更新、删除、嵌套循环连接、哈希连接、聚合、Limit和Distinct，对于每一个操作符，都有一个对应的PlanNode类（可以视为操作符的元数据）和Executor类（实现了Init和Next函数，Init函数用于初始化操作符，Next函数在每次调用时返回一个元组和对应的RID）</p>
+<p>实验中涉及到的一些API类（也是Project3主要难点：对这些helper classes的理解）：</p>
+<ul>
+<li><strong>Value</strong>：表中数据的抽象类，所有<code>Value</code>对象都包含类型和比较函数，不同子类有着不同的实现；常用函数：<ul>
+<li><code>GetAs()</code>：将<code>Value</code>对象强制转换为指定类型对象返回</li>
+<li><code>CompareEquals(const Value &amp;o)</code>：比较两个<code>Value</code>对象是否相同，返回<code>true</code>/<code>false</code></li>
+<li><code>Add()</code>、<code>Subtract()</code>、<code>Min()</code>、<code>Max()</code>：<code>Value</code>对象相加/相减，返回两个<code>Value</code>对象中较小/较大的一个</li>
+</ul>
+</li>
+<li><strong>Tuple</strong>：表中的一行数据，<code>data_</code>字段存放的是实际数据，<code>rid_</code>字段仅在指向<code>TableHeap</code>时有效（即通过<code>TableIterator</code>获取时），常用函数：<ul>
+<li><code>Tuple(std::vector&lt;Value&gt; values, const Schema *schema)</code>：通过<code>Value</code>数组和<code>Schema</code>构造<code>Tuple</code></li>
+<li><code>GetValue(const Schema *schema, uint32_t column_idx)</code>：返回指定列的<code>Value</code></li>
+<li><code>KeyFromTuple()</code>：根据参数返回一个Key Tuple用于索引相关操作</li>
+</ul>
+</li>
+<li><strong>Column</strong>：表中属性（列）的元数据，包括属性名、类型、表达式等，常用函数：<ul>
+<li><code>GetExpr()</code>：返回属性对应的<code>AbstractExpression</code>对象</li>
+</ul>
+</li>
+<li><strong>RID</strong>：Record ID，用于记录Tuple的物理地址（物理页ID以及页中槽位）</li>
+<li><strong>Schema</strong>：对表/元组的格式说明（包含哪些属性），主要包含一个<code>Column</code>对象数组，主要函数：<ul>
+<li><code>GetColumns()</code>：返回<code>Column</code>对象数组</li>
+<li><code>GetColumnCount()</code>：返回<code>Schema</code>中包含的<code>Column</code>数量</li>
+</ul>
+</li>
+<li><strong>Index</strong>：索引，通过project2实现的<code>ExtendableHashTable</code>将<code>Tuple</code>映射到<code>RID</code>，主要函数：<ul>
+<li><code>GetKeySchema()</code>：返回索引包含的<code>Column</code>组成的<code>Schema</code>对象</li>
+<li><code>GetKeyAttrs()</code>：返回索引包含的<code>Column</code>的<code>col_idx</code>数组</li>
+<li><code>InsertEntry()</code>：向索引中插入一个Tuple-RID键值对</li>
+<li><code>DeleteEntry()</code>：从索引中删除一个Tuple-RID键值对</li>
+</ul>
+</li>
+<li><strong>Catalog</strong>：表格和索引的全部信息，提供对表格和索引的查询创建函数，主要函数：<ul>
+<li><code>GetTable()</code>：通过<code>table_name</code>或<code>table_oid</code>获取表格信息（<code>TableInfo</code>对象）</li>
+<li><code>GetTableIndexes()</code>：通过<code>table_name</code>获取表格所有索引</li>
+</ul>
+</li>
+<li><strong>TableHeap</strong>：表的物理表示，实际是一个存放<code>TablePage</code>的双向链表（由project1实现的<code>BufferPoolManager</code>管理），提供对元组的修改操作，主要函数：<ul>
+<li><code>InsertTuple()</code>：插入元组，如果元组过大（超过PAGE_SIZE）则返回false</li>
+<li><code>MarkDelete()</code>：标记元组为删除状态（调用ApplyDelete函数时统一删除）</li>
+<li><code>UpdateTuple()</code>：更新元组，如果新元组过大（原先页面放不下）则返回false</li>
+</ul>
+</li>
+<li><strong>TableIterator</strong>：<code>TableHeap</code>的迭代器，重载了部分运算符，可直接用做<code>Tuple</code>的指针：<ul>
+<li><code>const Tuple &amp;operator*()</code>：返回迭代器指向的<code>Tuple</code>对象</li>
+<li><code>TableIterator &amp;*operator*++()</code>：返回<strong>自增后</strong>的迭代器</li>
+<li><code>TableIterator operator++(int)</code>：返回<strong>自增前</strong>的迭代器</li>
+</ul>
+</li>
+<li><strong>AbstractExpression</strong>：表达式抽象类，包含三个纯虚成员函数：<code>Evaluate()</code>、<code>EvaluateJoin()</code>、<code>EvaluateAggregate()</code>，四个派生类对应四种类型的表达式：<ul>
+<li><code>ConstantValueExpression</code>：常量表达式，三个成员函数均返回这个常量</li>
+<li><code>ColumnValueExpression</code>：属性值表达式，<code>Evaluate</code>函数返回元组指定列的<code>Value</code>，<code>EvaluateJoin</code>函数根据<code>tuple_idx_</code>值返回左元组或右元组指定列的<code>Value</code>（<code>tuple_idx_</code>为0返回左元组指定列<code>Value</code>，为1返回右元组指定列<code>Value</code>）</li>
+<li><code>AggregateValueExpression</code>：聚合表达式，只提供<code>EvaluateAggregate</code>函数，根据<code>is_group_by_term_</code>值返回group by对应列<code>Value</code>或aggregate对应列<code>Value</code></li>
+<li><code>ComparisonExpression</code>：比较表达式，返回两个子表达式值的比较结果，子表达式的可能组合如下：<ol>
+<li>常量表达式+属性值表达式：<code>Evaluate</code>函数将元组的列值与常量比较（WHERE语义）</li>
+<li>常量表达式+聚合表达式：<code>EvaluateAggregate</code>函数将元组GROUP BY属性值或聚合结果与常量比较（HAVING语义）</li>
+<li>属性值表达式+属性值表达式：<code>EvaluateJoin</code>函数比较两个元组的两个属性值是否相同（JOIN ON语义）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>AbstractPlanNode</strong>：查询计划由PlanNode组成，每个PlanNode对应一个操作符，PlanNode可以视为操作符的元数据，PlanNode抽象类包含操作符的输出格式<code>output_schema_</code>和子操作符数组<code>children_</code>，不同操作符的PlanNode类实现不同</li>
+<li><strong>AbstractExecutor</strong>：操作符抽象类，每个操作符都包含一个<code>ExecutorContext</code>对象，表示操作符执行的上下文信息，并需要实现<code>Init</code>和<code>Next</code>函数</li>
+<li><strong>ExecutionEngine</strong>：操作符执行引擎，先调用操作符的<code>Init</code>函数，随后循环调用<code>Next</code>函数，<code>Next</code>函数返回true时将输出元组加入到<code>result_set</code>，返回false时停止调用并返回<code>result_set</code>，循环调用操作符<code>Next</code>函数时，<code>ExecutionEngine</code>还会捕获调用过程中抛出的异常，如果检测到异常则停止调用</li>
+</ul>
+<p><strong>1. SEQUENTIAL SCAN：</strong></p>
+<p><code>SeqScanExecutor</code>遍历指定表，每次返回一个元组（如果扫描得到的元组不满足给定谓词，则跳过该元组）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class SeqScanPlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The predicate that all returned tuples must satisfy */</span></span><br><span class="line"><span class="keyword">const</span> AbstractExpression *predicate_;</span><br><span class="line"><span class="comment">/** The table whose tuples should be scanned */</span></span><br><span class="line"><span class="keyword">table_oid_t</span> table_oid_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class SeqScanExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The sequential scan plan node to be executed */</span></span><br><span class="line"><span class="keyword">const</span> SeqScanPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The table whose tuples should be scanned */</span></span><br><span class="line">TableHeap *table_;</span><br><span class="line"><span class="comment">/** table iterator for sequential target table */</span></span><br><span class="line">TableIterator iter_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Init</code>函数通过<code>table_oid</code>获取表<code>table_</code>，构造迭代器<code>iter_</code>指向<code>table_</code>表头</li>
+<li>如果迭代器<code>iter_</code>指向表尾，表示遍历结束，返回false</li>
+<li>遍历<code>output_schema_</code>中的<code>Column</code>数组，调用<code>Evaluate</code>函数获取<code>iter_</code>指向元组每个<code>Column</code>的<code>Value</code>，存入<code>values</code>数组</li>
+<li>使用<code>values</code>数组和<code>output_schema_</code>构建元组<code>result_tuple</code></li>
+<li>如果<code>result_tuple</code>满足谓词<code>predicate_</code>（其实就是一个<code>ComparisonExpression</code>），设置<code>tuple</code>为<code>result_tuple</code>并返回true，否则跳过这个元组</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqScanExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> table_info = exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTable</span>(plan_-&gt;<span class="built_in">GetTableOid</span>());</span><br><span class="line">  <span class="built_in">assert</span>(table_info != <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">  table_ = table_info-&gt;table_.<span class="built_in">get</span>();</span><br><span class="line">  iter_ = table_-&gt;<span class="built_in">Begin</span>(exec_ctx_-&gt;<span class="built_in">GetTransaction</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SeqScanExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (iter_ == table_-&gt;<span class="built_in">End</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::vector&lt;Value&gt; values;</span><br><span class="line">  RID cur_rid = iter_-&gt;<span class="built_in">GetRid</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;col : plan_-&gt;<span class="built_in">OutputSchema</span>()-&gt;<span class="built_in">GetColumns</span>()) &#123;</span><br><span class="line">    values.<span class="built_in">push_back</span>(</span><br><span class="line">        col.<span class="built_in">GetExpr</span>()-&gt;<span class="built_in">Evaluate</span>(&amp;(*iter_), &amp;exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTable</span>(plan_-&gt;<span class="built_in">GetTableOid</span>())-&gt;schema_));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ++iter_;</span><br><span class="line"></span><br><span class="line">  Tuple result_tuple = <span class="built_in">Tuple</span>(values, plan_-&gt;<span class="built_in">OutputSchema</span>());</span><br><span class="line">  <span class="keyword">if</span> (plan_-&gt;<span class="built_in">GetPredicate</span>() == <span class="literal">nullptr</span> ||</span><br><span class="line">      plan_-&gt;<span class="built_in">GetPredicate</span>()-&gt;<span class="built_in">Evaluate</span>(&amp;result_tuple, plan_-&gt;<span class="built_in">OutputSchema</span>()).GetAs&lt;<span class="keyword">bool</span>&gt;()) &#123;</span><br><span class="line">    *tuple = result_tuple;</span><br><span class="line">    *rid = cur_rid;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Next</span>(tuple, rid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. INSERT：</strong></p>
+<p><code>InsertExecutor</code>将元组插入到指定表中并更新表索引，插入元组可能由<code>InsertPlanNode</code>直接给出（<code>raw_values_</code>字段），也可能来自子操作符，通过<code>IsRawInsert</code>函数判断</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class SeqScanPlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The raw values embedded in this insert plan (may be empty) */</span></span><br><span class="line">std::vector&lt;std::vector&lt;Value&gt;&gt; raw_values_;</span><br><span class="line"><span class="comment">/** The table to be inserted into. */</span></span><br><span class="line"><span class="keyword">table_oid_t</span> table_oid_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class SeqScanExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The insert plan node to be executed*/</span></span><br><span class="line"><span class="keyword">const</span> InsertPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The insert plan target table information */</span></span><br><span class="line">TableInfo *table_info_;</span><br><span class="line"><span class="comment">/** The child executor from which inserted tuples are pulled (may be `nullptr`) */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; child_executor_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Init</code>函数通过<code>table_oid</code>获取<code>table_info_</code>，如果<code>IsRawInsert</code>函数返回false，则调用子操作符的<code>Init</code>函数</li>
+<li>如果是Raw Insert，则直接从<code>plan_</code>读入待插入元组，调用<code>InsertAndUpdate</code>函数插入元组并更新索引</li>
+<li>否则循环调用子结点<code>Next</code>函数获取待插入元组，并对每一个元组执行如下操作（直到子操作符<code>Next</code>函数返回false，表示没有更多待插入元组）<ol>
+<li>调用<code>InsertTuple</code>函数将元组插入到表中，<code>InsertTuple</code>函数返回false表示元组大小超过了<code>PAGE_SIZE</code>，抛出异常并返回，返回true表示插入成功</li>
+<li>更新表的所有索引（新增索引项索引当前新插入的元组）</li>
+</ol>
+</li>
+<li><code>Next</code>函数应始终返回false，否则<code>ExecutionEngine</code>会将返回元组插入到<code>result_set</code>中，而插入操作不涉及对返回元组的赋值</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!plan_-&gt;<span class="built_in">IsRawInsert</span>()) &#123;</span><br><span class="line">    child_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  table_info_ = exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTable</span>(plan_-&gt;<span class="built_in">TableOid</span>());</span><br><span class="line">  <span class="built_in">assert</span>(table_info_ != <span class="literal">nullptr</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertExecutor::Next</span><span class="params">([[maybe_unused]] Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Raw Insert：直接从insert_plan中获取待插入元组</span></span><br><span class="line">  <span class="keyword">if</span> (plan_-&gt;<span class="built_in">IsRawInsert</span>()) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;values : plan_-&gt;<span class="built_in">RawValues</span>()) &#123;</span><br><span class="line">      Tuple raw_tuple = <span class="built_in">Tuple</span>(values, &amp;table_info_-&gt;schema_);</span><br><span class="line">      <span class="built_in">InsertAndUpdate</span>(&amp;raw_tuple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Tuple tuple_from_child;</span><br><span class="line">  RID tuple_rid;</span><br><span class="line">  std::vector&lt;Tuple&gt; tuples;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 从子结点获取待插入元组</span></span><br><span class="line">    <span class="keyword">while</span> (child_executor_-&gt;<span class="built_in">Next</span>(&amp;tuple_from_child, &amp;tuple_rid)) &#123;</span><br><span class="line">      tuples.<span class="built_in">emplace_back</span>(tuple_from_child);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="built_in"><span class="keyword">catch</span></span> (Exception &amp;e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Exception</span>(e.<span class="built_in">GetType</span>(), e.<span class="built_in">what</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> tuple : tuples) &#123;</span><br><span class="line">    <span class="built_in">InsertAndUpdate</span>(&amp;tuple);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertExecutor::InsertAndUpdate</span><span class="params">(Tuple *tuple)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (tuple-&gt;<span class="built_in">GetLength</span>() == <span class="number">0U</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 插入元组到指定table中</span></span><br><span class="line">  RID rid;</span><br><span class="line">  <span class="keyword">if</span> (!table_info_-&gt;table_-&gt;<span class="built_in">InsertTuple</span>(*tuple, &amp;rid, exec_ctx_-&gt;<span class="built_in">GetTransaction</span>())) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Exception</span>(ExceptionType::OUT_OF_MEMORY, <span class="string">&quot;InsertExecutor::Next(): out of memory&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新table的所有索引</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;index_info : exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTableIndexes</span>(table_info_-&gt;name_)) &#123;</span><br><span class="line">    <span class="keyword">auto</span> key_schema = index_info-&gt;index_-&gt;<span class="built_in">GetKeySchema</span>();</span><br><span class="line">    <span class="keyword">auto</span> key_attrs = index_info-&gt;index_-&gt;<span class="built_in">GetKeyAttrs</span>();</span><br><span class="line">    <span class="comment">// const对象只能调用const函数, 如果这里传入的tuple是const类型, 而KeyFromTuple是non-const函数</span></span><br><span class="line">    <span class="comment">// 调用KeyFromTuple时会报错 &quot;对象含有与成员 函数 &quot;bustub::Tuple::KeyFromTuple&quot; 不兼容的类型限定符&quot;</span></span><br><span class="line">    Tuple key = tuple-&gt;<span class="built_in">KeyFromTuple</span>(table_info_-&gt;schema_, *key_schema, key_attrs);</span><br><span class="line">    index_info-&gt;index_-&gt;<span class="built_in">InsertEntry</span>(key, rid, exec_ctx_-&gt;<span class="built_in">GetTransaction</span>());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. UPDATE：</strong></p>
+<p>UpdateExecutor更新指定表中的现有元组以及表索引，待更新元组始终来自子操作符，<code>update_attrs_</code>用于将<code>col_idx</code>映射到<code>UpdateInfo</code>，<code>UpdateInfo</code>包括更新类型（Add或Set）和更新值<code>update_val_</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class UpdatePlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The table to be updated. */</span></span><br><span class="line"><span class="keyword">table_oid_t</span> table_oid_;</span><br><span class="line"><span class="comment">/** Map from column index -&gt; update operation */</span></span><br><span class="line"><span class="keyword">const</span> std::unordered_map&lt;<span class="keyword">uint32_t</span>, UpdateInfo&gt; update_attrs_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class UpdateExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The update plan node to be executed */</span></span><br><span class="line"><span class="keyword">const</span> UpdatePlanNode *plan_;</span><br><span class="line"><span class="comment">/** Metadata identifying the table that should be updated */</span></span><br><span class="line"><span class="keyword">const</span> TableInfo *table_info_;</span><br><span class="line"><span class="comment">/** The child executor to obtain value from */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; child_executor_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Init</code>函数初始化子操作符，通过<code>table_oid</code>获取<code>table_info_</code></li>
+<li>循环调用子操作符的<code>Next</code>函数，对每一个待更新元组<code>old_tuple</code>执行如下操作（直到子操作符<code>Next</code>函数返回false，表示没有更多待更新元组）<ol>
+<li>调用GenerateUpdatedTuple函数获取更新后的元组<code>updated_tuple</code></li>
+<li>调用<code>UpdateTuple</code>函数更新表中对应元组，<code>UpdateTuple</code>函数返回false表示更新后的元组无法放入<code>old_tuple</code>的页面中，抛出异常</li>
+<li>删除表中所有<code>old_tuple</code>相关的索引项</li>
+<li>新增指向<code>updated_tuple</code>的索引项</li>
+</ol>
+</li>
+<li><code>Next</code>函数应始终返回false，否则<code>ExecutionEngine</code>会将返回元组插入到<code>result_set</code>中，而更新操作不涉及对返回元组的赋值</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UpdateExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  child_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line">  table_info_ = exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTable</span>(plan_-&gt;<span class="built_in">TableOid</span>());</span><br><span class="line">  <span class="built_in">assert</span>(table_info_ != <span class="literal">nullptr</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">UpdateExecutor::Next</span><span class="params">([[maybe_unused]] Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  Tuple old_tuple;</span><br><span class="line">  RID old_rid;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 从child executor获取待更新元组old_tuple</span></span><br><span class="line">    <span class="keyword">while</span> (child_executor_-&gt;<span class="built_in">Next</span>(&amp;old_tuple, &amp;old_rid)) &#123;</span><br><span class="line">      <span class="comment">// 获取更新后的updated_tuple并应用到table中</span></span><br><span class="line">      Tuple updated_tuple = <span class="built_in">GenerateUpdatedTuple</span>(old_tuple);</span><br><span class="line">      <span class="keyword">if</span> (!table_info_-&gt;table_-&gt;<span class="built_in">UpdateTuple</span>(updated_tuple, old_rid, exec_ctx_-&gt;<span class="built_in">GetTransaction</span>())) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Exception</span>(ExceptionType::OUT_OF_RANGE,</span><br><span class="line">                        <span class="string">&quot;UpdateExecutor::Next(): new tuple is too large to fit in the old page.&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 更新table的所有索引</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;index_info : exec_ctx_-&gt;<span class="built_in">GetCatalog</span>()-&gt;<span class="built_in">GetTableIndexes</span>(table_info_-&gt;name_)) &#123;</span><br><span class="line">        <span class="keyword">auto</span> key_schema = index_info-&gt;index_-&gt;<span class="built_in">GetKeySchema</span>();</span><br><span class="line">        <span class="keyword">auto</span> key_attrs = index_info-&gt;index_-&gt;<span class="built_in">GetKeyAttrs</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除old_tuple对应的索引</span></span><br><span class="line">        Tuple old_key = old_tuple.<span class="built_in">KeyFromTuple</span>(table_info_-&gt;schema_, *key_schema, key_attrs);</span><br><span class="line">        index_info-&gt;index_-&gt;<span class="built_in">DeleteEntry</span>(old_key, old_rid, exec_ctx_-&gt;<span class="built_in">GetTransaction</span>());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 插入updated_tuple对应的索引</span></span><br><span class="line">        Tuple updated_key = updated_tuple.<span class="built_in">KeyFromTuple</span>(table_info_-&gt;schema_, *key_schema, key_attrs);</span><br><span class="line">        index_info-&gt;index_-&gt;<span class="built_in">InsertEntry</span>(updated_key, old_rid, exec_ctx_-&gt;<span class="built_in">GetTransaction</span>());</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="built_in"><span class="keyword">catch</span></span> (Exception &amp;e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Exception</span>(e.<span class="built_in">GetType</span>(), e.<span class="built_in">what</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4 DELETE：</strong></p>
+<p>删除操作和插入更新操作大同小异，从子操作符接收待删除元组，调用<code>MarkDelete</code>函数将其标记为已删除状态即可</p>
+<p><strong>5. NESTED LOOP JOIN：</strong></p>
+<p><code>NestedLoopJoinExecutor</code>通过嵌套循环连接将来自两个子操作符的元组组合在一起，谓词<code>predicate_</code>用于判断两个元组的连接属性是否相同（是一个比较表达式，<code>EvaluateJoin</code>函数返回比较结果），<code>result_tuples_</code>用于存放组合后的元组（由于JOIN操作可能会阻塞查询计划，因此这里选择在<code>Init</code>函数中完成待连接元组的获取和连接操作，将连接结果放入<code>result_tuples_</code>中，上层操作符调用<code>Next</code>函数时直接从<code>result_tuples_</code>获取即可）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class NestedLoopJoinPlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The join predicate */</span></span><br><span class="line"><span class="keyword">const</span> AbstractExpression *predicate_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class NestedLoopJoinExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The NestedLoopJoin plan node to be executed. */</span></span><br><span class="line"><span class="keyword">const</span> NestedLoopJoinPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The left child executor of nested loop join */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; left_executor_;</span><br><span class="line"><span class="comment">/** The right child executor of nested loop join */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; right_executor_;</span><br><span class="line"><span class="comment">/** Tuples produced by nested loop join */</span></span><br><span class="line">std::vector&lt;Tuple&gt; result_tuples_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>循环调用<code>left_executor_</code>的Next函数获取外部表元组<code>left_tuple</code>，对每个外部表元组执行如下操作：<ol>
+<li>初始化<code>right_executor_</code>，循环调用<code>right_executor_</code>的<code>Next</code>函数获取内部表元组<code>right_tuple</code></li>
+<li>对每个内部表元组，调用谓词<code>predicate_</code>的<code>EvaluateJoin</code>函数判断<code>left_tuple</code>和<code>right_tuple</code>能否JOIN</li>
+<li>如果能则对<code>output_schema_</code>的每一个<code>Column</code>调用其<code>EvaluateJoin</code>函数获取属性值并添加到<code>values</code>数组</li>
+<li>通过<code>values</code>数组和<code>output_schema_</code>构造元组并放入到<code>result_tuples_</code>中</li>
+</ol>
+</li>
+<li>调用<code>Next</code>函数时，如果<code>result_tuples_</code>为空，说明没有剩余输出元组，返回false；否则从<code>result_tuples_</code>中取出一个元组，返回true</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NestedLoopJoinExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">GetChildren</span>().<span class="built_in">size</span>() == <span class="number">2</span>);</span><br><span class="line">  Tuple left_tuple;</span><br><span class="line">  RID left_rid;</span><br><span class="line">  left_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 从left_child_executor获取外部表元组</span></span><br><span class="line">  <span class="keyword">while</span> (left_executor_-&gt;<span class="built_in">Next</span>(&amp;left_tuple, &amp;left_rid)) &#123;</span><br><span class="line">    Tuple right_tuple;</span><br><span class="line">    RID right_rid;</span><br><span class="line">    <span class="comment">// 对每个外部表元组, 遍历连接所有内部表元组</span></span><br><span class="line">    <span class="comment">// 调用Init()函数重置seq scan指针至内部表表头</span></span><br><span class="line">    right_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line">    <span class="comment">// 从right_child_executor获取内部表元组</span></span><br><span class="line">    <span class="keyword">while</span> (right_executor_-&gt;<span class="built_in">Next</span>(&amp;right_tuple, &amp;right_rid)) &#123;</span><br><span class="line">      <span class="keyword">auto</span> left_schema = plan_-&gt;<span class="built_in">GetLeftPlan</span>()-&gt;<span class="built_in">OutputSchema</span>();</span><br><span class="line">      <span class="keyword">auto</span> right_schema = plan_-&gt;<span class="built_in">GetRightPlan</span>()-&gt;<span class="built_in">OutputSchema</span>();</span><br><span class="line">      <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">Predicate</span>() != <span class="literal">nullptr</span>);</span><br><span class="line">      <span class="comment">// EvaluateJoin判断left_tuple和right_tuple的连接属性value是否相同</span></span><br><span class="line">      <span class="keyword">if</span> (plan_-&gt;<span class="built_in">Predicate</span>()-&gt;<span class="built_in">EvaluateJoin</span>(&amp;left_tuple, left_schema, &amp;right_tuple, right_schema).GetAs&lt;<span class="keyword">bool</span>&gt;()) &#123;</span><br><span class="line">        std::vector&lt;Value&gt; values;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;col : plan_-&gt;<span class="built_in">OutputSchema</span>()-&gt;<span class="built_in">GetColumns</span>()) &#123;</span><br><span class="line">          values.<span class="built_in">emplace_back</span>(col.<span class="built_in">GetExpr</span>()-&gt;<span class="built_in">EvaluateJoin</span>(&amp;left_tuple, left_schema, &amp;right_tuple, right_schema));</span><br><span class="line">        &#125;</span><br><span class="line">        result_tuples_.<span class="built_in">emplace_back</span>(<span class="built_in">Tuple</span>(values, plan_-&gt;<span class="built_in">OutputSchema</span>()));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">NestedLoopJoinExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (result_tuples_.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  *tuple = result_tuples_.<span class="built_in">front</span>();</span><br><span class="line">  result_tuples_.<span class="built_in">erase</span>(result_tuples_.<span class="built_in">begin</span>());</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>6. AGGREGATION：</strong></p>
+<p><code>AggregationExecutor</code>将来自单个子操作符的多个元组聚集组合成一个元组，支持COUNT、SUM、MIN、MAX四种类型的聚集操作，同时还支持GROUP BY和HAVING子句；<code>having_</code>字段是比较表达式，用于对输出元组进行筛选；<code>group_bys_</code>是属性值表达式，用于对输入元组进行分类；<code>aggregates_</code>是属性值表达式，用于获取执行聚集操作的属性值；<code>agg_types_</code>表示聚集操作的类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class AggregationPlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** A HAVING clause expression (may be `nullptr`) */</span></span><br><span class="line"><span class="keyword">const</span> AbstractExpression *having_;</span><br><span class="line"><span class="comment">/** The GROUP BY expressions */</span></span><br><span class="line">std::vector&lt;<span class="keyword">const</span> AbstractExpression *&gt; group_bys_;</span><br><span class="line"><span class="comment">/** The aggregation expressions */</span></span><br><span class="line">std::vector&lt;<span class="keyword">const</span> AbstractExpression *&gt; aggregates_;</span><br><span class="line"><span class="comment">/** The aggregation types */</span></span><br><span class="line">std::vector&lt;AggregationType&gt; agg_types_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class AggregationExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The aggregation plan node */</span></span><br><span class="line"><span class="keyword">const</span> AggregationPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The child executor that produces tuples over which the aggregation is computed */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; child_;</span><br><span class="line"><span class="comment">/** Simple aggregation hash table */</span></span><br><span class="line">SimpleAggregationHashTable aht_;</span><br><span class="line"><span class="comment">/** Simple aggregation hash table iterator */</span></span><br><span class="line">SimpleAggregationHashTable::Iterator aht_iterator_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如下所示，<code>AVG(gpa)</code>表示对输入元组的<code>gpa</code>属性取平均值，分别对应<code>agg_types_</code>和<code>aggregates_</code>字段</li>
+<li><code>GROUP BY sid</code>表示对输入元组按<code>sid</code>属性划分，对应<code>group_bys_</code>字段</li>
+<li><code>HAVING avg_gpa &gt; 3.9</code>表示筛选出平均绩点大于3.9的输出元组</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(gpa) as avg_gpa</span><br><span class="line">FROM student</span><br><span class="line">GROUP BY sid</span><br><span class="line">HAVING avg_gpa &gt; 3.9</span><br></pre></td></tr></table></figure>
+
+<p><code>AggregationExecutor</code>实现了自定义的哈希表<code>SimpleAggregationHashTable</code>，底层是<code>unordered_map</code>数据结构，<code>AggregateKey</code>结构体存放<code>group_bys_</code>字段对应的属性值，<code>AggregateValue</code>结构体存放<code>aggregates_</code>字段对应的属性值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AggregateKey</span> &#123;</span></span><br><span class="line">  <span class="comment">/** The group-by values */</span></span><br><span class="line">  std::vector&lt;Value&gt; group_bys_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AggregateValue</span> &#123;</span></span><br><span class="line">  <span class="comment">/** The aggregate values */</span></span><br><span class="line">  std::vector&lt;Value&gt; aggregates_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>初始化子操作符，循环调用子操作符的<code>Next</code>函数获取<code>child_tuple</code>，获取<code>child_tuple</code>对应的<code>AggregateKey</code>和<code>AggregateValue</code>，调用<code>InsertCombine</code>插入到哈希表中</li>
+<li>初始化哈希表迭代器指向哈希表表头</li>
+<li>Next函数获取当前迭代器指向元素的key和value，如果没有HAVING约束或当前键值对满足HAVING约束则生成聚集后的元组并返回true</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AggregationExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">GetChildren</span>().<span class="built_in">size</span>() == <span class="number">1</span>);</span><br><span class="line">  child_-&gt;<span class="built_in">Init</span>();</span><br><span class="line"></span><br><span class="line">  Tuple child_tuple;</span><br><span class="line">  RID child_rid;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get tuples from child executor and map it into hash table with it`s AggregateKey and AggregateValue</span></span><br><span class="line">  <span class="keyword">while</span> (child_-&gt;<span class="built_in">Next</span>(&amp;child_tuple, &amp;child_rid)) &#123;</span><br><span class="line">    aht_.<span class="built_in">InsertCombine</span>(<span class="built_in">MakeAggregateKey</span>(&amp;child_tuple), <span class="built_in">MakeAggregateValue</span>(&amp;child_tuple));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造函数中初始化 aht_iterator_ = aht_.Begin()</span></span><br><span class="line">  <span class="comment">// aht_.Begin()实际返回的是hash table内部unordered_map的cbegin()</span></span><br><span class="line">  <span class="comment">// 而在构造函数中初始化时unordered_map是为空的, 因此aht_iterator_指向的是unordered_map的cend()</span></span><br><span class="line">  <span class="comment">// 因此在向unordered_map中插入元素后需要重新初始化iterator指向cbegin()</span></span><br><span class="line">  aht_iterator_ = aht_.<span class="built_in">Begin</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">AggregationExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// probe phase</span></span><br><span class="line">  <span class="keyword">if</span> (aht_iterator_ == aht_.<span class="built_in">End</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> AggregateKey &amp;key = aht_iterator_.<span class="built_in">Key</span>();</span><br><span class="line">  <span class="keyword">const</span> AggregateValue &amp;val = aht_iterator_.<span class="built_in">Val</span>();</span><br><span class="line">  ++aht_iterator_;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// no having clause constraint or meet the having clause constraint</span></span><br><span class="line">  <span class="keyword">if</span> (plan_-&gt;<span class="built_in">GetHaving</span>() == <span class="literal">nullptr</span> ||</span><br><span class="line">      plan_-&gt;<span class="built_in">GetHaving</span>()-&gt;<span class="built_in">EvaluateAggregate</span>(key.group_bys_, val.aggregates_).GetAs&lt;<span class="keyword">bool</span>&gt;()) &#123;</span><br><span class="line">    std::vector&lt;Value&gt; values;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;col : plan_-&gt;<span class="built_in">OutputSchema</span>()-&gt;<span class="built_in">GetColumns</span>()) &#123;</span><br><span class="line">      values.<span class="built_in">emplace_back</span>(col.<span class="built_in">GetExpr</span>()-&gt;<span class="built_in">EvaluateAggregate</span>(key.group_bys_, val.aggregates_));</span><br><span class="line">    &#125;</span><br><span class="line">    *tuple = <span class="built_in">Tuple</span>(values, plan_-&gt;<span class="built_in">OutputSchema</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// do not satisfy the having clause constraint, try next tuple</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Next</span>(tuple, rid);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>7. HASH JOIN：</strong></p>
+<p>实现一个类似于<code>AggregationExecutor</code>中的哈希表以支持哈希连接操作，与嵌套循环连接输入输出相同，但连接策略不同（具体见lecture11）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class HashJoinPlanNode</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">/** The expression to compute the left JOIN key */</span></span><br><span class="line"><span class="keyword">const</span> AbstractExpression *left_key_expression_;</span><br><span class="line"><span class="comment">/** The expression to compute the right JOIN key */</span></span><br><span class="line"><span class="keyword">const</span> AbstractExpression *right_key_expression_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class HashJoinExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The HashJoin plan node to be executed. */</span></span><br><span class="line"><span class="keyword">const</span> HashJoinPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The left child executor of hash join */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; left_executor_;</span><br><span class="line"><span class="comment">/** The right child executor of hash join */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; right_executor_;</span><br><span class="line"><span class="comment">/** Tuples produced by hash join */</span></span><br><span class="line">std::vector&lt;Tuple&gt; result_tuples_;</span><br><span class="line"><span class="comment">/** Map hash value to tuple */</span></span><br><span class="line">std::unordered_map&lt;<span class="keyword">size_t</span>, std::vector&lt;Tuple&gt;&gt; ht_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Init函数初始化子操作符，循环调用<code>left_executor_</code>的<code>Next</code>函数获取<code>left_tuple</code>插入到哈希表中</li>
+<li>随后循环调用<code>right_executor_</code>的<code>Next</code>函数获取<code>right_tuple</code>，对每一个<code>right_tuple</code>获取其哈希值找到对应的<code>left_tuple</code>集合</li>
+<li>对<code>left_tuple</code>集合中的每一个<code>left_tuple</code>检查是否满足连接条件，如果满足则对<code>output_schema_</code>的每一个<code>Column</code>调用其<code>EvaluateJoin</code>函数获取属性值并添加到<code>values</code>数组，构造输出元组添加到<code>result_tuples_</code>，不满足则检查下一个<code>left_tuple</code></li>
+<li>调用<code>Next</code>函数时，如果<code>result_tuples_</code>为空，说明没有剩余输出元组，返回false；否则从<code>result_tuples_</code>中取出一个元组，返回true</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HashJoinExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">GetChildren</span>().<span class="built_in">size</span>() == <span class="number">2</span>);</span><br><span class="line">  left_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line">  right_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line"></span><br><span class="line">  Tuple left_tuple;</span><br><span class="line">  RID left_rid;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get outer table tuple by left_executor_ and map it into hash table based on left JOIN key</span></span><br><span class="line">  <span class="keyword">while</span> (left_executor_-&gt;<span class="built_in">Next</span>(&amp;left_tuple, &amp;left_rid)) &#123;</span><br><span class="line">    ht_[<span class="built_in">Hash</span>(&amp;left_tuple, <span class="number">0</span>)].<span class="built_in">emplace_back</span>(left_tuple);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Tuple right_tuple;</span><br><span class="line">  RID right_rid;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get inner table contents by right_executor_</span></span><br><span class="line">  <span class="keyword">while</span> (right_executor_-&gt;<span class="built_in">Next</span>(&amp;right_tuple, &amp;right_rid)) &#123;</span><br><span class="line">    <span class="comment">// for each inner table tuple, get it`s DistinctKey and find hash partition</span></span><br><span class="line">    <span class="keyword">size_t</span> key = <span class="built_in">Hash</span>(&amp;right_tuple, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (ht_.<span class="built_in">count</span>(key) != <span class="number">0</span>) &#123;</span><br><span class="line">      std::vector&lt;Tuple&gt; left_tuples = ht_[key];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;left_tuple : left_tuples) &#123;</span><br><span class="line">        <span class="keyword">auto</span> left_schema = plan_-&gt;<span class="built_in">GetLeftPlan</span>()-&gt;<span class="built_in">OutputSchema</span>();</span><br><span class="line">        <span class="keyword">auto</span> right_schema = plan_-&gt;<span class="built_in">GetRightPlan</span>()-&gt;<span class="built_in">OutputSchema</span>();</span><br><span class="line"></span><br><span class="line">        Value left_value = plan_-&gt;<span class="built_in">LeftJoinKeyExpression</span>()-&gt;<span class="built_in">Evaluate</span>(&amp;left_tuple, left_schema);</span><br><span class="line">        Value right_value = plan_-&gt;<span class="built_in">RightJoinKeyExpression</span>()-&gt;<span class="built_in">Evaluate</span>(&amp;right_tuple, right_schema);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// verify left tuple and right tuple have the same join attributes value</span></span><br><span class="line">        <span class="keyword">if</span> (left_value.<span class="built_in">CompareEquals</span>(right_value) == CmpBool::CmpTrue) &#123;</span><br><span class="line">          <span class="comment">// join left tuple and right tuple, and insert into result_tuples_</span></span><br><span class="line">          std::vector&lt;Value&gt; values;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;col : plan_-&gt;<span class="built_in">OutputSchema</span>()-&gt;<span class="built_in">GetColumns</span>()) &#123;</span><br><span class="line">            values.<span class="built_in">emplace_back</span>(col.<span class="built_in">GetExpr</span>()-&gt;<span class="built_in">EvaluateJoin</span>(&amp;left_tuple, left_schema, &amp;right_tuple, right_schema));</span><br><span class="line">          &#125;</span><br><span class="line">          result_tuples_.<span class="built_in">emplace_back</span>(<span class="built_in">Tuple</span>(values, plan_-&gt;<span class="built_in">OutputSchema</span>()));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">HashJoinExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (result_tuples_.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  *tuple = result_tuples_.<span class="built_in">front</span>();</span><br><span class="line">  result_tuples_.<span class="built_in">erase</span>(result_tuples_.<span class="built_in">begin</span>());</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>8. LIMIT：</strong></p>
+<p><code>LimitExecutor</code>限制来自子操作符输出元组的最大数量，由<code>limit_</code>字段表示，<code>cur_recv_</code>字段表示当前已接收元组数量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class LimitPlanNode</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The limit */</span></span><br><span class="line">std::<span class="keyword">size_t</span> limit_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class members in class LimitExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The limit plan node to be executed */</span></span><br><span class="line"><span class="keyword">const</span> LimitPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The child executor from which tuples are obtained */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; child_executor_;</span><br><span class="line"><span class="comment">/** The number of tuples received */</span></span><br><span class="line">std::<span class="keyword">size_t</span> cur_recv_&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>当前已接收元组数量大于<code>limit_</code>时返回false</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LimitExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">GetChildren</span>().<span class="built_in">size</span>() == <span class="number">1</span>);</span><br><span class="line">  child_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">LimitExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!child_executor_-&gt;<span class="built_in">Next</span>(tuple, rid)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="built_in"><span class="keyword">catch</span></span> (Exception &amp;e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Exception</span>(e.<span class="built_in">GetType</span>(), e.<span class="built_in">what</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果当前已返回的元组数量大于limit, 则返回false</span></span><br><span class="line">  <span class="keyword">return</span> (++cur_recv_) &lt;= plan_-&gt;<span class="built_in">GetLimit</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>9. DISTINCT：</strong></p>
+<p>同样需要实现一个类似于<code>AggregationExecutor</code>中的哈希表，提供<code>DistinctKey</code>到<code>Tuple</code>的映射，其中<code>DistinctKey</code>是元组所有属性值组成的<code>Value</code>数组，<code>Tuple</code>是元组本身，试图插入哈希表时，会检查表中是否存在<code>DistinctKey</code>相同的元素，如果存在则说明这是一个重复的元组，跳过即可，否则插入到哈希表中，最后哈希表中剩余的元组就是去重之后的元组</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class members in class DistinctExecutor</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** The distinct plan node to be executed */</span></span><br><span class="line"><span class="keyword">const</span> DistinctPlanNode *plan_;</span><br><span class="line"><span class="comment">/** The child executor from which tuples are obtained */</span></span><br><span class="line">std::unique_ptr&lt;AbstractExecutor&gt; child_executor_;</span><br><span class="line"><span class="comment">/** Simple distinct hash table */</span></span><br><span class="line">SimpleDistinctHashTable dht_;</span><br><span class="line"><span class="comment">/** Simple distinct hash table iterator */</span></span><br><span class="line">SimpleDistinctHashTable::Iterator dht_iterator_;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Init</code>函数初始化子操作符，循环调用子操作符的<code>Next</code>函数读入<code>child_tuple</code></li>
+<li>获取<code>child_tuple</code>的<code>DistinctKey</code>，插入<code>DistinctKey</code>-<code>child_tuple</code>键值对到哈希表中，初始化迭代器指向表头</li>
+<li>调用<code>Next</code>函数时，如果迭代器指向表尾，表示所有去重后的元组均已输出，返回false，否则取出元组，迭代器递增</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DistinctExecutor::Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(plan_-&gt;<span class="built_in">GetChildren</span>().<span class="built_in">size</span>() == <span class="number">1</span>);</span><br><span class="line">  child_executor_-&gt;<span class="built_in">Init</span>();</span><br><span class="line"></span><br><span class="line">  Tuple child_tuple;</span><br><span class="line">  RID child_rid;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 从child_tuple读入元组, 获取DistinctKey并插入hash table</span></span><br><span class="line">  <span class="keyword">while</span> (child_executor_-&gt;<span class="built_in">Next</span>(&amp;child_tuple, &amp;child_rid)) &#123;</span><br><span class="line">    dht_.<span class="built_in">Insert</span>(<span class="built_in">MakeDistinctKey</span>(&amp;child_tuple), child_tuple);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dht_iterator_ = dht_.<span class="built_in">Begin</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DistinctExecutor::Next</span><span class="params">(Tuple *tuple, RID *rid)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (dht_iterator_ == dht_.<span class="built_in">End</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  *tuple = dht_iterator_.<span class="built_in">Val</span>();</span><br><span class="line">  ++dht_iterator_;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本地测试：</p>
+<img src="/2022/09/09/cmu15445-lab3/result1.png" alt="result1" style="zoom:67%;">    
+
+<p>gradescope：4.21s</p>
+<p><img src="/2022/09/09/cmu15445-lab3/result2.png" alt="result2"></p>
+<p><img src="/2022/09/09/cmu15445-lab3/result3.png" alt="result3">    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2022/09/09/cmu15445-lab4/">
+        cmu15445 project#4 - Concurrency Control →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

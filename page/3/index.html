@@ -205,10 +205,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab5/">mit6.s081 lab5 - cow</a></h3>
+                    <h3><a href="/2022/09/09/csapp-malloclab/">csapp malloclab</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
+      <time datetime="2022-09-09T07:18:16.342Z" itemprop="datePublished">
           2022-09-09
       </time>
     
@@ -218,14 +218,17 @@
                 <div class="col-md-8">
                     <p>
                       
-                        lab cow这部分实验要求实现操作系统中非常常见的一个优化：写时复制（copy-on-write）
-为什么需要写时复制？
-写时复制可以视作进程间共享页面的一种实现方式，以fork系统调用为例，创建的子进程的初始地址空间是父进程的一个拷贝（但是两个不同的地址空间），因此需要将父进程中的相应页面复制到子进程中，而有时两个进程都仅仅是读数据或子进程创建完成后立即执行exec系统调用（释放当前页面集合，替换为exec相关的页面），此时这些从父
+                        CSAPP Malloc Lab该lab的目标是实现一个c的动态内存分配器，由以下四个函数组成：
+int mm_init(void)
+void *mm_malloc(size_t size)
+void mm_free(void *ptr)
+void *mm_realloc(void *ptr, size_t size)
+最后会通过一组trace文件（由malloc free realloc指令组成）按照一定的顺序调用实现的malloc、
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab5/">Read More...</a>
+                        <a href="/2022/09/09/csapp-malloclab/">Read More...</a>
                     </p>
                     
                 </div>
@@ -237,11 +240,11 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab6/">mit6.s081 lab6 - thread</a></h3>
+                    <h3><a href="/2021/11/14/csapp-bomblab/">csapp bomblab</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
-          2022-09-09
+      <time datetime="2021-11-14T07:49:37.677Z" itemprop="datePublished">
+          2021-11-14
       </time>
     
 </span>
@@ -250,18 +253,84 @@
                 <div class="col-md-8">
                     <p>
                       
-                        lab thread这部分实验要求实现多线程的并行运行，有两种实现方法：
+                        
+1. Overview实验共有六个”bomb”,需要通过反汇编可执行文件来找到六个”bomb”的密码,从而拆除炸弹,其中任何一个出错都会导致爆炸
+2. GDB为了找到拆除炸弹的密码,需要使用调试器(GDB)来反汇编二进制文件并单步执行每个阶段的机器码,通过了解每一步汇编语句的作用来反推密码
+gdb操作手册: gdbnotes
+实验中常用的gdb调试指令:
+123456789101112131415161718192021$ gdb [
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/11/14/csapp-bomblab/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/11/13/csapp-datalab/">csapp datalab</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-11-13T15:46:55.349Z" itemprop="datePublished">
+          2021-11-13
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+1. Overview实验目的是通过一系列编程题目，考察对位操作符的使用以及整数和单精度浮点数的位级的表示，从而加深对计算机中数据的理解
+2. Instuction2.1 INTEGER CODING RULES:2.1.1 Expression(表达式) Rule:
 
-单个CPU在多个线程之间来回切换，从而营造出多个线程并行运行的假象
-在多核处理器上使用多个CPU，每个CPU都可以运行一个线程
+Integer constants 0 through 255 (0xFF), inclusive. You are not allowed to use big c
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/11/13/csapp-datalab/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/11/13/6-824-lab1/">6.824 lab1 MapReduce</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-11-13T04:58:09.027Z" itemprop="datePublished">
+          2021-11-13
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Lab1 MapReduceMapReduce(2004)Lab1 MapReduceLab1 Video1. 实验环境准备
 
-通常在实际使用中将上述两种策略相结合，因为线程数往往远大于CPU核数，线程会运行在所有可用的CPU核上，每个CPU核会在多个线程之间切换
-xv6中每个用户进程都有一个内核线程来执行来自用户进程的系统调用，这些内核线程共享内核内存，并且
+1git clone git://g.csail.mit.edu/6.824-golabs-2020 6.824lab
+lab1 提供了一个顺序（非分布式）的MapReduce实现在 src/main/mrsequential.go中，还提供了两个MapReduce应用：词频统计 mrapps/wc.go 和文
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab6/">Read More...</a>
+                        <a href="/2021/11/13/6-824-lab1/">Read More...</a>
                     </p>
                     
                 </div>
@@ -273,11 +342,11 @@ xv6中每个用户进程都有一个内核线程来执行来自用户进程的�
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab9/">mit6.s081 lab9 - fs</a></h3>
+                    <h3><a href="/2021/11/13/socket/">Socket</a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
-          2022-09-09
+      <time datetime="2021-11-13T02:57:25.555Z" itemprop="datePublished">
+          2021-11-13
       </time>
     
 </span>
@@ -286,243 +355,15 @@ xv6中每个用户进程都有一个内核线程来执行来自用户进程的�
                 <div class="col-md-8">
                     <p>
                       
-                        lab fs这部分实验主要关注文件系统，要求实现对大文件的支持以及符号链接（软链接），实验整体不难，但需要一定的前置知识以及对xv6文件系统的充分理解
-文件系统概述：
-xv6文件系统的结构可以通过分层来理解，如下图所示：
-第1层 - Disk：磁盘设备，提供对数据的持久化存储
-第2层 - Buffer Cache：缓存磁盘块，避免频繁的读写磁盘，并提供对磁盘块访问的并发控制
-第3层 - Logging：将上层对磁盘块数据的更新打包成一个
+                        Java端和Python端实现Socket通信需求：课程项目需要实现一个web端的图像识别功能，用户访问网站识别页面，本地上传需要识别的图像文件，点击提交按钮后Java后端将图片传输到Python图像识别算法模型，将预测结果传回Java并显示在网站上
+1. JavaWeb前后端实现1.1 Vue前端实现
+图像文件上传:
+123456789101112131415161718// 域内容发生改变时调用getFile函数,这里$event是
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab9/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab2/">mit6.s081 lab2 - syscall</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.898Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab syscalllab2的内容主要是对系统调用的了解和使用，首先需要知道什么是系统调用以及系统调用在xv6中如何使用
-系统调用（system call）：为了从操作系统中获取服务，用户程序必须通过系统调用以实现从用户态到内核态的切换，主要涉及以下三个步骤：
-
-操作系统保存被中断的应用程序的上下文
-根据系统调用的编号调用相应的处理程序
-完成系统调用后恢复被中断应用程序的上下文并继续执行
-
-在xv6中的实现路径为：uservec -&
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab2/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab1/">mit6.s081 lab1 - util</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:46:22.854Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab util运行环境：VMware Workstation + Ubuntu 20.04
-实验环境搭建：
-参照 Lab: Xv6 and Unix utilities (mit.edu)
-1234$ git clone git://g.csail.mit.edu/xv6-labs-2021$ cd xv6-labs-2021$ git checkout util$ make qemu
-
-相关资料：xv6: a simple, Uni
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab1/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/tinykv-lab4/">pingcap tinykv lab4 - Transactions</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:40:18.588Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        4. Transactions4.1 MVCCMVCC指的是多版本并发控制, 即在key-value键值对的基础上增加了一个时间戳timestamp的概念, 从而可以通过key和timestamp访问到key的指定版本的value; tinykv中使用了3个column family: default中保存value, lock中保存锁的信息, write中记录更改操作,而这部分需要实现的便是对这3个列族的增删改查操作
-4.1.1 Lo
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/tinykv-lab4/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/tinykv-lab3/">pingcap tinykv lab3 - MultiRaftKV</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:40:11.264Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        3. MultiRaftKV在project2中, RaftKV服务器是搭建在单个region单个RaftGroup上的, 针对不同key的读写请求都是一个接一个地提交和应用, 而不是并发处理, 这样无疑会降低性能和效率; 而在project3中要实现的是由多个region多个RaftGroup组成的kv服务器, 每个region负责一个keyRange, 这样对单个region的请求还是像之前那样处理, 但对不同region的请求可以
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/tinykv-lab3/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/tinykv-lab2/">pingcap tinykv lab2 - RaftKV</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:40:00.626Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        2. RaftKVProject2 要求基于Raft算法实现一个高可用的kv服务器，主要分为三个部分：实现一个基础的raft算法、基于raft算法搭建一个高可用的kv服务器并在此基础上提供日志回收和快照功能。
-2.1 Basic Raft Algorithm这一部分的实现遵照raft论文并参考了部分etcd-raft的架构，遵循raft论文中的要求和规定可以确保算法的正确性和鲁棒性，而参考etcd的架构可以在后续debug时减少很多痛苦
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/tinykv-lab2/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/tinykv-lab1/">pingcap tinykv lab1 - Standalone KV Server</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:39:39.180Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1. Standalone key/value serverProject1 要求实现一个支持列族的单机存储引擎和一个提供grpc服务的server，由于tinykv在底层已经实现了一个badger db，因此这里不需要重新写一个存储引擎，调用badger api的相应接口即可；server通过grpc接收来自clients的请求，调用存储引擎的相应方法处理请求。
-1.1 standalone storage engine一个存储引擎需
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/tinykv-lab1/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/csapp-shelllab/">csapp shelllab</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:28:53.508Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        CSAPP Shell Lab该lab的目标是实现一个简单的支持任务调度的Unix shell程序tsh，tsh读取来自用户输入的一个命令行，解析命令行并代表用户运行相应的程序，整个lab代码量不大，难度主要集中在信号处理部分，需要仔细阅读csapp第八章的内容，书上对很多容易出错的地方都做了提示，并且提供了一部分基础代码。
-shell 是一个交互式命令行解释器，它代表用户运行程序。 shell 读取并解析用户输入的命令行，然后按照命令
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/csapp-shelllab/">Read More...</a>
+                        <a href="/2021/11/13/socket/">Read More...</a>
                     </p>
                     
                 </div>
@@ -532,8 +373,8 @@ shell 是一个交互式命令行解释器，它代表用户运行程序。 shel
         </div>
         
         <nav class="pagination" role="pagination">
-          <a class="pull-left" href="/">← Newer Posts</a>
-          <a class="pull-right" href="/page/3/">Older Posts →</a>
+          <a class="pull-left" href="/page/2/">← Newer Posts</a>
+          
         </nav>
     </div>
 </section>

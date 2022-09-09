@@ -205,6 +205,166 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2022/09/09/cmu15445-lab3/">cmu15445 project#3 - Query Execution</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.350Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Project #3: Query Execution这部分实验要求为DBMS添加对查询执行的支持，根据给定的查询计划执行对应的查询操作
+实验地址：https://15445.courses.cs.cmu.edu/fall2021/project3/
+Task #1: Executors实验使用的处理模型是Iterator Model（也称Pipeline Model），查询计划中的每个操作符都提供了一个Next函数接口供上层操作符调用
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2022/09/09/cmu15445-lab3/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2022/09/09/cmu15445-lab4/">cmu15445 project#4 - Concurrency Control</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.350Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Project #4: Concurrency Control这部分实验要求在DBMS中实现锁管理器LockManager以支持查询的并发执行，LockManager以元组作为数据共享的基本单位，事务对元组进行读写操作时需要根据隔离级别从LockManager处获取对应元组的共享锁或排他锁
+实验地址：https://15445.courses.cs.cmu.edu/fall2021/project4/
+Task #1: Lock Man
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2022/09/09/cmu15445-lab4/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2022/09/09/cmu15445-lab1/">cmu15445 project#1 - Buffer Pool</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.345Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Project #1: Buffer Pool这部分实验要求在存储管理器中实现一个buffer pool，用于在内存和磁盘间换入换出页面，从而允许DBMS提供给数据库远大于实际容量的内存空间。这里将磁盘中的块称作页面page，将内存中的块称作帧frame，buffer pool的换入换出操作对DBMS是透明的，DBMS向buffer pool请求指定page_id的页面，但并不知道页面是已缓存在内存中还是需要从磁盘读入
+实验地址：htt
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2022/09/09/cmu15445-lab1/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2022/09/09/cmu15445-lab2/">cmu15445 project#2 - Extendable Hash Index</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.345Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Project #2: Extend-able Hash Index这部分实验要求为DBMS实现一个基于磁盘的可扩展哈希表，用于快速检索数据（个人理解是支持点查询）
+实验地址：https://15445.courses.cs.cmu.edu/fall2021/project2/
+Task #1: Page Layouts依赖于Project1的实现，哈希表需要通过DBMS的BufferPoolManager访问，即所有数据信息都必须保存
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2022/09/09/cmu15445-lab2/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2022/09/09/cmu15445-lab0/">cmu15445 project#0 - C++ Primer</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2022-09-09T08:18:46.332Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Project #0: C++ Primer这部分实验要求补充Matrix、RowMatrix和RowMaxtrixOperations三个类中对应函数的代码，RowMatrix类继承自Matrix类，表示一个二维矩阵；RowMatrixOperation类提供RowMatrix对象的矩阵加法和乘法运算
+实验地址：https://15445.courses.cs.cmu.edu/fall2021/project0/
+Matrix：
+拷贝
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2022/09/09/cmu15445-lab0/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2022/09/09/mit6.s081-lab10/">mit6.s081 lab10 - mmap</a></h3>
                     <span>
                         <span class="post-meta">
@@ -357,181 +517,6 @@ E1000手册：8254x Family of Gigabit Ethernet Controllers Software Developer’
                     
                     <p class="pull-right readMore">
                         <a href="/2022/09/09/mit6.s081-lab4/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab5/">mit6.s081 lab5 - cow</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab cow这部分实验要求实现操作系统中非常常见的一个优化：写时复制（copy-on-write）
-为什么需要写时复制？
-写时复制可以视作进程间共享页面的一种实现方式，以fork系统调用为例，创建的子进程的初始地址空间是父进程的一个拷贝（但是两个不同的地址空间），因此需要将父进程中的相应页面复制到子进程中，而有时两个进程都仅仅是读数据或子进程创建完成后立即执行exec系统调用（释放当前页面集合，替换为exec相关的页面），此时这些从父
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab5/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab6/">mit6.s081 lab6 - thread</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab thread这部分实验要求实现多线程的并行运行，有两种实现方法：
-
-单个CPU在多个线程之间来回切换，从而营造出多个线程并行运行的假象
-在多核处理器上使用多个CPU，每个CPU都可以运行一个线程
-
-通常在实际使用中将上述两种策略相结合，因为线程数往往远大于CPU核数，线程会运行在所有可用的CPU核上，每个CPU核会在多个线程之间切换
-xv6中每个用户进程都有一个内核线程来执行来自用户进程的系统调用，这些内核线程共享内核内存，并且
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab6/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab9/">mit6.s081 lab9 - fs</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab fs这部分实验主要关注文件系统，要求实现对大文件的支持以及符号链接（软链接），实验整体不难，但需要一定的前置知识以及对xv6文件系统的充分理解
-文件系统概述：
-xv6文件系统的结构可以通过分层来理解，如下图所示：
-第1层 - Disk：磁盘设备，提供对数据的持久化存储
-第2层 - Buffer Cache：缓存磁盘块，避免频繁的读写磁盘，并提供对磁盘块访问的并发控制
-第3层 - Logging：将上层对磁盘块数据的更新打包成一个
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab9/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab2/">mit6.s081 lab2 - syscall</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:51:27.898Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab syscalllab2的内容主要是对系统调用的了解和使用，首先需要知道什么是系统调用以及系统调用在xv6中如何使用
-系统调用（system call）：为了从操作系统中获取服务，用户程序必须通过系统调用以实现从用户态到内核态的切换，主要涉及以下三个步骤：
-
-操作系统保存被中断的应用程序的上下文
-根据系统调用的编号调用相应的处理程序
-完成系统调用后恢复被中断应用程序的上下文并继续执行
-
-在xv6中的实现路径为：uservec -&
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab2/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2022/09/09/mit6.s081-lab1/">mit6.s081 lab1 - util</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2022-09-09T07:46:22.854Z" itemprop="datePublished">
-          2022-09-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        lab util运行环境：VMware Workstation + Ubuntu 20.04
-实验环境搭建：
-参照 Lab: Xv6 and Unix utilities (mit.edu)
-1234$ git clone git://g.csail.mit.edu/xv6-labs-2021$ cd xv6-labs-2021$ git checkout util$ make qemu
-
-相关资料：xv6: a simple, Uni
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2022/09/09/mit6.s081-lab1/">Read More...</a>
                     </p>
                     
                 </div>
