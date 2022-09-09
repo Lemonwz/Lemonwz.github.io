@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mit6.s081 lab5 - cow | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>mit6.s081 lab5 - cow</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="lab-cow"><a href="#lab-cow" class="headerlink" title="lab cow"></a>lab cow</h1><p>这部分实验要求实现操作系统中非常常见的一个优化：写时复制（copy-on-write）</p>
+<p><strong>为什么需要写时复制？</strong></p>
+<p>写时复制可以视作进程间共享页面的一种实现方式，以fork系统调用为例，创建的子进程的初始地址空间是父进程的一个拷贝（但是两个不同的地址空间），因此需要将父进程中的相应页面复制到子进程中，而有时两个进程都仅仅是读数据或子进程创建完成后立即执行exec系统调用（释放当前页面集合，替换为exec相关的页面），此时这些从父进程复制到子进程的页面就失去了其意义；因此我们可以在创建子进程时使其页表指向父进程的页面集合，即共享父进程的物理内存页面，从而减少fork时的复制以提高性能</p>
+<p><strong>写时复制：</strong></p>
+<p>为了确保进程间的隔离性，所有映射到两个进程的页面都是只读的（通过设置两个进程对应页表项的标志位），在某个时间点，一个进程对共享数据页面执行写操作时会触发page fault，此时系统会为此进程复制该数据页面的一个副本并修改映射（分配一个页面并将数据页面的内容复制到这个页面上），这样两个进程都拥有该数据页面的私有副本，并且都是可读写的，然后重新执行写操作即可</p>
+<p><strong>如何识别一个对只读页面的写操作是否需要写时复制？</strong></p>
+<p>需要在两个进程页表的页表项中标记写时复制页面，PTE标志位中的最后两位RSW是为内核保留的，这里使用第八位作为COW位，标识该页面是否是一个共享页面（是否需要写时复制）</p>
+<img src="/2022/09/09/mit6.s081-lab5/token.png" alt="token" style="zoom:67%;">    
+
+<p><strong>一些关于page fault的补充知识：</strong></p>
+<p>目前在xv6中，一旦进程触发了page fault就会被kill掉，这是一种非常保守的做法；实际上，page fault可以使得虚拟地址到物理地址的映射变得动态起来，内核可以借助page fault动态更新page table，从而实现许多非常有趣的功能</p>
+<p>因此，在发生page fault时，我们需要收集一些必要的信息以采取相应的操作：</p>
+<ol>
+<li><p>引起page fault的虚拟内存地址：当出现page fault时，出错的虚拟地址会被保存在stval寄存器中</p>
+</li>
+<li><p>引起page fault的原因：scause寄存器保存了触发usertrap的原因类型</p>
+<p>12: instruction page fault，指令引起的page fault</p>
+<p>13: load page fault，读引起的page fault</p>
+<p>15: store/AMO page fault，写引起的page fault</p>
+</li>
+<li><p>发生page fault时的程序计数器：即page fault在用户空间发生的位置</p>
+</li>
+</ol>
+<h2 id="Implement-copy-on-write"><a href="#Implement-copy-on-write" class="headerlink" title="Implement copy-on write"></a>Implement copy-on write</h2><p>在当前实验之前，xv6中除trampoline page外，一个物理内存页面只属于一个用户进程，也就是说进程退出后可以立即释放相应的物理页面（trampoline page永远不会被释放）；但在该实验中，父进程退出后子进程可能还在使用这些物理页面，因此我们需要对物理页面的引用计数作为能否释放页面的依据</p>
+<p>构造一个结构体pgref，由自旋锁（防止并发导致的不一致问题）和引用计数组成，结构体数组pgrefs元素个数为最大物理页面个数，每个物理页面都有其对应的pgref，通过<code>（pa-KERNBASE）/PGSIZE</code>索引</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pgref</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">spinlock</span> <span class="title">lock</span>;</span></span><br><span class="line">  <span class="keyword">int</span> count;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> <span class="title">pgrefs</span>[(<span class="title">PHYSTOP</span>-<span class="title">KERNBASE</span>)/<span class="title">PGSIZE</span>];</span></span><br></pre></td></tr></table></figure>
+
+<p>相应的，在kinit函数中初始化每个pgref的锁，在kalloc函数中分配页面时初始化该页面的引用计数为1，在kfree函数中释放页面时检查该页面的引用计数（引用计数等于1才释放页面，大于1时减1即可）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">kinit</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  initlock(&amp;kmem.lock, <span class="string">&quot;kmem&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;(PHYSTOP-KERNBASE)/PGSIZE; ++i)&#123;</span><br><span class="line">    initlock(&amp;pgrefs[i].lock, <span class="string">&quot;pgref&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  freerange(end, (<span class="keyword">void</span>*)PHYSTOP);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *</span></span><br><span class="line"><span class="function"><span class="title">kalloc</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">run</span> *<span class="title">r</span>;</span></span><br><span class="line"></span><br><span class="line">  acquire(&amp;kmem.lock);</span><br><span class="line">  r = kmem.freelist;</span><br><span class="line">  <span class="keyword">if</span>(r)&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> *<span class="title">pr</span>;</span></span><br><span class="line">    pr = &amp;pgrefs[((uint64)r-KERNBASE)/PGSIZE];</span><br><span class="line">    acquire(&amp;pr-&gt;lock);</span><br><span class="line">    <span class="keyword">if</span>(pr-&gt;count != <span class="number">0</span>)</span><br><span class="line">      panic(<span class="string">&quot;kalloc&quot;</span>);</span><br><span class="line">    pr-&gt;count = <span class="number">1</span>;</span><br><span class="line">    release(&amp;pr-&gt;lock);</span><br><span class="line">    kmem.freelist = r-&gt;next;</span><br><span class="line">  &#125;</span><br><span class="line">  release(&amp;kmem.lock);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(r)</span><br><span class="line">    <span class="built_in">memset</span>((<span class="keyword">char</span>*)r, <span class="number">5</span>, PGSIZE); <span class="comment">// fill with junk</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">void</span>*)r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">kfree</span><span class="params">(<span class="keyword">void</span> *pa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">run</span> *<span class="title">r</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> *<span class="title">pr</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(((uint64)pa % PGSIZE) != <span class="number">0</span> || (<span class="keyword">char</span>*)pa &lt; end || (uint64)pa &gt;= PHYSTOP)</span><br><span class="line">    panic(<span class="string">&quot;kfree&quot;</span>);</span><br><span class="line"></span><br><span class="line">  pr = &amp;pgrefs[((uint64)pa-KERNBASE)/PGSIZE];</span><br><span class="line">  acquire(&amp;pr-&gt;lock);</span><br><span class="line">  <span class="keyword">if</span>(pr-&gt;count &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">    pr-&gt;count -= <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(pr-&gt;count == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">// Fill with junk to catch dangling refs.</span></span><br><span class="line">    <span class="built_in">memset</span>(pa, <span class="number">1</span>, PGSIZE);</span><br><span class="line">    r = (struct run*)pa;</span><br><span class="line">    acquire(&amp;kmem.lock);</span><br><span class="line">    r-&gt;next = kmem.freelist;</span><br><span class="line">    kmem.freelist = r;</span><br><span class="line">    release(&amp;kmem.lock);</span><br><span class="line">  &#125;</span><br><span class="line">  release(&amp;pr-&gt;lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外还需要一些辅助函数如增加页面的引用计数、减少页面的引用计数以及查询页面当前引用计数；在kref函数中，如果指定物理页面的引用计数为0，说明该页面还没有被分配或没有及时释放，这两种情况都是很严重的错误，因此直接panic；在kderef中，如果指定物理页面引用计数减1后为0，需要直接调用kfree函数将其释放（调用kfree前要先释放锁）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">kref</span><span class="params">(<span class="keyword">void</span> *pa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> *<span class="title">pr</span>;</span></span><br><span class="line">  pr = &amp;pgrefs[((uint64)pa-KERNBASE)/PGSIZE];</span><br><span class="line">  </span><br><span class="line">  acquire(&amp;pr-&gt;lock);</span><br><span class="line">  <span class="keyword">if</span>(pr-&gt;count == <span class="number">0</span>)</span><br><span class="line">    panic(<span class="string">&quot;kref: not alloc&quot;</span>);</span><br><span class="line">  pr-&gt;count += <span class="number">1</span>;</span><br><span class="line">  release(&amp;pr-&gt;lock);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">kderef</span><span class="params">(<span class="keyword">void</span> *pa)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> *<span class="title">pr</span>;</span></span><br><span class="line">  pr = &amp;pgrefs[((uint64)pa-KERNBASE)/PGSIZE];</span><br><span class="line"></span><br><span class="line">  acquire(&amp;pr-&gt;lock);</span><br><span class="line">  <span class="keyword">if</span>(pr-&gt;count == <span class="number">0</span>)&#123;</span><br><span class="line">    panic(<span class="string">&quot;kderef: should free&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  pr-&gt;count -= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span>(pr-&gt;count == <span class="number">0</span>)&#123;</span><br><span class="line">    release(&amp;pr-&gt;lock);</span><br><span class="line">    kfree(pa);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  release(&amp;pr-&gt;lock);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">kgetref</span><span class="params">(<span class="keyword">void</span> *pa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pgref</span> *<span class="title">pr</span>;</span></span><br><span class="line">  pr = &amp;pgrefs[((uint64)pa-KERNBASE)/PGSIZE];</span><br><span class="line">  <span class="keyword">return</span> pr-&gt;count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>fork系统调用创建完子进程后会调用uvmcopy函数将父进程页表中的内容复制到子进程页表中，xv6中原本的做法是对父进程页表中的每个页面，调用kalloc函数为子进程分配一个新的页面，然后将父进程对应页面的内容复制到子进程页面中，最后建立子进程页表对这个页面的映射</p>
+<p>copy-on write的实现省去了分配新页面以及复制页面的过程，修改父进程对应PTE的标志位（设置COW标志位并移除其写标志位），获取该PTE映射的物理内存地址以及修改后的标志位（这样子进程页表中对应PTE也是设置了COW位且只读的），作为参数调用mappages函数将子进程PTE映射到相同的物理内存页面；最后调用kref函数更新该物理页面的引用计数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">uvmcopy</span><span class="params">(<span class="keyword">pagetable_t</span> old, <span class="keyword">pagetable_t</span> <span class="keyword">new</span>, uint64 sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">pte_t</span> *pte;</span><br><span class="line">  uint64 pa, i;</span><br><span class="line">  uint flags;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// traverse process virtual address</span></span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; sz; i += PGSIZE)&#123;</span><br><span class="line">    <span class="comment">// get parent pte by va</span></span><br><span class="line">    <span class="keyword">if</span>((pte = walk(old, i, <span class="number">0</span>)) == <span class="number">0</span>)</span><br><span class="line">      panic(<span class="string">&quot;uvmcopy: pte should exist&quot;</span>);</span><br><span class="line">    <span class="comment">// is pte valid ?</span></span><br><span class="line">    <span class="keyword">if</span>((*pte &amp; PTE_V) == <span class="number">0</span>)</span><br><span class="line">      panic(<span class="string">&quot;uvmcopy: page not present&quot;</span>);</span><br><span class="line">    *pte |= PTE_COW; <span class="comment">// set copy-on-write bit</span></span><br><span class="line">    *pte &amp;= ~PTE_W;  <span class="comment">// clear writable bit</span></span><br><span class="line">    pa = PTE2PA(*pte); <span class="comment">// get physical address</span></span><br><span class="line">    flags = PTE_FLAGS(*pte); <span class="comment">// get modified flags</span></span><br><span class="line">    <span class="comment">// map child pte to pa with flags</span></span><br><span class="line">    <span class="keyword">if</span>(mappages(<span class="keyword">new</span>, i, PGSIZE, pa, flags) != <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">goto</span> err;</span><br><span class="line">    <span class="comment">// update physical page reference count</span></span><br><span class="line">    kref((<span class="keyword">void</span>*)pa);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"> err:</span><br><span class="line">  uvmunmap(<span class="keyword">new</span>, <span class="number">0</span>, i / PGSIZE, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户程序试图对一个只读页面进行写操作时，就会触发page fault，因此我们需要在usertrap函数中捕获这一类型的page fault，r_scause函数会返回触发trap的原因类型，这里只需要处理15这一类型的page fault；通过r_stval函数获取出错的虚拟地址，调用相应的处理函数即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">uint64 cause = r_scause();</span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(cause == <span class="number">15</span>)&#123;</span><br><span class="line">  uint64 va = r_stval();</span><br><span class="line">  <span class="keyword">if</span>(checkcow(p-&gt;pagetable, va) == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(copyonwrite(p-&gt;pagetable, va) != <span class="number">0</span>)</span><br><span class="line">      p-&gt;killed = <span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   	p-&gt;killed = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>checkcow检查一个虚拟地址对应的PTE是否设置了COW标志位，在检查COW位之前要先验证虚拟地址以及对应的PTE的合法性</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">checkcow</span><span class="params">(<span class="keyword">pagetable_t</span> pagetable, uint64 va)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">pte_t</span> *pte;</span><br><span class="line">  uint64 pa;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(va &gt;= MAXVA)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>((pte = walk(pagetable, va, <span class="number">0</span>)) == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>(!(*pte &amp; PTE_V) || !(*pte &amp; PTE_U))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  pa = PTE2PA(*pte);</span><br><span class="line">  <span class="keyword">if</span>(kgetref((<span class="keyword">void</span>*)pa) &lt; <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>(!(*pte &amp; PTE_COW))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;a</span><br></pre></td></tr></table></figure>
+
+<p>确定了触发page fault的页面是COW页面后，调用copyonwrite函数分配新的页面，复制页面内容并修改标志位，大致流程如下：</p>
+<ol>
+<li>通过虚拟地址查询页表获取oldpte和对应的物理内存地址oldpa</li>
+<li>调用kgetref函数获取当前物理页面的引用计数，如果为1（先前调用checkcow已经排除了引用计数为0的情况），则说明没有必要进行copy-on write操作（可能是在为子进程分配页面后父进程对其私有页面执行写操作，此时该页面应该是可读写的，但还没有修改标志位），直接修改PTE的标志位即可</li>
+<li>如果引用计数大于1，调用kalloc函数申请一个新的物理页面newpa</li>
+<li>调用memmove函数将oldpa中的内容移动到newpa中，得到newpte（此时newpte映射到newpa，但标志位是空的）</li>
+<li>设置oldpte的写位并移除其COW位，获取修改后的标志位与newpte做或运算</li>
+<li>调用kderef函数将物理页面的引用计数减1</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">copyonwrite</span><span class="params">(<span class="keyword">pagetable_t</span> pagetable, uint64 va)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  uint64 oldpa;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">pte_t</span> *oldpte = walk(pagetable, va, <span class="number">0</span>);</span><br><span class="line">  oldpa = PTE2PA(*oldpte);</span><br><span class="line">  oldpa = PGROUNDDOWN(oldpa);</span><br><span class="line">  <span class="comment">// duplicate copy-on-write request</span></span><br><span class="line">  <span class="keyword">if</span>(kgetref((<span class="keyword">void</span>*)oldpa) == <span class="number">1</span>)&#123;</span><br><span class="line">    *oldpte |= PTE_W;</span><br><span class="line">    *oldpte &amp;= ~PTE_COW;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> *newpa = kalloc();</span><br><span class="line">    <span class="keyword">if</span>(newpa == <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      memmove(newpa, (<span class="keyword">void</span>*)oldpa, PGSIZE);</span><br><span class="line">      *oldpte |= PTE_W;</span><br><span class="line">      *oldpte &amp;= ~PTE_COW;</span><br><span class="line">      uint64 flags = PTE_FLAGS(*oldpte);</span><br><span class="line">      <span class="keyword">pte_t</span> newpte = PA2PTE(newpa);</span><br><span class="line">      *oldpte = newpte | flags;</span><br><span class="line">      kderef((<span class="keyword">void</span>*)oldpa);</span><br><span class="line">      <span class="comment">// kfree((void*)oldpa);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>记录下memcpy和memmove两个函数的区别（在xv6中没有任何区别，memcpy中实际调用的是memmove）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">memcpy</span><span class="params">(<span class="keyword">void</span> *dst, <span class="keyword">const</span> <span class="keyword">void</span> *src, uint n)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">memmove</span><span class="params">(<span class="keyword">void</span> *dst, <span class="keyword">const</span> <span class="keyword">void</span> *src, uint n)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>两个函数都是从src指向的内存地址开始拷贝n个字节到dst指向的内存地址，不同的是memcpy假设两块内存区域没有重叠，而memmove会检测指定内存区域是否重叠从而改变拷贝策略，因此通常memmove的执行速度会比memcpy慢得多</p>
+<p>内存区域重叠：</p>
+<img src="/2022/09/09/mit6.s081-lab5/mem.jpg" alt="mem" style="zoom:80%;">    
+
+<p>从src拷贝到dst的前两个字节会覆盖src的后两个字节，等拷贝到这两个字节时，就会拷贝错误的数据到dst中</p>
+<p>memcpy不会做任何检查，默认从前到后顺序拷贝数据；而memmove会先检查是否存在重叠现象，如果存在则调转拷贝位置，从尾部开始拷贝（或者使用一个临时空间，将src数据拷贝到临时空间，再拷贝到dst中）</p>
+<p>完成lab5</p>
+<p><img src="/2022/09/09/mit6.s081-lab5/result.png" alt="result">        </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/mit6.s081-lab4/" style="float: left;">
+        ← mit6.s081 lab4 - traps
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/mit6.s081-lab6/">
+        mit6.s081 lab6 - thread →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

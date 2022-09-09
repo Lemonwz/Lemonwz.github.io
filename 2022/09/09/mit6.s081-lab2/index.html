@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mit6.s081 lab2 - syscall | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:51:27.898Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>mit6.s081 lab2 - syscall</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="lab-syscall"><a href="#lab-syscall" class="headerlink" title="lab syscall"></a>lab syscall</h1><p>lab2的内容主要是对系统调用的了解和使用，首先需要知道什么是系统调用以及系统调用在xv6中如何使用</p>
+<p><strong>系统调用（system call）</strong>：为了从操作系统中获取服务，用户程序必须通过系统调用以实现从用户态到内核态的切换，主要涉及以下三个步骤：</p>
+<ol>
+<li>操作系统保存被中断的应用程序的上下文</li>
+<li>根据系统调用的编号调用相应的处理程序</li>
+<li>完成系统调用后恢复被中断应用程序的上下文并继续执行</li>
+</ol>
+<p>在xv6中的实现路径为：uservec -&gt; usertrap -&gt; usertrapret -&gt; userret</p>
+<p><strong>(1). uservec：操作系统保存被中断的应用程序的上下文</strong></p>
+<p>这部分的实现需要先了解一些概念：trampoline页、trapframe页和sscratch寄存器。</p>
+<p><strong>trampoline page：</strong></p>
+<p>shell执行ecall指令后会跳转到trampoline page，trampoline page在user page table和kernel page table中的映射是完全一样的（这两个page table中其它的所有映射都是不同的），因此在切换page table时寻址结果不会改变，从而可以确保在同一个代码序列中继续执行程序而不崩溃</p>
+<p><strong>trapframe：</strong></p>
+<p>trapframe page中有32个空槽位用于保存用户寄存器（除此之外还有一些预先设置好的数据），在创建进程时，xv6为进程的trapframe分配一个页面，并且该页面始终映射到位于TRAMPOLINE下方的用户虚拟地址TRAPFRAME，内核可以通过内核页表访问。</p>
+<p>Q：为什么要使用page table中一块新的区域（trapframe page）而不是保存在用户栈中？</p>
+<p>A：因为保存在用户栈中的前提是用户程序有栈且有足够的空间，而有的编程语言没有栈或者有着内核难以理解的栈划分格式，因此如果在操作系统中想要运行任意编程语言实现的用户程序，内核就不能假设内存的哪部分可以访问、哪部分有效，而是要自己管理这些寄存器的保存，这也是为什么内核将这些内容保存在内核空间的trapframe page中而不是用户空间的原因。</p>
+<p><strong>sscratch：</strong></p>
+<p>在进入到用户空间之前，内核会将trapframe page的地址存放在sscratch寄存器中，而在跳转到trampoline page后的第一步，便是执行csrrw指令，这个指令交换了a0和sscratch两个寄存器的内容，此时a0保存的是指向trapframe page的指针，然后将用户寄存器保存在trapframe page中（基于a0+偏移量），最后将原本a0中的值从sscratch中取出存放在trapframe中</p>
+<p><strong>(2). usertrap：根据系统调用的编号调用相应的处理程序</strong></p>
+<p>在完成程序上下文保存后，uservec会将satp切换到kernel page table并调用usertrap函数，usertrap函数检查触发trap的原因，以采取相应的处理方式，具体流程如下：</p>
+<p>​    (2).1. 更改stvec寄存器指向kernelvec变量，以使用kernelvec而不是uservec处理内核中的trap</p>
+<p>​    (2).2. 通过trapframe中的CPU核编号（hartid）找到当前运行的进程，并将当前进程的程序计数器保存在trapframe中，因为usertrap中可能会调用yield来切换到另一个进程的内核线程，从而导致在sepc寄存器中的程序计数器内容被修改或覆盖（在trap发生时，当前运行程序的程序计数器内容被保存在sepc寄存器中）</p>
+<p>​    (2).3. 调用<code>r_scause</code>查看触发trap的原因，如果返回值为8则表明是系统调用</p>
+<p>​    (2).4. sepc中程序计数器保存的是触发trap的指令地址（这里是ecall指令），显然程序应该在恢复运行时执行下一条指令，因此将保存在trapframe中的程序计数器值加4</p>
+<p>​    (2).5. 调用syscall函数根据系统调用编号查找相应的系统调用函数</p>
+<p><strong>syscall：</strong></p>
+<p>在usys.pl中可以看到，shell会先将系统调用的编号写入a7，然后执行ecall指令，因此可以通过trapframe中a7保存的数字来索引系统调用函数，系统调用所需要的第一个、第二个、第三个参数分别保存在trapframe的a0，a1，a2等寄存器中，并将系统调用函数的返回值存放在trapframe的a0中（因为trapframe中a0的值最终会写入实际的a0寄存器，作为返回值）</p>
+<p><strong>(3). usertrapret：处理完trap后返回用户态前的一些操作</strong></p>
+<p>设置stvec寄存器以使用uservec，设置trapframe的内容为下一次切换做准备，设置sepc为先前保存在trapframe中程序计数器的值，计算出trampoline中的userret函数的地址，并使用TRAPFRAME（trapframe的地址）和satp（user page table的地址）作为参数执行userret函数，两个函数参数分别保存在a0和a1寄存器中）</p>
+<p><code>userret - trampoline</code>是userret函数在trampoline page中的偏移量，TRAMPOLINE是trampoline page的起始虚拟地址，二者相加就是userret函数的虚拟地址，通过强制类型转换得到的fn即为userret函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uint64 fn = TRAMPOLINE + (userret - trampoline);</span><br><span class="line">((<span class="keyword">void</span> (*)(uint64,uint64))fn)(TRAPFRAME, satp);</span><br></pre></td></tr></table></figure>
+
+<p><strong>(4). userret：恢复被中断应用程序的上下文并继续执行</strong></p>
+<p>回到trampoline中，恢复并重新执行的流程如下：</p>
+<ol>
+<li>首先从a1寄存器中取出并切换到user page table（由于user page table也映射了trampoline page，因此程序不会崩溃）</li>
+<li>随后将sscratch寄存器值设置为trapframe中（当前a0寄存器保存着trapframe的地址）存的a0寄存器的值</li>
+<li>然后将当前a0寄存器指向的trapframe中先前保存的值加载到实际对应的寄存器中（这些值便是最初用户寄存器中的值）</li>
+<li>最后交换sscratch和当前a0寄存器的内容（此时sscratch中保存的是(3)中设置好的trapframe的地址，而a0寄存器中保存的是系统调用的返回值）</li>
+<li>调用sret指令（切换回user mode，sepc寄存器中的值被copy到PC计数器等等）</li>
+</ol>
+<h2 id="System-call-tracing"><a href="#System-call-tracing" class="headerlink" title="System call tracing"></a>System call tracing</h2><p>这部分需要实现一个系统调用trace，用于追踪当前进程中指定的系统调用（同样也适用于派生的子进程），并在它们执行时输出相关信息。指定的系统调用编号以掩码的形式给出，要求输出所有小于等于该编号的系统调用执行时的进程号、系统调用名称和返回值</p>
+<p>首先需要在用户空间和内核空间中添加该系统调用：</p>
+<ol>
+<li>在user.h中添加trace函数</li>
+<li>在usys.pl中添加系统调用存根</li>
+<li>在syscall.h中添加系统调用编号</li>
+</ol>
+<p>在sysproc.c中创建sys_trace函数作为系统调用trace对应的处理函数，调用argint获取trace的参数（2的x次方，即为系统调用编号x），得到系统调用编号后保存在proc结构体的trace变量中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">sys_trace</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i=<span class="number">0</span>, n;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span> =</span> myproc();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(argint(<span class="number">0</span>, &amp;n) &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">while</span>(n)&#123;</span><br><span class="line">    ++i;</span><br><span class="line">    n/=<span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  p-&gt;trace = i<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改syscall函数，从trapframe的a7寄存器中取出当前系统调用编号，如果小于等于之前存放在proc-&gt;trace中的编号，则表明该系统调用应该被追踪，输出系统调用的相关信息（这里需要建立一个系统调用编号-&gt;名称的映射）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">syscall</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> num;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span> =</span> myproc();</span><br><span class="line"></span><br><span class="line">  num = p-&gt;trapframe-&gt;a7;</span><br><span class="line">  <span class="keyword">if</span>(num &gt; <span class="number">0</span> &amp;&amp; num &lt; NELEM(syscalls) &amp;&amp; syscalls[num]) &#123;</span><br><span class="line">    p-&gt;trapframe-&gt;a0 = syscalls[num]();</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= p-&gt;trace)&#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%d: syscall %s -&gt; %d\n&quot;</span>, p-&gt;pid, names[num], p-&gt;trapframe-&gt;a0);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %s: unknown sys call %d\n&quot;</span>,</span><br><span class="line">            p-&gt;pid, p-&gt;name, num);</span><br><span class="line">    p-&gt;trapframe-&gt;a0 = <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Sysinfo"><a href="#Sysinfo" class="headerlink" title="Sysinfo"></a>Sysinfo</h2><p>这部分要求实现系统调用sysinfo，用于获取当前系统的状态信息（空闲内存字节数和运行中进程数），和trace一样，需要先将系统调用添加到用户空间和内核空间中，随后构造两个函数分别用于获取空闲字节数和进程数，最后返回sysinfo结构体</p>
+<p>在sysproc.c中创建sys_sysinfo函数作为系统调用sysinfo对应的处理函数，在sysinfotest.c中调用sysinfo函数时传入了一个结构体指针，这里调用argaddr获取这个地址，并通过copyout函数将构造好的sysinfo复制到这个地址上</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">sys_sysinfo</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  uint64 addr;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sysinfo</span> <span class="title">info</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span> =</span> myproc();</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(argaddr(<span class="number">0</span>, &amp;addr)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  info.freemem = kcount();</span><br><span class="line">  info.nproc = procnum();</span><br><span class="line">  <span class="keyword">if</span>(copyout(p-&gt;pagetable, addr, (<span class="keyword">char</span> *)&amp;info, <span class="keyword">sizeof</span>(info)) &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>kcout函数返回空闲内存字节数，遍历空闲链表即可，每个块都是4096比特</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">kcount</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  uint64 <span class="built_in">free</span>=<span class="number">0</span>;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">run</span> *<span class="title">r</span> =</span> kmem.freelist;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(r)&#123;</span><br><span class="line">    <span class="built_in">free</span> += PGSIZE;</span><br><span class="line">    r=r-&gt;next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">free</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>procnum函数返回系统中运行的进程数量，系统中维护了一个包含所有进程的数组，统计该数组中状态不为UNUSED的进程即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">procnum</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  uint64 n=<span class="number">0</span>;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(p = proc; p&lt;&amp;proc[NPROC]; p++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;state == UNUSED)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    n++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成lab2</p>
+<p><img src="/2022/09/09/mit6.s081-lab2/result.png" alt="result">    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/mit6.s081-lab9/" style="float: left;">
+        ← mit6.s081 lab9 - fs
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/mit6.s081-lab1/">
+        mit6.s081 lab1 - util →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

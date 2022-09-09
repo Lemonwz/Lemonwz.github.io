@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mit6.s081 lab9 - fs | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>mit6.s081 lab9 - fs</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="lab-fs"><a href="#lab-fs" class="headerlink" title="lab fs"></a>lab fs</h1><p>这部分实验主要关注文件系统，要求实现对大文件的支持以及符号链接（软链接），实验整体不难，但需要一定的前置知识以及对xv6文件系统的充分理解</p>
+<p><strong>文件系统概述：</strong></p>
+<p>xv6文件系统的结构可以通过分层来理解，如下图所示：</p>
+<p>第1层 - Disk：磁盘设备，提供对数据的持久化存储</p>
+<p>第2层 - Buffer Cache：缓存磁盘块，避免频繁的读写磁盘，并提供对磁盘块访问的并发控制</p>
+<p>第3层 - Logging：将上层对磁盘块数据的更新打包成一个事务，并确保事务的原子性</p>
+<p>第4层 - Inode：包含文件相关信息和数据块编号列表的磁盘数据结构，由inode编号唯一标识</p>
+<p>第5层 - Directory：目录可以视为一个特殊的inode对象，包含一系列目录项，目录项由文件名和inode编号组成</p>
+<p>第6层 - Pathname：提供分层路径名，并通过递归查找逐层解析路径名</p>
+<p>第7层 - File Descriptor：文件描述符，向上层提供使用文件系统的接口</p>
+<p><img src="/2022/09/09/mit6.s081-lab9/fs.png" alt="fs">        </p>
+<p>磁盘可以视为一个block数组，xv6中block大小为1024字节，在xv6中的分布如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Disk layout:</span></span><br><span class="line"><span class="comment">// [ boot block | super block | log | inode blocks | free bit map | data blocks ]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>block0通常用于启动操作系统，但在xv6中并没有使用</li>
+<li>block1称为super block，由名为mkfs的程序单独填充，用于构建一个初始文件系统</li>
+<li>block2-block31用于存放log，任何操作都是先写到log，再写入实际block中</li>
+<li>block32-block44用于存放inode，按照inode编号连续排列，1个block中可以存放16个inode（inode大小为16字节）</li>
+<li>随后是<code>FSSIZE/(BSIZE*8) + 1</code>个bitmap block，以位图的方式记录数据block是否被使用</li>
+<li>后面的block全是数据block，存放文件和目录的数据内容</li>
+</ul>
+<p><strong>Inode：</strong></p>
+<p>inode分为on-disk inode和in-memory inode，in-memory inode由on-disk inode的一个副本和一些内核需要的额外信息构成，on-disk inode的结构如下：</p>
+<ul>
+<li>type字段区分文件、目录、设备和符号链接四种inode，type为0表示inode空闲</li>
+<li>nlink字段表示当前引用该inode的目录条目数量，nlink为0时才可以释放inode</li>
+<li>size字段记录文件数据的字节数</li>
+<li>addrs数组记录保存文件内容的磁盘块的块号，xv6的addrs数组中存放了13个磁盘块号，前12个称为direct block number，这12个磁盘块号直接指向构成文件的前12个block；最后一个称为indirect block number，对应磁盘上的一个block，这个block中又包含了256个磁盘块号，这256个磁盘块号才指向文件的数据内容</li>
+</ul>
+<p><strong>目录：</strong></p>
+<p>目录的实现和文件类似，它的inode类型为T_DIR，其数据内容是一个目录条目序列，每个条目由文件的inode编号和文件名称组成</p>
+<p><strong>Logging：</strong></p>
+<p>借鉴数据库的日志机制，通过日志记录解决文件系统运行期间的崩溃问题，logging将磁盘分为两部分，一部分是日志log，另一部分是文件系统（通常文件系统比日志要大得多），对文件系统的更新操作并不会直接写入磁盘数据结构，而是在log中记录这些操作，当一次更新的所有操作都记录在log中后，提交这些操作（写入到真正的文件系统）并设置log header中的n为未提交操作数量，提交完成后将n值设为0</p>
+<p>日志机制如何解决文件系统运行时的崩溃问题？</p>
+<p>文件系统恢复时会检查磁盘中log header的n值：</p>
+<ul>
+<li>如果崩溃发生在log提交之前，恢复程序无法在磁盘中读到log header，此时文件系统什么也不做，磁盘状态就像没有任何操作发生一样</li>
+<li>如果崩溃发生在log提交时（或提交完成后，清除n值之前），此时如果读到的n值不为0，则文件系统将重放所有更新操作</li>
+</ul>
+<p><strong>xv6中logging的实现：</strong></p>
+<ol>
+<li>调用begin_op函数开启一个事务</li>
+<li>对磁盘块的更新操作实际上是写入磁盘块的块缓存中（并不会写入到实际的block），写入时会调用log_write函数，将对应磁盘块的编号记录在log header中，并调用bpin函数将这个磁盘块固定在块缓存中，以防止磁盘块缓存在commit之前被替换（替换时会将块缓存中的数据更新写入磁盘，若此时文件系统崩溃，则破坏了事务的原子性，即磁盘部分更新）</li>
+<li>事务完成后，调用end_op函数（end_op中会调用commit函数）</li>
+<li>commit函数实现了两个操作：<ul>
+<li>首先调用write_log函数，取出存放在log header中的磁盘块编号，将对应的磁盘块（更新后的）从块缓存中拷贝到log中，最后将log写回磁盘（确保更新后的block都记录在log中，此时如果文件系统崩溃，恢复后将什么也不做）</li>
+<li>调用write_head函数，将内存中的log header写回到磁盘中，一旦写回磁盘操作完成，那么当前事务就可以视作完成了，这之后如果文件系统崩溃，恢复程序可以从磁盘的log header中得知事务是否完整，来决定是否</li>
+<li>最后调用install_trans函数，读取log block中存放的更新后的block，读取log header查看该block属于哪个文件系统哪个磁盘块，最后将log block拷贝到文件系统相应的位置，最后将log header中的n设置为0，再将log header写回磁盘</li>
+</ul>
+</li>
+</ol>
+<h2 id="Large-files"><a href="#Large-files" class="headerlink" title="Large files"></a>Large files</h2><p>这部分实验要求实现xv6文件系统对大文件的支持，原本xv6文件系统中一个inode包含268个block number（12+256），最大文件长度为256 * 1024字节，即268KB。借鉴多级页表的思想，这里可以构建一个多级块编号数组，即一个indirect block number指向一个block，这个block中包含256个indirect block number，这256个中的每一个又指向包含256个block number的block，从而使得文件最大长度扩展为256 * 256 * 1024字节</p>
+<p><strong>具体实现：</strong></p>
+<p>实验要求inode的addrs数组前11个元素存放direct block number，第12个存放singly-indirect block number，第13个存放doubly-indirect block number，文件的最大长度为(11 + 256 + 256 * 256)  * 1024字节</p>
+<p>修改struct dinode和struct inode结构体的定义，direct block number数量减1（12-&gt;11），在addrs数组中腾出一个空间给doubly-indirect block number，宏定义NSINDIRECT表示singly-indirect block中的block数量，NDINDIRECT表示doubly-indirect block中的block数量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NDIRECT 11</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NSINDIRECT (BSIZE / sizeof(uint))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NDINDIRECT (NSINDIRECT * NSINDIRECT)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NINDIRECT (NSINDIRECT + NDINDIRECT)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXFILE (NDIRECT + NINDIRECT)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXDEPTH 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// On-disk inode structure</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dinode</span> &#123;</span></span><br><span class="line">  <span class="keyword">short</span> type;           <span class="comment">// File type</span></span><br><span class="line">  <span class="keyword">short</span> major;          <span class="comment">// Major device number (T_DEVICE only)</span></span><br><span class="line">  <span class="keyword">short</span> minor;          <span class="comment">// Minor device number (T_DEVICE only)</span></span><br><span class="line">  <span class="keyword">short</span> nlink;          <span class="comment">// Number of links to inode in file system</span></span><br><span class="line">  uint size;            <span class="comment">// Size of file (bytes)</span></span><br><span class="line">  uint addrs[NDIRECT+<span class="number">2</span>];   <span class="comment">// Data block addresses</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in-memory copy of an inode</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">inode</span> &#123;</span></span><br><span class="line">  uint dev;           <span class="comment">// Device number</span></span><br><span class="line">  uint inum;          <span class="comment">// Inode number</span></span><br><span class="line">  <span class="keyword">int</span> ref;            <span class="comment">// Reference count</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sleeplock</span> <span class="title">lock</span>;</span> <span class="comment">// protects everything below here</span></span><br><span class="line">  <span class="keyword">int</span> valid;          <span class="comment">// inode has been read from disk?</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">short</span> type;         <span class="comment">// copy of disk inode</span></span><br><span class="line">  <span class="keyword">short</span> major;</span><br><span class="line">  <span class="keyword">short</span> minor;</span><br><span class="line">  <span class="keyword">short</span> nlink;</span><br><span class="line">  uint size;</span><br><span class="line">  uint addrs[NDIRECT+<span class="number">2</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>bmap函数查找指定inode中第bn个block的磁盘地址，根据参数bn的大小，代码可以分为3个部分：</p>
+<ol>
+<li>如果bn小于NDIRECT，通过direct block number查找地址返回即可，否则bn的值减去NDIRECT</li>
+<li>如果bn小于NSINDIRECT，则说明查找的磁盘块是singly-indirect block中的第bn个磁盘块，否则bn的值减去NSINDIRECT</li>
+<li>如果bn小于NDINDIRECT，则说明查找的磁盘块是doubly-indirect block中的第bn个磁盘块，查找流程如下：<ol>
+<li>从addrs数组中获取doubly-indirect block number，如果为0，则调用balloc函数分配</li>
+<li>调用bread函数获取doubly-indirect block的块缓存bp，bp的data字段包含256个singly-indirect block number</li>
+<li>从bp的data字段中获取第bn / NSINDIRECT个singly-indirect block number，如果为0，则调用balloc函数分配，并调用log_write函数记录对data字段的修改</li>
+<li>解除对块缓存bp的引用，调用bread函数读取刚才获取的块编号对应的块缓存bp2，bp2的data字段包含256个block address</li>
+<li>从bp2的data字段中获取第bn%NSINDIRECT个block的磁盘地址addr，如果为0，则调用balloc函数分配，并调用log_write函数记录更新</li>
+<li>addr即为查找block的磁盘地址，返回即可</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> uint</span></span><br><span class="line"><span class="function"><span class="title">bmap</span><span class="params">(struct inode *ip, uint bn)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  uint addr, *a;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">buf</span> *<span class="title">bp</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(bn &lt; NDIRECT)&#123;</span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[bn]) == <span class="number">0</span>)</span><br><span class="line">      ip-&gt;addrs[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br><span class="line">  bn -= NDIRECT;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(bn &lt; NSINDIRECT)&#123;</span><br><span class="line">    <span class="comment">// Load singly-indirect block, allocating if necessary.</span></span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT]) == <span class="number">0</span>)</span><br><span class="line">      ip-&gt;addrs[NDIRECT] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    bp = bread(ip-&gt;dev, addr);</span><br><span class="line">    a = (uint*)bp-&gt;data;</span><br><span class="line">    <span class="keyword">if</span>((addr = a[bn]) == <span class="number">0</span>)&#123;</span><br><span class="line">      a[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">      log_write(bp);</span><br><span class="line">    &#125;</span><br><span class="line">    brelse(bp);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br><span class="line">  bn -= NSINDIRECT;</span><br><span class="line"></span><br><span class="line">  uint offset, *a2;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">buf</span> *<span class="title">bp2</span>;</span></span><br><span class="line">  <span class="keyword">if</span>(bn &lt; NDINDIRECT)&#123;</span><br><span class="line">    <span class="comment">// Load doubly-indirect block, allocating if necessary</span></span><br><span class="line">    <span class="keyword">if</span>((addr = ip-&gt;addrs[NDIRECT+<span class="number">1</span>]) == <span class="number">0</span>)</span><br><span class="line">      ip-&gt;addrs[NDIRECT+<span class="number">1</span>] = addr = balloc(ip-&gt;dev);</span><br><span class="line">    bp = bread(ip-&gt;dev, addr);</span><br><span class="line">    a = (uint*)bp-&gt;data;</span><br><span class="line">    offset = bn / NSINDIRECT;</span><br><span class="line">    <span class="keyword">if</span>((addr = a[offset]) == <span class="number">0</span>)&#123;</span><br><span class="line">       a[offset] = addr = balloc(ip-&gt;dev);</span><br><span class="line">      log_write(bp);</span><br><span class="line">    &#125;</span><br><span class="line">    brelse(bp);</span><br><span class="line">    bp2 = bread(ip-&gt;dev, addr);</span><br><span class="line">    a2 = (uint*)bp2-&gt;data;</span><br><span class="line">    bn %= NSINDIRECT;</span><br><span class="line">    <span class="keyword">if</span>((addr = a2[bn]) == <span class="number">0</span>)&#123;</span><br><span class="line">      a2[bn] = addr = balloc(ip-&gt;dev);</span><br><span class="line">      log_write(bp2);</span><br><span class="line">    &#125;</span><br><span class="line">    brelse(bp2);</span><br><span class="line">    <span class="keyword">return</span> addr;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  panic(<span class="string">&quot;bmap: out of range&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Symbolic-links"><a href="#Symbolic-links" class="headerlink" title="Symbolic links"></a>Symbolic links</h2><p>这部分要求实现xv6文件系统对符号链接（软链接）的支持</p>
+<p><strong>硬链接：</strong></p>
+<p>硬链接相当于文件的一个副本，本质上是两个或多个文件共用一个inode（inode的更新会同步到所有链接了该inode的文件），每创建一个硬链接，对应inode上的链接数就加1。一般来说不允许创建目录的硬链接，不能跨文件系统（分区）创建硬链接（因为无法唯一标识inode）</p>
+<p><strong>符号链接（软链接）：</strong></p>
+<p>符号链接相当于对另一个文件/目录的引用，创建文件的符号链接时会使用一个新的inode，inode中存放另一个文件的路径（如果源文件不存在了，符号链接也就失效了）。符号链接不存在对文件系统和分区的限制</p>
+<p><strong>具体实现：</strong></p>
+<p>在usys.pl、user.h、syscall.h、syscall.c、sysfile.c中添加并创建系统调用symlink，系统调用symlink实现如下：</p>
+<ol>
+<li>sys_symlink中通过argstr函数获取用户程序指定的待链接文件路径new和目标链接文件路径old</li>
+<li>调用begin_op函数开启一个事务</li>
+<li>调用create函数创建文件路径new的inode，类型为T_SYMLINK（返回的inode是已上锁的）</li>
+<li>调用writei函数将目标链接文件路径old写入inode的boot block（xv6中没有使用这个block）</li>
+<li>解除对inode的引用，提交事务</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">sys_symlink</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> old[MAXPATH], <span class="keyword">new</span>[MAXPATH];</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">inode</span> *<span class="title">ip</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(argstr(<span class="number">0</span>, old, MAXPATH) &lt; <span class="number">0</span> || argstr(<span class="number">1</span>, <span class="keyword">new</span>, MAXPATH) &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  begin_op();</span><br><span class="line">  ip = create(<span class="keyword">new</span>, T_SYMLINK, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span>(ip == <span class="number">0</span>)&#123;</span><br><span class="line">    end_op();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>((writei(ip, <span class="number">0</span>, (uint64)old, <span class="number">0</span>, <span class="keyword">sizeof</span>(old)) &lt; <span class="number">0</span>))&#123;</span><br><span class="line">    end_op();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  iunlockput(ip);</span><br><span class="line">  end_op();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改sys_open函数以支持打开T_SYMLINK类型的文件，大致流程如下：</p>
+<ol>
+<li>调用namei函数找到文件路径path对应的inode</li>
+<li>如果inode类型不是T_SYMLINK或设置了<code>O_NOFOLLOW</code>位，直接返回inode即可</li>
+<li>如果depth等于MAXDEPTH，则返回错误（到达递归次数上限）</li>
+<li>调用readi函数从inode的boot block中存放的文件路径写入path</li>
+<li>递归调用symlink函数</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">uint64</span></span><br><span class="line"><span class="function"><span class="title">sys_open</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> path[MAXPATH];</span><br><span class="line">  <span class="keyword">int</span> fd, omode;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">file</span> *<span class="title">f</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">inode</span> *<span class="title">ip</span>;</span></span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>((n = argstr(<span class="number">0</span>, path, MAXPATH)) &lt; <span class="number">0</span> || argint(<span class="number">1</span>, &amp;omode) &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  begin_op();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(omode &amp; O_CREATE)&#123;</span><br><span class="line">    ip = create(path, T_FILE, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(ip == <span class="number">0</span>)&#123;</span><br><span class="line">      end_op();</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>((ip = symlink(path, omode, <span class="number">0</span>)) == <span class="number">0</span>)&#123;</span><br><span class="line">      end_op();</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ip-&gt;type == T_DIR &amp;&amp; omode != O_RDONLY)&#123;</span><br><span class="line">      iunlockput(ip);</span><br><span class="line">      end_op();</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> struct inode*</span></span><br><span class="line"><span class="function"><span class="title">symlink</span><span class="params">(<span class="keyword">char</span> *path, <span class="keyword">int</span> omode, <span class="keyword">int</span> depth)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">inode</span> *<span class="title">ip</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>((ip = namei(path)) == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  ilock(ip);</span><br><span class="line">  <span class="keyword">if</span>(ip-&gt;type != T_SYMLINK || omode &amp; O_NOFOLLOW)</span><br><span class="line">    <span class="keyword">return</span> ip;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(depth == MAXDEPTH)&#123;</span><br><span class="line">    iunlockput(ip);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(readi(ip, <span class="number">0</span>, (uint64)path, <span class="number">0</span>, MAXPATH) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    iunlockput(ip);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  iunlockput(ip);</span><br><span class="line">  <span class="keyword">return</span> symlink(path, omode, ++depth);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成lab9</p>
+<p><img src="/2022/09/09/mit6.s081-lab9/result.png" alt="result">    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/mit6.s081-lab6/" style="float: left;">
+        ← mit6.s081 lab6 - thread
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/mit6.s081-lab2/">
+        mit6.s081 lab2 - syscall →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mit6.s081 lab6 - thread | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:51:27.910Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>mit6.s081 lab6 - thread</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="lab-thread"><a href="#lab-thread" class="headerlink" title="lab thread"></a>lab thread</h1><p>这部分实验要求实现多线程的并行运行，有两种实现方法：</p>
+<ol>
+<li>单个CPU在多个线程之间来回切换，从而营造出多个线程并行运行的假象</li>
+<li>在多核处理器上使用多个CPU，每个CPU都可以运行一个线程</li>
+</ol>
+<p>通常在实际使用中将上述两种策略相结合，因为线程数往往远大于CPU核数，线程会运行在所有可用的CPU核上，每个CPU核会在多个线程之间切换</p>
+<p>xv6中每个用户进程都有一个内核线程来执行来自用户进程的系统调用，这些内核线程共享内核内存，并且进程切换首先会进入到内核，从第一个进程的内核线程切换到第二个进程的内核线程，再返回到用户空间的第二个进程；不同用户进程的用户线程间不会共享内存（xv6不支持一个进程多个线程）</p>
+<p><strong>线程切换</strong></p>
+<p>实验的第一部分要求实现用户层面的线程切换，从一个线程切换到另一个线程，显然需要保存当前线程的状态并恢复待切换线程的状态，那么就需要知道哪些数据是必须要保存的，以及保存在哪里</p>
+<p>线程会保存下图Saver值为Callee的寄存器以及ra寄存器，保存在用户线程的context对象中；ra寄存器中保存的是函数调用的返回地址（完成调度后线程从该地址开始运行），sp寄存器保存的是线程栈地址</p>
+<img src="/2022/09/09/mit6.s081-lab6/registers.png" alt="registers" style="zoom:80%;">    
+
+<p>在本次实验中，线程有三种可能的状态：RUNNING、RUNNABLE和FREE，分别表示正在运行，等待运行和未使用，这里重点关注处于正在运行和等待运行状态的线程：</p>
+<p>（1）RUNNING STATE</p>
+<p>线程切换其实就是将一个RUNNING线程转换成一个RUNNABLE线程，对于RUNNING状态下的线程，它的Callee寄存器数据位于运行它的CPU硬件中，调度时需要将这部分数据保存在该线程的context中</p>
+<p>（2）RUNNABLE STATE</p>
+<p>而对于RUNNABLE状态下的线程，调度时需要将保存在其context中的寄存器数据拷贝回运行它的CPU中</p>
+<h2 id="Uthread-switching-between-threads"><a href="#Uthread-switching-between-threads" class="headerlink" title="Uthread: switching between threads"></a>Uthread: switching between threads</h2><p>这部分实验要求补充<code>thread_schedule</code>和<code>thread_create</code>函数，以及<code>uthread_switch.S</code>中的汇编代码以完成用户级线程的切换</p>
+<p>在<code>thread_schedule</code>函数中，先查找当前有没有等待运行的线程（这里的<code>next_thread</code>），更改其状态为RUNNING（当前运行线程在调用<code>thread_schedule</code>时会将其状态修改为RUNNABLE），调用<code>thread_switch</code>函数，当前进程和待调度进程的context作为参数（存放在a0和a1寄存器中）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// code in thread_schedule()</span></span><br><span class="line"><span class="keyword">if</span> (current_thread != next_thread) &#123;         <span class="comment">/* switch threads?  */</span></span><br><span class="line">    next_thread-&gt;state = RUNNING;</span><br><span class="line">    t = current_thread;</span><br><span class="line">    current_thread = next_thread;</span><br><span class="line">    thread_switch((uint64)&amp;t-&gt;context, (uint64)&amp;current_thread-&gt;context);</span><br><span class="line">  &#125; <span class="keyword">else</span></span><br><span class="line">    next_thread = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>thread_create</code>函数中，如果当前还有线程未使用（状态为FREE），则更改其状态为RUNNABLE，设置ra寄存器值为给定的函数地址，这样调度该线程时就会执行指定函数；设置sp寄存器为其栈空间的最大地址（栈是向下增长的）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">thread_create(<span class="keyword">void</span> (*func)())</span><br><span class="line">&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">thread</span> *<span class="title">t</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">context</span> *<span class="title">c</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (t = all_thread; t &lt; all_thread + MAX_THREAD; t++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (t-&gt;state == FREE) <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  t-&gt;state = RUNNABLE;</span><br><span class="line">  c = &amp;t-&gt;context;</span><br><span class="line">  c-&gt;ra = (uint64)func;</span><br><span class="line">  c-&gt;sp = (uint64)&amp;t-&gt;<span class="built_in">stack</span> + STACK_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>thread_switch</code>函数中，将当前线程的Callee saved寄存器数据拷贝到context中（第一个参数保存在a0寄存器中），从待调度线程的context（第二个参数保存在a1寄存器中）中取出寄存器数据并拷贝到CPU中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">thread_switch:</span><br><span class="line"></span><br><span class="line">	# save old thread registers in its context</span><br><span class="line">	sd ra, 0(a0)</span><br><span class="line">	sd sp, 8(a0)</span><br><span class="line">	sd s0, 16(a0)</span><br><span class="line">	sd s1, 24(a0)</span><br><span class="line">	sd s2, 32(a0)</span><br><span class="line">	sd s3, 40(a0)</span><br><span class="line">	sd s4, 48(a0)</span><br><span class="line">	sd s5, 56(a0)</span><br><span class="line">	sd s6, 64(a0)</span><br><span class="line">	sd s7, 72(a0)</span><br><span class="line">	sd s8, 80(a0)</span><br><span class="line">	sd s9, 88(a0)</span><br><span class="line">	sd s10, 96(a0)</span><br><span class="line">	sd s11, 104(a0)</span><br><span class="line">	</span><br><span class="line">	# restore new thread registers from its context</span><br><span class="line">	ld ra, 0(a1)</span><br><span class="line">	ld sp, 8(a1)</span><br><span class="line">	ld s0, 16(a1)</span><br><span class="line">	ld s1, 24(a1)</span><br><span class="line">	ld s2, 32(a1)</span><br><span class="line">	ld s3, 40(a1)</span><br><span class="line">	ld s4, 48(a1)</span><br><span class="line">	ld s5, 56(a1)</span><br><span class="line">	ld s6, 64(a1)</span><br><span class="line">	ld s7, 72(a1)</span><br><span class="line">	ld s8, 80(a1)</span><br><span class="line">	ld s9, 88(a1)</span><br><span class="line">	ld s10, 96(a1)</span><br><span class="line">	ld s11, 104(a1)</span><br><span class="line">	</span><br><span class="line">	# return to ra</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+
+<h2 id="Using-threads"><a href="#Using-threads" class="headerlink" title="Using threads"></a>Using threads</h2><p>这部分实验主要处理多线程并行运行所导致的竞争问题</p>
+<p>首先需要了解一下<code>ph.c</code>中的代码在干什么：<code>ph.c</code>中构造了一个哈希表，采用的是数组+链表形式，数组中的每个元素都是一个链表，这里一共有5个链表，通过key除以5取余来索引；调用<code>ph.c</code>时在命令行指定并行的线程数，每个线程向哈希表中写入10万个键值对（key从0-99999递增，value取随机数），记录时间计算写入速率；随后每个线程从哈希表中取出10万个键值对（key从0-99999，应该都能在表中找到），计算丢失键的数量，记录时间计算读取速率</p>
+<p>单线程运行<code>ph.c</code>，没有key丢失；双线程运行<code>ph.c</code>，速度近乎翻倍，但有较多的key丢失</p>
+<p>Q: Why are there missing keys with 2 threads, but not with 1 thread? Identify a sequence of events with 2 threads that can lead to a key being missing.</p>
+<p>A：进程中的多个线程是共享内存的, 两个线程对同一个bucket执行insert操作, 在线程A获取表头head后, 完成插入前, 线程B完成了对bucket的insert(在head之前插入了一个新的entry), 那么此时A获取到的表头head就应该是过时的, 但线程A插入entry并设置entry-&gt;next = head, 从而导致线程B插入的entry丢失. 其实就是线程并行运行所导致的竞争问题</p>
+<p>为了解决多线程并行运行导致的竞争问题，需要定义互斥锁来协调对共享数据的更新，以确保数据的一致性。并不是所有的读写操作都会出现冲突，只有对同一个bucket的写操作会导致竞争，因此可以选择让每个bucket持有一个锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">entry</span> *<span class="title">ent</span>;</span></span><br><span class="line">  <span class="keyword">pthread_mutex_t</span> lock;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> <span class="title">table</span>[<span class="title">NBUCKET</span>];</span></span><br></pre></td></tr></table></figure>
+
+<p>在main函数中调用<code>pthread_mutex_init</code>函数初始化互斥锁</p>
+<p>在put函数中向散列得到的bucket写入数据时获取该bucket的锁，并在写入完成后释放锁，这样对不同bucket的写入操作是互不冲突的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// code in main()</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;NBUCKET; i++) &#123;</span><br><span class="line">   assert(pthread_mutex_init(&amp;table[i].lock, <span class="literal">NULL</span>) == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// code in put()</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">entry</span> *<span class="title">e</span> =</span> <span class="number">0</span>;</span><br><span class="line">pthread_mutex_lock(&amp;table[i].lock);</span><br><span class="line"><span class="keyword">for</span> (e = table[i].ent; e != <span class="number">0</span>; e = e-&gt;next) &#123;</span><br><span class="line">  <span class="keyword">if</span> (e-&gt;key == key)</span><br><span class="line">   	<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(e)&#123;</span><br><span class="line">  <span class="comment">// update the existing key.</span></span><br><span class="line">  e-&gt;value = value;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// the key is new.</span></span><br><span class="line">  insert(key, value, &amp;table[i].ent, table[i].ent);</span><br><span class="line">&#125;</span><br><span class="line">pthread_mutex_unlock(&amp;table[i].lock);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Barrier"><a href="#Barrier" class="headerlink" title="Barrier"></a>Barrier</h2><p>这部分实验要求实现barrier屏障，用于一组线程同步，通过在每个阶段的结尾安置屏障，当一个线程到达屏障时，它会被屏障阻拦，直到所有线程都到达该屏障为止；阻拦通过条件变量来实现，如果不是最后一个到达该屏障的线程，则会调用wait函数阻塞在该条件变量上，所有线程都到达后，最后一个线程调用broadcast函数唤醒所有阻塞在该条件变量上的线程</p>
+<p><code>barrier</code>结构体包含了互斥锁和条件变量，到达当前屏障的线程数<code>nthread</code>以及当前轮次<code>round</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">barrier</span> &#123;</span></span><br><span class="line">  <span class="keyword">pthread_mutex_t</span> barrier_mutex;</span><br><span class="line">  <span class="keyword">pthread_cond_t</span> barrier_cond;</span><br><span class="line">  <span class="keyword">int</span> nthread;      <span class="comment">// Number of threads that have reached this round of the barrier</span></span><br><span class="line">  <span class="keyword">int</span> round;     <span class="comment">// Barrier round</span></span><br><span class="line">&#125; bstate;</span><br></pre></td></tr></table></figure>
+
+<p>线程到达屏障时，调用<code>barrier</code>函数，先获取<code>bstate</code>的锁，因为涉及值的修改，线程计数<code>nthread</code>加1，如果当前线程是最后一个到达的线程，则轮次<code>round</code>加1，线程计数<code>nthread</code>重置为0，调用<code>pthread_cond_broadcast</code>函数唤醒阻塞在条件变量上的线程；如果不是最后一个到达的线程，则调用<code>pthread_cond_wait</code>函数阻塞在条件变量上，此时会自动释放已获取的互斥锁，在<code>pthread_cond_wait</code>函数返回后会自动尝试获取互斥锁，这里需要将这个获取到的锁释放掉，否则会导致死锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> </span></span><br><span class="line"><span class="function"><span class="title">barrier</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  pthread_mutex_lock(&amp;bstate.barrier_mutex);</span><br><span class="line">  bstate.nthread++;</span><br><span class="line">  <span class="keyword">if</span>(bstate.nthread == nthread)&#123;</span><br><span class="line">    bstate.round++;</span><br><span class="line">    bstate.nthread = <span class="number">0</span>;</span><br><span class="line">    assert(pthread_mutex_unlock(&amp;bstate.barrier_mutex) == <span class="number">0</span>);</span><br><span class="line">    assert(pthread_cond_broadcast(&amp;bstate.barrier_cond) == <span class="number">0</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    assert(pthread_cond_wait(&amp;bstate.barrier_cond, &amp;bstate.barrier_mutex) == <span class="number">0</span>);</span><br><span class="line">    assert(pthread_mutex_unlock(&amp;bstate.barrier_mutex) == <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成lab7</p>
+<p><img src="/2022/09/09/mit6.s081-lab6/result.png" alt="result">    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/mit6.s081-lab5/" style="float: left;">
+        ← mit6.s081 lab5 - cow
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/mit6.s081-lab9/">
+        mit6.s081 lab9 - fs →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
