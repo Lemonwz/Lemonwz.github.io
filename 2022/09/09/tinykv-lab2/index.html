@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>pingcap tinykv lab2 - RaftKV | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:40:00.626Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>pingcap tinykv lab2 - RaftKV</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="2-RaftKV"><a href="#2-RaftKV" class="headerlink" title="2. RaftKV"></a>2. RaftKV</h1><p>Project2 要求基于Raft算法实现一个高可用的kv服务器，主要分为三个部分：实现一个基础的raft算法、基于raft算法搭建一个高可用的kv服务器并在此基础上提供日志回收和快照功能。</p>
+<h2 id="2-1-Basic-Raft-Algorithm"><a href="#2-1-Basic-Raft-Algorithm" class="headerlink" title="2.1 Basic Raft Algorithm"></a>2.1 Basic Raft Algorithm</h2><p>这一部分的实现遵照raft论文并参考了部分etcd-raft的架构，遵循raft论文中的要求和规定可以确保算法的正确性和鲁棒性，而参考etcd的架构可以在后续debug时减少很多痛苦，确实也避免了很多在后续lab中才会出现的bug, 以至于在后续修改代码时不至于牵一发而动全身，甚至重构代码:(</p>
+<h3 id="2-1-1-Leader-Election"><a href="#2-1-1-Leader-Election" class="headerlink" title="2.1.1 Leader Election"></a>2.1.1 Leader Election</h3><p>leader和follower之间通过heartbeat保持通信，leader需要定期（heartbeat timeout）向其所有follower广播heartbeat以表明自己是leader，而follower在收到来自leader的消息后会保持follower状态不变，若follower在一定时间间隔内（election timeout）没有收到来自leader的消息，那么它会认为当前没有leader存在，从而转变为candidate并发起新的选主</p>
+<p><strong>实现思路：</strong></p>
+<p><code>raft.tick()</code>方法驱动follower发起新的选主或leader广播heartbeat；candidate发起选主后会向其它节点发送投票请求voteMsg，每个节点在收到投票请求后会根据自身情况作出投票选择并回复voterespMsg，当candidate收到来自大多数节点的选票时，成为leader，并立即广播heartbeat</p>
+<p><strong>具体实现：</strong></p>
+<p><code>raft.tick()</code>：</p>
+<p>tinykv中采用逻辑时钟而不是物理时钟来保证节点间交互顺序的一致，原因大概是在真正的分布式环境下，不同节点cpu的物理时钟难以保持一致，且分布式环境下真正重要的是节点间要在交互事件发生的顺序上保持一致，而不是和实际时间保持一致，因此逻辑时钟会是更好的选择</p>
+<p>tick-滴答，可以理解为逻辑时钟的一次摆动，上层会定期（通过ticker定时器，时间间隔为1s）调用<code>raft.tick</code>方法来驱动逻辑时钟，raft中<code>heartbeatElapsed</code>变量记录leader自上次广播heartbeat以来的tick次数，<code>electionElapsed</code>变量记录follower自上次收到leader信息以来的tick次数，<code>tick</code>方法除了增加以上两个变量的值外还需要作心跳超时/选举超时的逻辑判断，若出现心跳超时/选举超时（tick次数超过了预先设定的值），则发送对应的<code>msgBeat</code>/<code>msgHup</code>通知leader广播心跳/follower发起选举（<code>msgBeat</code>和<code>msgHup</code>均为内部消息，因此不需要放入msgs数组，直接调用<code>Step</code>方法处理即可）</p>
+<p><code>becomeLeader()</code> / <code>becomeCandidate()</code> / <code>becomeFollower(term, lead)</code>：</p>
+<p>三个方法的实现大同小异，都需要设置<code>state</code>，重置<code>ElectionTimeout</code>，重置<code>electionElapsed</code>/<code>heartbeatElapsed</code>，重置投票数组等等。区别在于follower需要根据传入的term和lead参数更新自己的term和lead值，candidate需要自增term并给自己投票，leader则需要添加并广播一个空的entry以确保自己的日志是最新的</p>
+<p>需要注意的是在重置<code>ElectionTimeout</code>时，应该在一个合理的区间内取随机数而不是固定值，否则可能会出现所有节点同时发起选举，同时选举超时（因为都给自己投的票），再次同时发起选举这样一直循环的情况</p>
+<p><code>step(m pb.Message)</code>：</p>
+<p>tinykv中每个节点将需要发送的msg放入一个“信箱”中（<code>Message</code>类型的切片），上层逻辑负责将“信箱”中的msg传输到指定的接收节点，并调用接收节点的<code>step</code>方法，<code>step</code>方法可以视为一个中转站，根据当前节点的state、term和传入msg的term执行对应的操作</p>
+<ul>
+<li><p><code>m.term == 0</code>：</p>
+<p>收到一条内部消息，project2会涉及到三种内部消息MsgHup、MsgBeat、MsgPropose，分别用于发起选举，leader广播心跳以及添加新的日志。follower和candidate只应该收到MsgHup，此时转变为candidate并调用对应方法发起选举。若follower收到MsgBeat或MsgPropose且follower节点记录的Lead不为空，则应将这条消息转发给leader</p>
+</li>
+<li><p><code>m.term &lt; r.term</code>：</p>
+<p>收到一个term小于节点当前term的msg，说明这条msg是过时的，对follower和candidate来说，这条msg可能是来自一个旧的leader，也可能来自一个candidate，不需要做多余的处理，直接带上当前term回复即可（投票请求需要设置reject为true）；对于leader来说，这条msg可能是一条过时的response，忽略即可，当然也可能是candidate发来的投票请求，这里显然应该拒绝投票</p>
+</li>
+<li><p><code>m.term &gt; r.term</code>：</p>
+<p>这里遵循raft论文中的规定，无论是follower，candidate还是leader，若收到的msg的term大于当前节点的term，则设置当前节点term为<code>msg.term</code>并转变为follower，然后根据消息类型调用对应的处理方法</p>
+</li>
+<li><p><code>m.term == r.term</code>：</p>
+<p>对于follower来说，这条msg可能来自当前term的candidate或leader，直接根据消息类型调用对应的处理方法即可（若msg来自leader则需要先重置<code>ElectionTimout</code>）</p>
+<p>对于candidate来说，如果这条msg来自另外一个candidate，直接回复拒绝即可（因为票投给了自己）；如果这条msg来自leader，证明当前term的leader已经产生了，则应该转变为follower再调用对应方法处理msg</p>
+<p>对于leader来说，来自candidate的投票请求直接拒绝即可，对于来自follower的response，调用对应的方法处理</p>
+</li>
+</ul>
+<p><code>launchElection()</code>：</p>
+<p>candidate发起新的选主，首先应该确保节点是处于candidate状态，此外若当前节点是集群中唯一一个节点，则应该直接成为leader；集群节点个数大于1时，向集群中除自己外的每个节点发送投票请求msg，msg中应携带candidate的term以及最新的日志信息用于其他节点判断是否投票</p>
+<p><code>broadcastBeat()</code>：</p>
+<p>leader广播心跳，同样首先应该确保节点是处于leader状态，随后向集群中除自己外的每个follower发送heartbeat即可, heartbeat中应该包括一个commit index用于告知follower节点哪些日志可以提交(值为<code>min(r.Prs[to].Match, r.RaftLog.committed)</code>)</p>
+<p><code>handleRequestVote(m pb.Message)</code>：</p>
+<p>follower处理接收到来自candidate的投票请求，每个follower只能投一票，且基于先到先得原则，需要同时满足以下两个条件follower才会投票（由于调用该函数时m.term一定是等于r.term的，因此无需再考虑term）：</p>
+<ul>
+<li><p>当前follower还未投票或之前投的也是这个candidate</p>
+</li>
+<li><p>candidate的日志要比follower的日志新（至少一样新）</p>
+<p>“新”指的是candidate最后一条日志的term大于follower最后一条日志的term，“至少一样新”指的是若最后一条日志的term相同，则candidate的日志长度至少应该更长，这一机制确保最后选出来的leader包含所有已提交的日志</p>
+</li>
+</ul>
+<p>以上条件均满足时，follower投票给该candidate，并重置自己的选举时间（因为已经投过票了，自然不能再作为candidate发起选举），若不满足，则将response中的reject置为true，最终将response放入msgs即可</p>
+<p><code>checkVoteNum()</code>：</p>
+<p>candidate收到投票回复后，根据消息中的reject值判断是否投给了自己，如果被拒绝了，将votes数组对应节点置为false，否则置为true，并调用<code>checkVoteNum()</code>方法遍历votes数组看是否得到了超过一半的选票，如果超过了则直接成为leader。这里需要注意遍历votes数组时不仅要统计true的数量，也要同时统计false（即被拒绝）的数量，若false的数量超过半数，那么显然不可能再成为leader，直接调用<code>becomeFollower()</code>方法即可</p>
+<p>最后根据测试内容再做一些细节上的修正即可</p>
+<h3 id="2-1-2-Log-Replication"><a href="#2-1-2-Log-Replication" class="headerlink" title="2.1.2 Log Replication"></a>2.1.2 Log Replication</h3><p>raft是基于复制状态机的共识算法，即在相同的初始状态下以相同的顺序执行相同的操作，那么得到的结果也一定是相同的。上层算法将用户请求中需要执行的命令放入entry中发送给leader，leader需要将这些entries以相同的顺序复制到所有follower节点，并按照相同的顺序apply它们，从而保证状态的一致性</p>
+<p><code>rawnode.propose()</code>方法将entry放入<code>MsgPropose</code>消息并调用<code>Step()</code>方法发送给leader，leader首先需要将这条entry添加到自己的log中，随后通过<code>MsgAppend</code>消息将这条entry复制到所有节点，若超过半数的节点添加成功，则这条entry可以视为commited并应用到状态机</p>
+<ul>
+<li><p><strong>RaftLog</strong>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  snapshot/first.....applied....committed....stabled.....last</span></span><br><span class="line"><span class="comment">//  --------|------------------------------------------------|</span></span><br><span class="line"><span class="comment">//                            log entries</span></span><br></pre></td></tr></table></figure>
+
+<p>RaftLog结构体包含所有未被snapshot截断的日志条目，而这些日志条目又被分为以下几个状态：</p>
+<ol>
+<li>applied：表示已经应用到状态机的日志条目，且规定 applied &lt;= commited，即只能应用已经提交的entry</li>
+<li>commited：表示已经提交的日志条目，即已经被大多数节点添加到其日志中</li>
+<li>stabled：表示已经持久化到存储的日志条目，持久化确保节点宕机重启后能够快速恢复到宕机前的状态</li>
+<li>unstabled：表示已添加到日志中但还没有持久化的日志条目（2ab主要需要处理的部分）</li>
+</ol>
+<p>在<code>newRaft</code>时会调用<code>newLog</code>方法新建一个<code>RaftLog</code>结构体并返回，需要注意的是要从<code>storage</code>中取出之前已持久化的日志条目，<code>nilIndex</code>和<code>nilTerm</code>用于处理当<code>entries</code>为空时的查询请求(可以视为上次截断位置的日志条目, 即firstIndex-1)</p>
+</li>
+</ul>
+<p>  为了便于raft算法对日志条目进行处理，在<code>log.go</code>文件中需要实现一些类似于增删改查的方法，如</p>
+<p>  <code>firstIndex()</code>/<code>lastIndex()</code>返回<code>entries</code>中第一个/最后一个entry的索引</p>
+<p>  <code>term(index)</code>返回指定entry的term</p>
+<p>  <code>unstableEntries()</code>返回所有未持久化的日志条目</p>
+<p>  <code>nextEnts()</code>返回所有已提交但还没有应用到状态机的日志条目</p>
+<p>  <code>maybeCompact()</code>截断日志(要到2b 2c才用得上)</p>
+<ul>
+<li><p><strong>Append</strong>：</p>
+<p>leader维护了一个名为<code>Prs</code>的map用于记录每个follower的复制进度，leader收到新的entries之后需要将这些entries复制到所有的follower节点，此时leader会从Prs中查看每个follower节点的复制进度，并在append msg中附带其缺少的所有entries；follower在收到来自leader的append请求后会根据自己的<code>RaftLog</code>来判断是否需要append并做出相应回复；最后leader根据回复的结果选择重新发送或尝试提交 </p>
+<p><code>Prs</code>是一个key为节点id，value为<code>Progress</code>结构体的map，Progress结构体中Match变量表示对应节点和leader已同步日志的最大索引，Next变量表示leader下一次应该从哪个entry开始向节点发送append消息</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// log replication progress of each peers</span></span><br><span class="line">Prs <span class="keyword">map</span>[<span class="keyword">uint64</span>]*Progress</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Progress <span class="keyword">struct</span> &#123;</span><br><span class="line">	Match, Next <span class="keyword">uint64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>leaderAppendEntries(ents ...*pb.Entry)</code>：</p>
+<p>在收到来自上层的proposal后，leader首先需要将其中的entries添加到自己的log中，调用RaftLog的相应方法即可；需要注意的是在添加前需要先验证节点是不是leader以及需要添加的entries是否为空。添加完成后需要更新progress以及尝试提交（因为可能存在集群中只有一个节点，即leader自己的情况，此时直接提交即可）</p>
+<p><code>sendAppendOrEmpty(to uint64, isEmpty bool)</code>：</p>
+<p>leader将entries添加到自己的log中之后，需要将新添加的entries广播到所有follower节点，参数<code>to</code>表示接收节点id，<code>isEmpty</code>表示是否允许发送entries为空的msg（当有entry被提交时leader需要通过广播更新follower节点的commit index, 此时msg中entries可能为空）</p>
+<p>raft中规定如果两个不同log中的entry有着相同的index和term，那么这两个entry以及在这之前的所有entries一定都是一样的，因此在<code>AppendMsg</code>中有两个变量<code>Index</code>和<code>LogTerm</code>表示leader和对应follower节点应该保持一致的最后一个entry的index和term（即next-1对应的那个entry）</p>
+<p>leader首先需要从<code>Prs</code>中获取该follower节点对应的<code>Next</code>变量的值，进而得到<code>Index</code>和<code>LogTerm</code>的值，随后通过<code>Entries</code>方法获取应该发送给follower节点的entries，最后补充一下<code>AppendMsg</code>中其它变量的值，放入msgs即可</p>
+<p><code>handleAppendEntries(m pb.Message)</code>：</p>
+<p>follower节点收到来自leader的AppendMsg后，需要根据其中的Index和LogTerm的值来决定是否添加entries到自己的log中，如果follower在自己的log中找不到与Index和LogTerm完全一致的entry，则视为出现了冲突，此时会根据不同的冲突情况回复不同的内容；若找到了这个entry，则说明leader和follower的log在这一entry及其之前是完全一致的，将AppendMsg中的entries直接添加到log中即可</p>
+<ul>
+<li><p>发生冲突的不同情况</p>
+<ol>
+<li><p>follower在日志中找不到Index对应的entry</p>
+<p>出现这种情况表明leader的Prs中该follower的同步进度有误，直接回复reject即可，由于tinykv中不同msg使用的是相同的Message结构体，因此回复时msg中的Index和LogTerm可以用作HintIndex和HintTerm，即告知leader下次append应该从哪个entry开始发送，而不是一个一个entry的尝试（不过论文中提到这个优化对性能的提升并不明星，因为实际应用中不会出现这么多的冲突）</p>
+</li>
+<li><p>找到了Index对应的entry但term不同</p>
+<p>首先需要将HintTerm设为follower在prevLogIndex的term，告知leader从该term开始出现了冲突，那么显然leader下次应该从该term开始发送AppendMsg；HintIndex应设为follower的log中从prevLogIndex开始往前的第一个term与prevLogterm不同的entry的index（简单来说就是从prevLogIndex-1开始往前找第一个term不等于prevLogTerm的entry）</p>
+</li>
+</ol>
+</li>
+<li><p>没有发生冲突, follower添加entries到日志中</p>
+<p>说明follower节点和leader的日志在prevIndex及之前都是一致的, 但不能直接append, 因为节点在prevIndex之后可能还有entries并且这些entries可能会与要添加的entries冲突, 此时应该以leader发送的entries为重, 因此需要先删除节点日志中这些冲突的entries, 然后再添加</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-3-Rawnode-Interface"><a href="#2-1-3-Rawnode-Interface" class="headerlink" title="2.1.3 Rawnode Interface"></a>2.1.3 Rawnode Interface</h3><p>Rawnode提供raft算法与上层应用交互的接口, 向raft算法传递来自上层的消息的请求, 向上层提供读取raft信息的接口; 在raft中有许多需要处理的消息和数据: 如我们仅仅是把需要发送的msg放在了数组中而没有真正的发送出去, 日志中的条目需要持久化到storage, 已提交的日志条目需要应用到状态机等等, 在tinykv中这些交互不会立即发生, 而是封装在一个名为<code>Ready</code>的结构体中返回给上层应用处理</p>
+<p>上层应用会定期调用<code>HasReady</code>和<code>Ready</code>方法来获取需要处理的信息和数据, 在处理完成后会调用<code>Advance</code>方法更新raft内部的数据</p>
+<p><code>HasReady()</code>::</p>
+<p>上层调用该方法判断该node的raft中是否有消息和数据需要处理, 如当前<code>softState</code>较<code>preSoftState</code>有无变化, 当前<code>hardState</code>较<code>preHardState</code>有无变化, 有无挂起待应用的快照, 有无需要持久化或应用到状态机的日志, 有无需要发送的消息等, 上述条件只要有一个成立即表明存在数据需要处理, 返回true, 上层会调用<code>Ready</code>方法获取需要处理的数据</p>
+<p><code>Ready()</code>:</p>
+<p>构建并返回一个<code>Ready</code>结构体, 如果<code>softState</code>有更新, 则需要将<code>preSoftState</code>设置为当前<code>softState</code>(<code>preHardState</code>应在<code>Advance</code>方法中设置, 因为<code>HardState</code>表示已持久化的节点信息, 因此应等待上层应用持久化完成再记录), 还应重置<code>msgs</code></p>
+<p><code>Advance(rd Ready)</code>:</p>
+<p>如果rd中<code>HardState</code>不为空, 则说明上层应用已经持久化了节点的<code>HardState</code>, 记录<code>preSoftState</code>用于下一次比较, 然后调用raft的<code>advance</code>方法更新RaftLog的stable和apply的index, 移除挂起的snapshot, 可能还会压缩日志</p>
+<h2 id="2-2-Fault-tolerant-KV-Server"><a href="#2-2-Fault-tolerant-KV-Server" class="headerlink" title="2.2 Fault-tolerant KV Server"></a>2.2 Fault-tolerant KV Server</h2><p>project2b离开了raft文件夹, 来到了kv文件夹, 也就是之前提到的上层应用部分, 之前实现的raft部分在整个处理client请求的流程中处于中间部分, 即上层应用接收到client请求后经过一系列处理将request封装为entry发送给leader, 随后leader将entry广播给所有follower节点并提交(提交成功说明各节点间对该entry达成了一致), 随后通过<code>Ready</code>结构体返回给上层, 此时上层应用才真正开始处理这条来自client的请求(即应用到状态机), 在2b中需要实现的部分是处理来自节点的<code>Ready</code></p>
+<p>简单来说client请求(Normal Request)从发出到最终回复的调用流程如下:</p>
+<ol>
+<li>kv/server/server.go中的<code>TinyKvServer</code>是一个面向外部的接口, 接收来自TinySQL的请求, 其将用户的请求批量打包为<code>RaftCmdRequest</code>通过raftstore中的router发送出去</li>
+<li>通过router发送的消息会被raft worker接收(raft worker启动后会执行一个内嵌select的循环, 会一直阻塞直到接收<code>raftCh</code>中的msg)</li>
+<li>raft worker对每条msg会new一个<code>PeerMsgHandler</code>来propose消息(即2a部分raft做的事情), 所有消息propose完后调用<code>PeerMsgHandler</code>的<code>HandleRaftReady</code>来处理生成的<code>Ready</code></li>
+</ol>
+<p><code>proposeRaftCommand(msg, cb)</code>:</p>
+<p><code>PeerMsgHandler</code>调用proposeRaftCommand方法对msg进行一些必要的检查并设置msg对应的proposal; 必要的检查如msg是否发给了指定raftstore上指定的peer, 该peer是不是其region中的leader, msg是不是过时的, 如果request中指定了key(如get和delete请求), 还要检查key是否在该region的keyRange中, 上述合法性检查只要有一个出错, 则直接返回err; </p>
+<p>检查通过, 则将msg压缩成data(byte数组), 并调用<code>Rawnode</code>的<code>Propose</code>方法, 后者会将data封装到entry中然后开始在节点间的共识; 此外还需要new一个proposal存放这条msg对应的callback, 并将这条proposal放入<code>PeerMsgHandler</code>的proposal数组中, 待后续apply时取出并回复</p>
+<p><code>HandleRaftReady()</code>:</p>
+<p>执行流程如下:</p>
+<ol>
+<li>如果该peer已经被destroy了, 直接返回即可</li>
+<li>调用<code>HasReady()</code>查看是否有需要处理的<code>Ready</code>, 如果有则获取一个<code>Ready</code></li>
+<li>调用<code>PeerStorage</code>的<code>SaveReadyState</code>方法将<code>Ready</code>中的状态存入内存(raftState,applyState,snapshot)</li>
+<li>如果<code>Ready</code>中有msg需要发送, 调用Send方法将msg发送出去</li>
+<li>挨个对<code>Ready</code>中的commited entries进行apply, 并在每次apply完成后更新applyState并写入DB</li>
+<li>最后调用<code>Advance</code>方法更新raft的状态</li>
+</ol>
+<p>这部分的重难点在第5步apply部分, 对<code>commitedEntries</code>中的每个entry, 其apply流程如下:</p>
+<ol>
+<li>entry的index必须要大于<code>applyIndex</code>, 否则entry已经被apply了, 直接跳过</li>
+<li>找到这个entry对应的proposal, 对应指的是entry的index和term和proposal的必须完全一致; 如果entry的index或term大于proposal的, 表示该proposal是过时的, 回复并丢弃即可; 如果entry的index或term小于proposal的, 表示该entry是过时的, 直接返回即可</li>
+<li>解压缩entry得到request, 遍历执行request中的所有读写请求, 每个请求都单独构造一个response, 最后放入request的response中</li>
+<li>当一个request中的所有读写请求都处理完成后, 就可以认为这个entry已经被apply, 设置callback并回复, 更新<code>applystate</code>, 写入DB</li>
+</ol>
+<p>处理request中的读写请求时有2个需要注意的地方:</p>
+<ol>
+<li>需要明确无论是否找到了request对应的callback, 写请求都是要执行的, 但显然在没有对应的callback的情况下读请求是无法执行的</li>
+<li>在处理GET请求时, 在调用<code>GetCF</code>获取对应key的值之前必须要先将<code>WriteBatch</code>中的数据写入到DB, 否则可能会读到过时的数据</li>
+</ol>
+<p><code>Append(entries, raftWB)</code>:</p>
+<p><code>PeerStorage</code>中的日志都是持久化的, 而调用<code>Append</code>方法即是对<code>Ready</code>中的<code>unstableEntries</code>持久化并写入DB, 执行流程如下:</p>
+<ol>
+<li>在append之前, 需要先对几种可能出现的特殊情况进行一些处理:<br>(1). appendLastIndex &lt; storageFirstIndex: 显然这组entries已经被持久化了, 直接返回即可<br>(2). appendFirstIndex &lt; storageFirstIndex: 部分已被持久化, 截取未持久化的部分append<br>(3). appendLastIndex &lt; storageLastIndex: 删除<code>[appendLastIndex,storageLastIndex]</code>这部分的entries, 因为它们不可能再被commit了</li>
+<li>处理完成后进行append操作(若存在冲突直接覆盖即可)</li>
+<li>更新raftstate</li>
+</ol>
+<h2 id="2-3-Snapshot"><a href="#2-3-Snapshot" class="headerlink" title="2.3 Snapshot"></a>2.3 Snapshot</h2><p>在2.1和2.2的基础上实现快照, raft中leader向落后较多的follower节点发送快照, follower节点在收到快照后更新日志信息并挂起snapshot; <code>PeerMsgHandler</code>从<code>Ready</code>中得到需要apply的snapshot, 调用<code>ApplySnapshot</code>方法并更新state; 此外, raftstore还会定期检查是否有log需要compact, 如果有, 则会发出一个CompactLogRequest, 修改相应的元数据(TruncatedState)后, 发送一个RaftLogGCTask到raftlog-gc worker异步执行实际的compact工作</p>
+<p><code>sendAppend(to)</code>:</p>
+<p>leader向follower节点发送<code>AppendMsg</code>时, 如果follower节点是新加入的或与leader存在较长时间的网络隔离, 可能会出现需要同步的日志已经被截断的情况, 即id为<code>prevLogIndex</code>的日志项不存在, 此时leader需要向该节点发送一个snapshot以帮助该节点快速跟上leader的进度, 通过调用<code>RaftLog</code>的<code>snapshot</code>方法, 会返回一个挂起的snapshot(如果存在的话)或从storage中生成一个snapshot返回(通过发送一个<code>RegionTaskGen</code>到region worker来生成snapshot, 生成snapshot需要一些时间, 如果调用时还没生成好, 会返回<code>ErrSnapshotTemporarilyUnavailable</code>错误)</p>
+<p><code>applySnapshot(s pb.Snapshot)</code>:</p>
+<p>follower节点在收到来自leader的<code>MsgSnapshot</code>后, 调用<code>applySnapshot</code>方法, 验证了snapshot的正确性后更新<code>RaftLog</code>中的相关信息(如commited, stabled, applied等), 并挂起该snapshot(这个挂起的snapshot会通过<code>Ready</code>发送给<code>PeerMsgHandler</code>并apply)</p>
+<p><code>ApplySnapshot(snapshot, kvWB, raftWB)</code>:</p>
+<p>如果<code>Ready</code>中的snapshot非空, 则会调用<code>ApplySnapshot</code>方法, 流程如下:</p>
+<ol>
+<li>如果不是一个新的peer, 则调用<code>clearMeta</code>和<code>clearExtraData</code>方法清除过时的数据(为什么要先判断是不是一个新的peer, 因为peer初始化时, 其startKey和endKey都为nil, 而tinykv的keySpace可以视为一个圈, 即<code>[nil, nil]</code>, 因此如果对一个新的peer调用上述清理函数则可能会直接把所有数据清空)</li>
+<li>根据snapshot中的信息更新<code>raftState</code>, <code>applyState</code>和<code>snapState</code>并写入<code>WriteBatch</code></li>
+<li>发送一个<code>RegionTaskApply</code>到region worker并等待apply完成</li>
+<li>apply完成后会返回一个SaveReadyState结构体, 其中记录了apply开始前和结束后节点的region信息, 如果发生了改变, 则需要更新StoreMeta</li>
+</ol>
+<p>RaftLog Compact的流程如下:</p>
+<ol>
+<li>每隔baseTickInterval, tickDriver就会发送一条MsgTypeTick到PeerMsgHandler, 调用onRaftGCLogTick方法</li>
+<li>如果满足compact条件, 则会生成一个CompactLogRequest, 像普通请求一样propose到raft中以达成共识</li>
+<li>提交后在apply时, 修改TruncatedState并调用ScheduleCompactLog方法发送一个RaftLogGCTask到raftlog-gc worker异步执行compact操作</li>
+</ol>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/tinykv-lab3/" style="float: left;">
+        ← pingcap tinykv lab3 - MultiRaftKV
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/tinykv-lab1/">
+        pingcap tinykv lab1 - Standalone KV Server →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

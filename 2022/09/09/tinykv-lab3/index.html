@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>pingcap tinykv lab3 - MultiRaftKV | Comethru</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Comethru">
+    <meta name="author" content="DaiWei Jia">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Comethru" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Comethru</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:40:11.264Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>pingcap tinykv lab3 - MultiRaftKV</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="3-MultiRaftKV"><a href="#3-MultiRaftKV" class="headerlink" title="3. MultiRaftKV"></a>3. MultiRaftKV</h1><p>在project2中, RaftKV服务器是搭建在单个region单个RaftGroup上的, 针对不同key的读写请求都是一个接一个地提交和应用, 而不是并发处理, 这样无疑会降低性能和效率; 而在project3中要实现的是由多个region多个RaftGroup组成的kv服务器, 每个region负责一个keyRange, 这样对单个region的请求还是像之前那样处理, 但对不同region的请求可以并发处理</p>
+<h2 id="3-1-Conf-Change-in-Raft"><a href="#3-1-Conf-Change-in-Raft" class="headerlink" title="3.1 Conf Change in Raft"></a>3.1 Conf Change in Raft</h2><p>leader transfer和membership transfer在raft中的实现, 二者都是通过<code>RawNode</code>提供的接口发送msg到raft中, 不同的是leader transfer发送的是一条local message, leader直接处理即可, 无需在节点间达成共识; 而membership change是以proposal形式发送给leader的, 因此需要commit后再apply</p>
+<h3 id="3-1-1-Leader-Transfer"><a href="#3-1-1-Leader-Transfer" class="headerlink" title="3.1.1 Leader Transfer"></a>3.1.1 Leader Transfer</h3><p>leader transfer的大致流程如下:</p>
+<ol>
+<li>上层应用调用<code>RawNode</code>提供的<code>TransferLeader</code>方法发送<code>MsgTransferLeader</code>到当前leader(如果发给了过时的leader会转发给当前leader)</li>
+<li>leader执行一些必要的检查:<br>(1). transferee是否存在, 如果不存在, 可能transferee节点已被移除, return即可<br>(2). 是否有leader transfer操作正在进行中, 如果有, 且两次操作的transferee不同, 则中止上一次transfer<br>(3). transferee是否已经是leader</li>
+<li>leader transfer应该在一个<code>electionTimeout</code>内完成, 所以重置<code>electionElapsed</code>(同样在ticker函数中如果一个<code>electionTimeout</code>内都没有完成leader transfer, 则应该放弃这次transfer)</li>
+<li>设置<code>r.leadTransferee</code>值表示当前leader transfer正在进行, leader transfer进行时不接收任何proposal</li>
+<li>leader查看transferee是否拥有和自己一样新的日志:<br>(1). 如果有, 则直接发送<code>MsgTimeoutNow</code>到目标节点<br>(2). 否则发送MsgAppend同步日志, 并在同步完成后立即发送<code>MsgTimeoutNow</code></li>
+<li>transferee收到来自leader的<code>MsgTimeoutNow</code>后立刻发起一轮新的选主</li>
+</ol>
+<h3 id="3-1-2-Membership-Transfer"><a href="#3-1-2-Membership-Transfer" class="headerlink" title="3.1.2 Membership Transfer"></a>3.1.2 Membership Transfer</h3><ol>
+<li>上层应用调用<code>RawNode</code>提供的<code>ProposeConfChange</code>方法将ConfChange封装在entry中以proposal形式发送给leader(EntryType为<code>EntryConfChange</code>)</li>
+<li>tinykv中一次只能添加或移除一个节点, 因此leader会先查看上次ConfChange是否apply(通过<code>r.PendingConfIndex</code>与<code>appliedIndex</code>比较)</li>
+<li>如果当前没有挂起的ConfChange, 则设置<code>PendingConfIndex</code>为当前ConfChange的Index, ConfChangeEntry转变为NormalEntry</li>
+<li>leader将这些Entries添加到log, 然后开始在节点间同步</li>
+<li>当ConfChangeEntry被apply后, 调用<code>AddNode</code>/<code>RemoveNode</code>方法更新raft内部的节点信息</li>
+</ol>
+<h2 id="3-2-Conf-Change-and-Region-Split-in-Raftstore"><a href="#3-2-Conf-Change-and-Region-Split-in-Raftstore" class="headerlink" title="3.2 Conf Change and Region Split in Raftstore"></a>3.2 Conf Change and Region Split in Raftstore</h2><p>这部分主要是三种admin request在raftstore中的实现, 除leader transfer外, 其它两种request都需要封装为proposal发送到raft, 在节点间达成共识后再由涉及到的peer执行实际操作; 此外还引入了一个region epoch, 由两个版本号组成: <code>ConfVer</code>和<code>Version</code>, 分别表示Conf Change版本和region版本(这里可以视为split版本), region epoch是严格单调递增的, 因此可以通过检查proposal中的region epoch来判断其合法性</p>
+<h3 id="3-2-1-Conf-Change-in-Raftstore"><a href="#3-2-1-Conf-Change-in-Raftstore" class="headerlink" title="3.2.1 Conf Change in Raftstore"></a>3.2.1 Conf Change in Raftstore</h3><p><code>proposeAdminCommand(msg, cb)</code>:</p>
+<p>对于transfer leader请求, 不需要以proposal形式在raft中达成共识, 因此直接调用RaftGroup的<code>TransferLeader</code>方法即可<br>add/remove peer请求的propose和读写请求类似, 只不过最后调用的是<code>ProposeConfChange</code>方法</p>
+<p><code>handleAdminReq(entry, msg, kvWB)</code>:</p>
+<p>transfer leader请求不会进行到这一步, 只需处理changePeer请求即可, 大致流程如下:</p>
+<ol>
+<li>查找entry对应的proposal, 检查<code>regionEpoch</code>的合法性</li>
+<li>如果该请求是移除节点且正好是当前节点, 直接调用<code>destroyPeer</code>方法即可, 无需进行后面的不步骤</li>
+<li>查找request中peerId指定的peer是否存在(如果是添加peer则应找不到, 移除peer则应找得到)</li>
+<li>添加或移除peer, <code>ConfVer</code>增加, 并持久化<code>regionState</code></li>
+<li>将修改后的region信息写入<code>storeMeta</code></li>
+<li>在<code>peerCache</code>中添加或移除该peer的信息</li>
+<li>调用RaftGroup的<code>ApplyConfChange</code>方法更新raft内部peer信息, 设置callback并回复</li>
+<li>如果当前peer是leader, 则调用<code>HeartbeatScheduler</code>方法向调度器发送心跳, 通过心跳机制完成peer的创建或移除</li>
+</ol>
+<h3 id="3-2-2-Region-Split-in-Raftstore"><a href="#3-2-2-Region-Split-in-Raftstore" class="headerlink" title="3.2.2 Region Split in Raftstore"></a>3.2.2 Region Split in Raftstore</h3><p>Region Split的触发条件:</p>
+<p>region每隔SplitRegionCheckTickInterval(10s)就会调用onSplitRegionCheckTick方法触发一次split检查(当有split check正在进行或数据增量小于阈值时不会触发split检查), 发送SplitCheckTask到splitCheckHandler, 如果满足触发split的要求, 则计算并返回splitKey, 即从splitKey处将region一分为二, splitChecker会生成一条regionSplit消息发送到peerMsgHandler</p>
+<p>PeerMsgHandler处理region split的流程大致如下:</p>
+<ol>
+<li>调用onPrepareSplitRegion方法发送SchedulerAskSplitTask到splitChecker请求生成新region和新peer的id, 并放在一个AdminRequest中发送</li>
+<li>不同于普通的AdminRequest处理, 对region split请求需要先查看splitKey是否在当前region的keyRange中(因为可能是一条过时的split请求), 之后便没有什么区别, 生成proposal, 在raft中达成共识, 等待apply</li>
+<li>apply之前应先进行一系列合法性检查, 如Region Epoch是否正确, splitKey是否在keyRange中(在propose这段时间内仍有可能发生split)等</li>
+<li>oldRegion的RegionEpoch.Version增加, 并为newRegion构建一个新的peers集合, 分配之前请求得到的peerId, storeId与oldRegion相同</li>
+<li>构造一个newRegion, 分配请求得到的regionId, 设置keyRange, 设置peers, regionEpoch与oldRegion相同 </li>
+<li>修改oldRegion的keyRange</li>
+<li>调用createPeer方法创建新的peer并调用register方法注册peer, 发送MsgTypeStart消息启动peer</li>
+<li>调用WriteRegionState方法持久化oldRegion和newRegion</li>
+<li>更新storeMeta的regionRanges和regions, 注意更新storeMeta时要先获取锁</li>
+<li>回复callback, 如果当前节点是leader, 调用<code>HeartbeatScheduler</code>方法(可以同时也为newRegion调用, 促使newRegion尽快选出leader)</li>
+</ol>
+<h2 id="3-3-Region-Balance-Scheduler"><a href="#3-3-Region-Balance-Scheduler" class="headerlink" title="3.3 Region Balance Scheduler"></a>3.3 Region Balance Scheduler</h2><p>在tinykv中, Scheduler负责整个集群的负载均衡, 通过定期接收来自region的心跳获取每个region的状态信息, 并更新其本地记录; 此外还会定期扫描整个集群, 查看有无资源分布不平衡的地方并进行调度</p>
+<p><code>processRegionHeartbeat(regionInfo)</code>:</p>
+<p>scheduler选择性地维护到来的heartbeat, 通过比较<code>regionEpoch</code>验证heartbeat的合法性, 大致流程如下:</p>
+<ol>
+<li>查找本地存储中是否存在regionId相同的region</li>
+<li>如果存在, 则对比二者的<code>regionEpoch</code>, 并保留其中较新的region信息</li>
+<li>如果不存在, 则调用<code>ScanRegions</code>方法查找与心跳region有重叠的region集合, 并挨个与心跳region比较<code>regionEpoch</code></li>
+<li>调用<code>putRegion</code>方法更新region tree</li>
+<li>调用<code>updateStoreStatusLocked</code>更新region相关store的存储状态</li>
+</ol>
+<p><code>Schedule(cluster)</code>:</p>
+<p>scheduler定期找到集群中所有”健康”的store, 将它们按<code>regionSize</code>由大到小排序, 并由大到小遍历, 查找是否有满足调度要求的region, 大致流程如下:</p>
+<ol>
+<li>获取”健康”的store列表, “健康”指的是store状态是up且自上次心跳的间隔时间小于<code>maxdowntime</code></li>
+<li>将store列表按<code>regionSize</code>大小排序</li>
+<li>从<code>regionSize</code>最大的store开始遍历, 按照<code>PendingRegion</code> &gt; <code>FollowerRegion</code> &gt; <code>LeaderRegion</code>的优先级选择被调度的region</li>
+<li>如果找到了被调度的region, 则从<code>regionSize</code>最小的store开始遍历, 寻找合适的store存放该peer, “合适”指的是:<br>(1). 在完成调度后两个store的<code>regionSize</code>大小关系不会发生变化, 否则可能会导致不停地来回调度<br>(2). 目标store中不应该有待调度region的peer存在<br>(3). 待调度region在一个peer被调度时仍能正常运转(即region中至少有3个节点)</li>
+<li>在newstore上为调度过来的peer申请一个新的id, 生成一个<code>MovePeerOperator</code>并返回</li>
+</ol>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/tinykv-lab4/" style="float: left;">
+        ← pingcap tinykv lab4 - Transactions
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/tinykv-lab2/">
+        pingcap tinykv lab2 - RaftKV →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By DaiWei Jia. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

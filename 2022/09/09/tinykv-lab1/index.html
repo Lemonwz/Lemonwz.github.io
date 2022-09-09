@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2022 | Comethru</title>
+  <title>pingcap tinykv lab1 - Standalone KV Server | Comethru</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,117 +167,108 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/tinykv-lab4/">pingcap tinykv lab4 - Transactions</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:40:18.588Z"><a href="/2022/09/09/tinykv-lab4/">2022-09-09</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/tinykv-lab3/">pingcap tinykv lab3 - MultiRaftKV</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:40:11.264Z"><a href="/2022/09/09/tinykv-lab3/">2022-09-09</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/tinykv-lab2/">pingcap tinykv lab2 - RaftKV</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:40:00.626Z"><a href="/2022/09/09/tinykv-lab2/">2022-09-09</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/tinykv-lab1/">pingcap tinykv lab1 - Standalone KV Server</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:39:39.180Z"><a href="/2022/09/09/tinykv-lab1/">2022-09-09</a></time></p>
-                        </div>
-                    
-                        
-                            </div><div class="row boxes">
-                            
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/csapp-shelllab/">csapp shelllab</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:28:53.508Z"><a href="/2022/09/09/csapp-shelllab/">2022-09-09</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2022/09/09/csapp-malloclab/">csapp malloclab</a></h4>
-                            
-                            <p><time datetime="2022-09-09T07:18:16.342Z"><a href="/2022/09/09/csapp-malloclab/">2022-09-09</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2022-09-09T07:39:39.180Z" itemprop="datePublished">
+          2022-09-09
+      </time>
+    
+</span>
+                <h1>pingcap tinykv lab1 - Standalone KV Server</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="1-Standalone-key-value-server"><a href="#1-Standalone-key-value-server" class="headerlink" title="1. Standalone key/value server"></a>1. Standalone key/value server</h1><p>Project1 要求实现一个支持列族的单机存储引擎和一个提供grpc服务的server，由于tinykv在底层已经实现了一个badger db，因此这里不需要重新写一个存储引擎，调用badger api的相应接口即可；server通过grpc接收来自clients的请求，调用存储引擎的相应方法处理请求。</p>
+<h2 id="1-1-standalone-storage-engine"><a href="#1-1-standalone-storage-engine" class="headerlink" title="1.1 standalone storage engine"></a>1.1 standalone storage engine</h2><p>一个存储引擎需要实现以下四个方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Storage <span class="keyword">interface</span> &#123;</span><br><span class="line">	Start() error</span><br><span class="line">	Stop() error</span><br><span class="line">	Write(ctx *kvrpcpb.Context, batch []Modify) error</span><br><span class="line">	Reader(ctx *kvrpcpb.Context) (StorageReader, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p></p>
+<p><code>start</code>和<code>stop</code>方法不做过多描述，即启动和关闭存储引擎</p>
+<p><code>write</code>方法批量处理put和delete请求，需要遍历<code>Modify</code>对象数组，判断每个<code>modify</code>结构体中<code>Data</code>变量的类型是<code>put</code>还是<code>delete</code>，并执行相应操作。</p>
+<p><code>reader</code>方法返回一个<code>storagereader</code>对象，处理get和scan请求，这里需要自己定义一个结构体实现<code>storagereader</code>接口，即实现<code>getcf</code>、<code>itercf</code>和<code>close</code>方法（调用badger的相应方法即可），在实现<code>getcf</code>方法时需要注意，若<code>GetCFFromTxn</code>方法返回的错误类型是<code>ErrKeyNotFound</code>，则将返回值<code>val</code>和<code>err</code>均设为<code>nil</code>即可，后续会对这一情况进行特殊处理。</p>
+<h2 id="1-2-key-value-service-handlers"><a href="#1-2-key-value-service-handlers" class="headerlink" title="1.2 key/value service handlers"></a>1.2 key/value service handlers</h2><p>在<code>raw_api.go</code>中实现put、delete、get和scan四种请求对应的处理方法</p>
+<p><strong>(1). RawGet：</strong></p>
+<p>调用上面实现的reader方法得到一个<code>storagereader</code>对象，调用其<code>getcf</code>方法即可，需要注意处理<code>getcf</code>方法返回值时，若<code>err</code>不为空，直接返回错误即可；若<code>err</code>为空且<code>val</code>也为空，则表示请求的key是不存在的，此时需要将<code>response</code>结构体中的<code>NotFound</code>变量置为true。</p>
+<p><strong>(2). RawScan：</strong></p>
+<p>调用<code>storagereader</code>对象的<code>itercf</code>方法获取迭代器，从<code>request</code>参数中拿到遍历的起始key和遍历元素个数limit，将遍历得到的kv对放入到kv对数组中，遍历结束后kv对数组放入<code>response</code>中返回即可。</p>
+<p><strong>(3). RawPut：</strong></p>
+<p>创建一个<code>put</code>结构体并根据request设置相关参数，放入<code>modify</code>结构体数组中，调用storage的<code>write</code>方法，最后返回<code>response</code>。</p>
+<p>**(4). RawDelete: **</p>
+<p>类似于<code>RawPut</code>，创建<code>delete</code>结构体放入<code>modify</code>结构体数组，调用<code>write</code>方法，<code>write</code>方法会根据<code>Data</code>的类型区分put和delete</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/09/09/tinykv-lab2/" style="float: left;">
+        ← pingcap tinykv lab2 - RaftKV
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/09/09/csapp-shelllab/">
+        csapp shelllab →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
